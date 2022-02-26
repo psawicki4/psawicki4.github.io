@@ -1,1 +1,59 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@import '~normalize.css';
+@import "palette";
+@import "variables";
+@import "layout";
+
+@include mat.core();
+
+$personal-website-primary: mat.define-palette($primary-palette);
+$personal-website-accent: mat.define-palette($accent-palette, A200, A100, A400);
+$personal-website-warn: mat.define-palette(mat.$red-palette);
+
+$personal-website-theme: mat.define-dark-theme((
+  color: (
+    primary: $personal-website-primary,
+    accent: $personal-website-accent,
+    warn: $personal-website-warn,
+  )
+));
+
+@include mat.all-component-themes($personal-website-theme);
+
+$my-typography: mat.define-typography-config(
+  $font-family: $font-family,
+);
+
+@include mat.core($my-typography);
+
+html {
+  scrollbar-color: grey $background;
+  scrollbar-width: thin;
+  ::-webkit-scrollbar {
+    width: 7.5px;
+    height: 7.5px;
+  }
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-corner {
+    background: $background;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: grey;
+    border-right: 1px solid $background;
+    border-bottom: 1px solid $background;
+    &:hover {
+      background: #676767;
+    }
+    &:active {
+      background: #393939;
+    }
+  }
+}
+
+body {
+  min-height: 100vh;
+  box-sizing: border-box;
+  font-family: $font-family;
+  color: $text-color;
+  background-color: $background;
+}

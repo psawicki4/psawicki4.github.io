@@ -1,0 +1,52 @@
+.flex {
+  --flex-margin: 0;
+  display: flex;
+  &-col {
+    @extend .flex;
+    flex-direction: column;
+    &__start {
+      @extend .flex-col;
+      justify-content: flex-start;
+    }
+    &__center {
+      @extend .flex-col;
+      justify-content: center;
+    }
+    &__end {
+      @extend .flex-col;
+      justify-content: flex-end;
+    }
+    &__space-between {
+      @extend .flex-col;
+      justify-content: space-between;
+    }
+  }
+  &-row {
+    @extend .flex;
+    flex-direction: row;
+    &__start {
+      @extend .flex-row;
+      justify-content: flex-start;
+    }
+    &__center {
+      @extend .flex-row;
+      justify-content: center;
+    }
+    &__end {
+      @extend .flex-row;
+      justify-content: flex-end;
+    }
+    &__space-between {
+      @extend .flex-row;
+      justify-content: space-between;
+    }
+  }
+}
+
+.flex-col > *:not(:last-child) {
+  margin-bottom: var(--flex-margin);
+}
+
+.flex-row > *:not(:last-child) {
+  margin-right: var(--flex-margin);
+}

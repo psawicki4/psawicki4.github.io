@@ -6,6 +6,11 @@
     "personal-website": {
       "projectType": "application",
       "schematics": {
+        "@schematics/angular": {
+          "component": {
+            "changeDetection": "OnPush"
+          }
+        },
         "@schematics/angular:component": {
           "style": "scss"
         },
@@ -33,6 +38,12 @@
             "styles": [
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles",
+                "src/app/layout"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
