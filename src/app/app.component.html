@@ -1,9 +1,19 @@
-<div flexCol class="app">
-  <mat-toolbar class="header" color="primary" flexRow="space-between">
-    <button mat-icon-button class="example-icon" aria-label="Main menu">
-      <mat-icon>menu</mat-icon>
-    </button>
-  </mat-toolbar>
-  <router-outlet></router-outlet>
-  <p class="footer">&copy; {{date.getFullYear()}} Piotr Sawicki</p>
-</div>
+<mat-toolbar class="header" color="primary" flexRow="space-between">
+  <button mat-icon-button class="example-icon" aria-label="Main menu" (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav class="sidenav" mode="side" [(opened)]="opened" [autoFocus]="false">
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="''">Start</a>
+      <a mat-list-item [routerLink]="'/form-demo'">Fajny formularz</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div flexCol class="content">
+      <router-outlet></router-outlet>
+      <p class="footer">&copy; {{date.getFullYear()}} Piotr Sawicki</p>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

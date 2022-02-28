@@ -15,6 +15,9 @@ import { MobileOnlyDirective } from './layout/mobile-only.directive';
 import { NotMobileDirective } from './layout/not-mobile.directive';
 import {FormsModule} from "@angular/forms";
 import {HomeModule} from "./home/home.module";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatListModule} from "@angular/material/list";
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -47,6 +50,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatIconModule,
     FormsModule,
     HomeModule,
+    MatSidenavModule,
+    MatCheckboxModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

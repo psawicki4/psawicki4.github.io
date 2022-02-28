@@ -10,6 +10,7 @@ import {TranslateService} from "@ngx-translate/core";
 export class AppComponent {
 
   date = new Date();
+  opened: boolean = true;
 
   constructor(translate: TranslateService) {
     translate.setDefaultLang('pl');
