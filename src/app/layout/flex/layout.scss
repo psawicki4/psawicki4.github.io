@@ -1,6 +1,7 @@
 .flex {
   --flex-margin: 0;
   display: flex;
+  gap: var(--flex-gap);
   &-col {
     @extend .flex;
     flex-direction: column;
@@ -19,6 +20,14 @@
     &__space-between {
       @extend .flex-col;
       justify-content: space-between;
+    }
+    &__space-around {
+      @extend .flex-col;
+      justify-content: space-around;
+    }
+    &__space-evenly {
+      @extend .flex-col;
+      justify-content: space-evenly;
     }
   }
   &-row {
@@ -40,13 +49,13 @@
       @extend .flex-row;
       justify-content: space-between;
     }
+    &__space-around {
+      @extend .flex-row;
+      justify-content: space-around;
+    }
+    &__space-evenly {
+      @extend .flex-row;
+      justify-content: space-evenly;
+    }
   }
-}
-
-.flex-col > *:not(:last-child) {
-  margin-bottom: var(--flex-margin);
-}
-
-.flex-row > *:not(:last-child) {
-  margin-right: var(--flex-margin);
 }

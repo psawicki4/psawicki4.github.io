@@ -2,7 +2,7 @@
 @import '~normalize.css';
 @import "palette";
 @import "variables";
-@import "layout";
+@import "app/layout/flex/layout";
 
 @include mat.core();
 
@@ -56,4 +56,10 @@ body {
   font-family: $font-family;
   color: $text-color;
   background-color: $background;
+}
+
+// override Angular Material styles:
+.mat-drawer-container {
+  background-color: inherit;
+  color: inherit;
 }

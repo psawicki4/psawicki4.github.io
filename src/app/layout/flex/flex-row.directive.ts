@@ -46,6 +46,6 @@ export class FlexRowDirective {
 
   setGap(val: string) {
     const flags = RendererStyleFlags2.DashCase;
-    this.renderer.setStyle(this.el.nativeElement, '--flex-margin', val, flags);
+    this.renderer.setStyle(this.el.nativeElement, '--flex-gap', val, flags);
   }
 }

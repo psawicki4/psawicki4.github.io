@@ -9,10 +9,10 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
-import { FlexColDirective } from './layout/flex-col.directive';
-import { FlexRowDirective } from './layout/flex-row.directive';
-import { MobileOnlyDirective } from './layout/mobile-only.directive';
-import { NotMobileDirective } from './layout/not-mobile.directive';
+import { FlexColDirective } from './layout/flex/flex-col.directive';
+import { FlexRowDirective } from './layout/flex/flex-row.directive';
+import { MobileOnlyDirective } from './layout/mobile/mobile-only.directive';
+import { NotMobileDirective } from './layout/mobile/not-mobile.directive';
 import {FormsModule} from "@angular/forms";
 import {HomeModule} from "./home/home.module";
 import {MatSidenavModule} from "@angular/material/sidenav";
@@ -30,7 +30,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FlexColDirective,
     FlexRowDirective,
     MobileOnlyDirective,
-    NotMobileDirective,
+    NotMobileDirective
   ],
   imports: [
     BrowserModule,

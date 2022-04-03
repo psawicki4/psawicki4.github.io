@@ -1,6 +1,6 @@
 import {Directive, ElementRef, Input, OnInit, Renderer2, RendererStyleFlags2} from '@angular/core';
 
-export type JustifyContent = 'start' | 'center' | 'end' | 'space-between';
+export type JustifyContent = 'start' | 'center' | 'end' | 'space-between' | 'space-around' | 'space-evenly';
 
 export function isJustifyContent(justifyContent: string): justifyContent is JustifyContent {
   return ['start', 'center', 'end', 'space-between'].indexOf(justifyContent) !== -1;
@@ -12,7 +12,7 @@ export function isJustifyContent(justifyContent: string): justifyContent is Just
 export class FlexColDirective implements OnInit {
 
   @Input()
-  flexCol: JustifyContent | string | [JustifyContent, string] = '';
+  flexCol: JustifyContent | string = '';
 
   constructor(private renderer: Renderer2, private el: ElementRef) {
   }
@@ -22,18 +22,27 @@ export class FlexColDirective implements OnInit {
       this.setJustify();
       return;
     }
-    if (typeof this.flexCol === 'string' && isJustifyContent(this.flexCol)) {
-      this.setJustify(this.flexCol);
-      return;
-    }
-    if (typeof this.flexCol === 'string' && !isJustifyContent(this.flexCol)) {
-      this.setJustify();
-      this.setGap(this.flexCol);
-      return;
-    }
-    if (Array.isArray(this.flexCol)) {
-      this.setJustify(this.flexCol[0]);
-      this.setGap(this.flexCol[1]);
+    const params = this.flexCol.split(' ');
+    switch (params.length) {
+      case 1: {
+        if (isJustifyContent(params[0])) {
+          this.setJustify(params[0]);
+        } else {
+          this.setJustify();
+          this.setGap(params[0]);
+        }
+        break;
+      }
+      case 2: {
+        if (isJustifyContent(params[0])) {
+          this.setJustify(params[0]);
+          this.setGap(params[1]);
+        } else if (isJustifyContent(params[1])) {
+          this.setJustify(params[1]);
+          this.setGap(params[0]);
+        }
+        break;
+      }
     }
   }
 
@@ -46,11 +55,15 @@ export class FlexColDirective implements OnInit {
       this.renderer.addClass(this.el.nativeElement, 'flex-col__end');
     } else if (val === 'space-between') {
       this.renderer.addClass(this.el.nativeElement, 'flex-col__space-between');
+    } else if (val === 'space-around') {
+      this.renderer.addClass(this.el.nativeElement, 'flex-col__space-around');
+    } else if (val === 'space-evenly') {
+      this.renderer.addClass(this.el.nativeElement, 'flex-col__space-evenly');
     }
   }
 
   setGap(val: string) {
     const flags = RendererStyleFlags2.DashCase;
-    this.renderer.setStyle(this.el.nativeElement, '--flex-margin', val, flags);
+    this.renderer.setStyle(this.el.nativeElement, '--flex-gap', val, flags);
   }
 }
