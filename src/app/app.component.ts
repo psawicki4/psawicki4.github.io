@@ -11,16 +11,28 @@ import {MatSidenav} from "@angular/material/sidenav";
 export class AppComponent {
 
   date = new Date();
+  langCode: string;
 
   @ViewChild('sidenav')
   sidenav: MatSidenav;
 
   constructor(private translate: TranslateService) {
-    translate.setDefaultLang('pl');
-    translate.use('pl');
+    this.setLanguage();
+  }
+
+  setLanguage() {
+    let langCode = localStorage.getItem('langCode') ?? this.translate.getBrowserLang()?.slice(0,2);
+    if (langCode !== 'pl' && langCode !== 'en') {
+      langCode = 'pl';
+    }
+    this.translate.setDefaultLang(langCode);
+    this.translate.use(langCode);
+    this.langCode = langCode;
   }
 
   changeLanguage(lang: string) {
     this.translate.use(lang);
+    localStorage.setItem('langCode', lang);
+    this.langCode = lang;
   }
 }

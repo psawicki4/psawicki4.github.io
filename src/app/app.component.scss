@@ -14,7 +14,7 @@
     @extend .lang-button;
     opacity: 75%;
   }
-  &--active {
+  &__active, &__active:hover {
     @extend .lang-button;
     opacity: 1;
   }
