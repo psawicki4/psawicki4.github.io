@@ -54,12 +54,6 @@ body {
   min-height: 100vh;
   box-sizing: border-box;
   font-family: $font-family;
-  color: $text-color;
   background-color: $background;
 }
 
-// override Angular Material styles:
-.mat-drawer-container {
-  background-color: inherit;
-  color: inherit;
-}

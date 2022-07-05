@@ -2,6 +2,7 @@
   <button mat-icon-button *mobileOnly class="example-icon" aria-label="Main menu" (click)="sidenav.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
+  <pw-application-colors></pw-application-colors>
   <span>
     <button mat-button [class]="langCode === 'pl' ? 'lang-button__active' : 'lang-button'"
             (click)="changeLanguage('pl')">PL</button> /

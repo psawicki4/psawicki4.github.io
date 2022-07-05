@@ -18,6 +18,8 @@ import {HomeModule} from "./home/home.module";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatListModule} from "@angular/material/list";
+import {NgxColorsModule} from "ngx-colors";
+import { ApplicationColorsComponent } from './components/application-colors/application-colors.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -30,30 +32,32 @@ export function HttpLoaderFactory(http: HttpClient) {
     FlexColDirective,
     FlexRowDirective,
     MobileOnlyDirective,
-    NotMobileDirective
+    NotMobileDirective,
+    ApplicationColorsComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    TranslateModule.forRoot({
-      defaultLanguage: 'pl',
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
-    MatButtonModule,
-    MatToolbarModule,
-    MatIconModule,
-    FormsModule,
-    HomeModule,
-    MatSidenavModule,
-    MatCheckboxModule,
-    MatListModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        TranslateModule.forRoot({
+            defaultLanguage: 'pl',
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
+        MatButtonModule,
+        MatToolbarModule,
+        MatIconModule,
+        FormsModule,
+        HomeModule,
+        MatSidenavModule,
+        MatCheckboxModule,
+        MatListModule,
+        NgxColorsModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
