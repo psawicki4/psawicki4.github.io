@@ -1,4 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {LanguageService} from "../components/language/language.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'pw-home',
@@ -8,9 +10,12 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  language$: Observable<string>;
+
+  constructor(private languageService: LanguageService) { }
 
   ngOnInit(): void {
+    this.language$ = this.languageService.language$;
   }
 
 }

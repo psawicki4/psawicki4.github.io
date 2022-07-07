@@ -1,0 +1,13 @@
+.lang-button {
+  min-width: 0;
+  padding: 0 6px;
+  opacity: 50%;
+  &:hover {
+    @extend .lang-button;
+    opacity: 75%;
+  }
+  &__active, &__active:hover {
+    @extend .lang-button;
+    opacity: 1;
+  }
+}

@@ -1,53 +1,60 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import * as tinycolor from "tinycolor2";
-import {Color} from "./color";
+import {Color} from "./color.interface";
 
 @Component({
-  selector: 'pw-application-colors',
-  templateUrl: './application-colors.component.html',
-  styleUrls: ['./application-colors.component.scss'],
+  selector: 'pw-colors',
+  templateUrl: './colors.component.html',
+  styleUrls: ['./colors.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ApplicationColorsComponent implements OnInit {
+export class ColorsComponent implements OnInit {
 
-  primaryColor = '#293d8d';
+  primaryColor: string;
   primaryColorPalette: Color[] = [];
 
-  secondaryColor = '#d2cb41';
+  secondaryColor: string;
   secondaryColorPalette: Color[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
+    this.initColors();
     this.savePrimaryColor();
     this.saveSecondaryColor();
   }
 
+  initColors() {
+    this.primaryColor = localStorage.getItem('primaryColor') ?? '#293d8d';
+    this.secondaryColor = localStorage.getItem('secondaryColor') ?? '#d2cb41';
+  }
+
   savePrimaryColor() {
-    console.log(this.primaryColor);
     this.primaryColorPalette = this.computeColors(this.primaryColor);
 
-    for (const color of this.primaryColorPalette) {
+    this.primaryColorPalette.forEach(color => {
       const key1 = `--theme-primary-${color.name}`;
       const value1 = color.hex;
       const key2 = `--theme-primary-contrast-${color.name}`;
-      const value2 = color.darkContrast ? 'rgba(black, 0.87)' : 'white';
+      const value2 = color.darkContrast ? 'rgba(0, 0, 0, 0.87)' : 'white';
       document.documentElement.style.setProperty(key1, value1);
       document.documentElement.style.setProperty(key2, value2);
-    }
+    });
+    localStorage.setItem('primaryColor', this.primaryColor);
   }
 
   saveSecondaryColor() {
     this.secondaryColorPalette = this.computeColors(this.secondaryColor);
 
-    for (const color of this.secondaryColorPalette) {
+    this.secondaryColorPalette.forEach(color => {
       const key1 = `--theme-secondary-${color.name}`;
       const value1 = color.hex;
       const key2 = `--theme-secondary-contrast-${color.name}`;
-      const value2 = color.darkContrast ? 'rgba(black, 0.87)' : 'white';
+      const value2 = color.darkContrast ? 'rgba(0, 0, 0, 0.87)' : 'white';
       document.documentElement.style.setProperty(key1, value1);
       document.documentElement.style.setProperty(key2, value2);
-    }
+    });
+    localStorage.setItem('secondaryColor', this.secondaryColor);
   }
 
   computeColors(hex: string): Color[] {

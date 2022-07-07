@@ -1,15 +1,9 @@
-<mat-toolbar class="header" color="primary" flexRow="end">
-  <button mat-icon-button *mobileOnly class="example-icon" aria-label="Main menu" (click)="sidenav.toggle()">
+<mat-toolbar class="header" color="primary" flexRow="end 2rem">
+  <button mat-icon-button *mobileOnly class="example-icon" aria-label="Main menu">
     <mat-icon>menu</mat-icon>
   </button>
-  <pw-application-colors></pw-application-colors>
-  <span>
-    <button mat-button [class]="langCode === 'pl' ? 'lang-button__active' : 'lang-button'"
-            (click)="changeLanguage('pl')">PL</button> /
-    <button mat-button [class]="langCode === 'en' ? 'lang-button__active' : 'lang-button'"
-            (click)="changeLanguage('en')">EN
-    </button>
-  </span>
+  <pw-colors></pw-colors>
+  <pw-language></pw-language>
 </mat-toolbar>
 <div flexCol class="content">
   <router-outlet></router-outlet>

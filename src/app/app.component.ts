@@ -1,6 +1,4 @@
-import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
-import {TranslateService} from "@ngx-translate/core";
-import {MatSidenav} from "@angular/material/sidenav";
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
   selector: 'pw-root',
@@ -11,28 +9,7 @@ import {MatSidenav} from "@angular/material/sidenav";
 export class AppComponent {
 
   date = new Date();
-  langCode: string;
 
-  @ViewChild('sidenav')
-  sidenav: MatSidenav;
-
-  constructor(private translate: TranslateService) {
-    this.setLanguage();
-  }
-
-  setLanguage() {
-    let langCode = localStorage.getItem('langCode') ?? this.translate.getBrowserLang()?.slice(0,2);
-    if (langCode !== 'pl' && langCode !== 'en') {
-      langCode = 'pl';
-    }
-    this.translate.setDefaultLang(langCode);
-    this.translate.use(langCode);
-    this.langCode = langCode;
-  }
-
-  changeLanguage(lang: string) {
-    this.translate.use(lang);
-    localStorage.setItem('langCode', lang);
-    this.langCode = lang;
+  constructor() {
   }
 }

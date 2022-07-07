@@ -2,8 +2,8 @@ import {Directive, ElementRef, Input, OnInit, Renderer2, RendererStyleFlags2} fr
 
 export type JustifyContent = 'start' | 'center' | 'end' | 'space-between' | 'space-around' | 'space-evenly';
 
-export function isJustifyContent(justifyContent: string): justifyContent is JustifyContent {
-  return ['start', 'center', 'end', 'space-between'].indexOf(justifyContent) !== -1;
+export function isJustifyContent(content: string): content is JustifyContent {
+  return ['start', 'center', 'end', 'space-between', 'space-around', 'space-evenly'].indexOf(content) !== -1;
 }
 
 @Directive({
@@ -23,26 +23,14 @@ export class FlexColDirective implements OnInit {
       return;
     }
     const params = this.flexCol.split(' ');
-    switch (params.length) {
-      case 1: {
-        if (isJustifyContent(params[0])) {
-          this.setJustify(params[0]);
-        } else {
-          this.setJustify();
-          this.setGap(params[0]);
-        }
-        break;
-      }
-      case 2: {
-        if (isJustifyContent(params[0])) {
-          this.setJustify(params[0]);
-          this.setGap(params[1]);
-        } else if (isJustifyContent(params[1])) {
-          this.setJustify(params[1]);
-          this.setGap(params[0]);
-        }
-        break;
-      }
+    if (!isJustifyContent(params[0])) {
+      this.setJustify();
+      this.setGap(params[0]);
+    } else {
+      this.setJustify(params[0]);
+    }
+    if (params.length === 2) {
+      this.setGap(params[1]);
     }
   }
 

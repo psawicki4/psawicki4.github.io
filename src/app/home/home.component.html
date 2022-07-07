@@ -1,8 +1,12 @@
 <div class="home">
   <pw-card>
-    <h1>Cześć,</h1>
+    <h1>{{'hello' | translate}}</h1>
     <p>nazywam się Piotr Sawicki i chciałbym Ci pokazać co potrafię napisać w Angularze</p>
     <button mat-raised-button color="primary">Primary</button>
     <button mat-raised-button color="accent">Accent</button>
   </pw-card>
 </div>
+<img *ngIf="(language$ | async) === 'pl'" src="../../assets/svg/colors_text_pl.svg" alt="Możesz zmienić kolory"
+     class="colors_text" height="100px">
+<img *ngIf="(language$ | async) === 'en'" src="../../assets/svg/colors_text_en.svg" alt="You can change the colors"
+     class="colors_text" height="100px">

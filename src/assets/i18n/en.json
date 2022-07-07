@@ -1,4 +1,7 @@
 {
   "home": "Home",
-  "form": "Nice form"
+  "form": "Nice form",
+  "hello": "Hello,",
+  "accept": "Accept",
+  "cancel": "Cancel"
 }

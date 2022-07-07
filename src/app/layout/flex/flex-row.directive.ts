@@ -7,7 +7,7 @@ import {isJustifyContent, JustifyContent} from "./flex-col.directive";
 export class FlexRowDirective {
 
   @Input()
-  flexRow: JustifyContent | string | [JustifyContent, string] = '';
+  flexRow: JustifyContent | string = '';
 
   constructor(private renderer: Renderer2, private el: ElementRef) {
   }
@@ -17,18 +17,15 @@ export class FlexRowDirective {
       this.setJustify();
       return;
     }
-    if (typeof this.flexRow === 'string' && isJustifyContent(this.flexRow)) {
-      this.setJustify(this.flexRow);
-      return;
-    }
-    if (typeof this.flexRow === 'string' && !isJustifyContent(this.flexRow)) {
+    const params = this.flexRow.split(' ');
+    if (!isJustifyContent(params[0])) {
       this.setJustify();
-      this.setGap(this.flexRow);
-      return;
+      this.setGap(params[0]);
+    } else {
+      this.setJustify(params[0]);
     }
-    if (Array.isArray(this.flexRow)) {
-      this.setJustify(this.flexRow[0]);
-      this.setGap(this.flexRow[1]);
+    if (params.length === 2) {
+      this.setGap(params[1]);
     }
   }
 
@@ -41,6 +38,10 @@ export class FlexRowDirective {
       this.renderer.addClass(this.el.nativeElement, 'flex-row__end');
     } else if (val === 'space-between') {
       this.renderer.addClass(this.el.nativeElement, 'flex-row__space-between');
+    } else if (val === 'space-around') {
+      this.renderer.addClass(this.el.nativeElement, 'flex-row__space-around');
+    } else if (val === 'space-evenly') {
+      this.renderer.addClass(this.el.nativeElement, 'flex-row__space-evenly');
     }
   }
 
