@@ -6,6 +6,8 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'form-demo',
     loadChildren: () => import('./form-demo/form-demo.module').then(m => m.FormDemoModule)},
+  {path: 'grid-demo',
+    loadChildren: () => import('./form-demo/form-demo.module').then(m => m.FormDemoModule)},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 

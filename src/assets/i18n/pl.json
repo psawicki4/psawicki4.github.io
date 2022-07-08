@@ -1,7 +1,10 @@
 {
-  "home": "Start",
-  "form": "Fajny formularz",
   "hello": "Cześć,",
   "accept": "Wybierz",
-  "cancel": "Anuluj"
+  "cancel": "Anuluj",
+  "MENU": {
+    "home": "Start",
+    "form": "Fajny formularz",
+    "grid": "Spoko tabela"
+  }
 }

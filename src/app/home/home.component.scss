@@ -1,8 +1,15 @@
-.home {
-}
 
 .colors_text {
   position: absolute;
   top: 55px;
-  right: 80px;
+  right: 20px;
+  color: var(--theme-secondary-500);
+  height: 90px;
+
+  &--mobile {
+    @extend .colors_text;
+    height: 70px;
+    top: 45px;
+    right: 10px;
+  }
 }

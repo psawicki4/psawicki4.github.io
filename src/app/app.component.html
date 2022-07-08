@@ -1,11 +1,14 @@
 <mat-toolbar class="header" color="primary" flexRow="end 2rem">
-  <button mat-icon-button *mobileOnly class="example-icon" aria-label="Main menu">
+  <button mat-icon-button *mobileOnly class="menu-bt">
     <mat-icon>menu</mat-icon>
   </button>
   <pw-colors></pw-colors>
   <pw-language></pw-language>
 </mat-toolbar>
-<div flexCol class="content">
-  <router-outlet></router-outlet>
+<div flexRow="1rem" class="content">
+  <pw-menu *notMobile></pw-menu>
+  <pw-card class="main-card">
+    <router-outlet></router-outlet>
+  </pw-card>
 </div>
 <p class="footer">&copy; {{date.getFullYear()}} Piotr Sawicki</p>

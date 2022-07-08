@@ -3,5 +3,10 @@
   "form": "Nice form",
   "hello": "Hello,",
   "accept": "Accept",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "MENU": {
+    "home": "Home",
+    "form": "Nice form",
+    "grid": "Cool grid"
+  }
 }

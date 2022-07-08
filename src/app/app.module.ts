@@ -9,8 +9,6 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
-import { MobileOnlyDirective } from './layout/mobile/mobile-only.directive';
-import { NotMobileDirective } from './layout/mobile/not-mobile.directive';
 import {HomeModule} from "./home/home.module";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatCheckboxModule} from "@angular/material/checkbox";
@@ -18,6 +16,9 @@ import {MatListModule} from "@angular/material/list";
 import {ColorsModule} from "./components/colors/colors.module";
 import {EasyFlexModule} from "./layout/flex/easy-flex.module";
 import {AnguageModule} from "./components/language/anguage.module";
+import {MenuModule} from "./components/menu/menu.module";
+import {CardModule} from "./components/card/card.module";
+import {MobileModule} from "./layout/mobile/mobile.module";
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -27,8 +28,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    MobileOnlyDirective,
-    NotMobileDirective,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +52,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatSidenavModule,
     MatCheckboxModule,
     MatListModule,
+    MenuModule,
+    CardModule,
+    MobileModule
   ],
   providers: [],
   bootstrap: [AppComponent]

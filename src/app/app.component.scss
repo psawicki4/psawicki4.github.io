@@ -1,7 +1,14 @@
-
 .content {
   min-height: calc(100vh - 96px - 2rem);
   margin: 1rem;
+}
+
+.menu-bt {
+  margin-right: auto;
+}
+
+.main-card {
+  flex: 1;
 }
 
 .footer {

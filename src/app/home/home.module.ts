@@ -4,6 +4,7 @@ import {HomeComponent} from "./home.component";
 import {CardModule} from "../components/card/card.module";
 import {MatButtonModule} from "@angular/material/button";
 import {TranslateModule} from "@ngx-translate/core";
+import {MobileModule} from "../layout/mobile/mobile.module";
 
 
 
@@ -15,7 +16,8 @@ import {TranslateModule} from "@ngx-translate/core";
     CommonModule,
     CardModule,
     MatButtonModule,
-    TranslateModule
+    TranslateModule,
+    MobileModule
   ],
   exports: [
     HomeComponent
