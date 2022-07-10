@@ -15,10 +15,10 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatListModule} from "@angular/material/list";
 import {ColorsModule} from "./components/colors/colors.module";
 import {EasyFlexModule} from "./layout/flex/easy-flex.module";
-import {AnguageModule} from "./components/language/anguage.module";
 import {MenuModule} from "./components/menu/menu.module";
 import {CardModule} from "./components/card/card.module";
 import {MobileModule} from "./layout/mobile/mobile.module";
+import {LanguageModule} from "./components/language/language.module";
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -45,13 +45,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     EasyFlexModule,
     HomeModule,
     ColorsModule,
-    AnguageModule,
+    LanguageModule,
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
-    MatSidenavModule,
-    MatCheckboxModule,
-    MatListModule,
     MenuModule,
     CardModule,
     MobileModule

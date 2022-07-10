@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import * as tinycolor from "tinycolor2";
 import {Color} from "./color.interface";
+import {TinyColor} from "@ctrl/tinycolor";
 
 @Component({
   selector: 'pw-colors',
@@ -58,26 +58,27 @@ export class ColorsComponent implements OnInit {
   }
 
   computeColors(hex: string): Color[] {
+    const color = new TinyColor(hex);
     return [
-      this.getColorObject(tinycolor(hex).lighten(52), '50'),
-      this.getColorObject(tinycolor(hex).lighten(37), '100'),
-      this.getColorObject(tinycolor(hex).lighten(26), '200'),
-      this.getColorObject(tinycolor(hex).lighten(12), '300'),
-      this.getColorObject(tinycolor(hex).lighten(6), '400'),
-      this.getColorObject(tinycolor(hex), '500'),
-      this.getColorObject(tinycolor(hex).darken(6), '600'),
-      this.getColorObject(tinycolor(hex).darken(12), '700'),
-      this.getColorObject(tinycolor(hex).darken(18), '800'),
-      this.getColorObject(tinycolor(hex).darken(24), '900'),
-      this.getColorObject(tinycolor(hex).lighten(50).saturate(30), 'A100'),
-      this.getColorObject(tinycolor(hex).lighten(30).saturate(30), 'A200'),
-      this.getColorObject(tinycolor(hex).lighten(10).saturate(15), 'A400'),
-      this.getColorObject(tinycolor(hex).lighten(5).saturate(5), 'A700')
+      this.getColorObject(color.lighten(52), '50'),
+      this.getColorObject(color.lighten(37), '100'),
+      this.getColorObject(color.lighten(26), '200'),
+      this.getColorObject(color.lighten(12), '300'),
+      this.getColorObject(color.lighten(6), '400'),
+      this.getColorObject(color, '500'),
+      this.getColorObject(color.darken(6), '600'),
+      this.getColorObject(color.darken(12), '700'),
+      this.getColorObject(color.darken(18), '800'),
+      this.getColorObject(color.darken(24), '900'),
+      this.getColorObject(color.lighten(50).saturate(30), 'A100'),
+      this.getColorObject(color.lighten(30).saturate(30), 'A200'),
+      this.getColorObject(color.lighten(10).saturate(15), 'A400'),
+      this.getColorObject(color.lighten(5).saturate(5), 'A700')
     ];
   }
 
   getColorObject(value: any, name: string): Color {
-    const c = tinycolor(value);
+    const c = new TinyColor(value);
     return {
       name: name,
       hex: c.toHexString(),

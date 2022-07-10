@@ -17,4 +17,4 @@ import {MatButtonModule} from "@angular/material/button";
     LanguageComponent
   ]
 })
-export class AnguageModule { }
+export class LanguageModule { }
