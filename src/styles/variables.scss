@@ -1,8 +1,5 @@
 @use "sass:color";
 
-$primary-color: #293d8d;
-$accent-color: #d2cb41;
-
 $background: #131313;
 $background-5: color.mix(#fff, $background, 5%);
 $background-7: color.mix(#fff, $background, 7%);

@@ -1,30 +1,7 @@
-@use '@angular/material' as mat;
 @import '~normalize.css';
-@import "palette";
+@import "styles/custom-mat-theme";
 @import "variables";
 @import "app/layout/flex/layout";
-
-@include mat.core();
-
-$personal-website-primary: mat.define-palette($primary-palette);
-$personal-website-accent: mat.define-palette($accent-palette, A200, A100, A400);
-$personal-website-warn: mat.define-palette(mat.$red-palette);
-
-$personal-website-theme: mat.define-dark-theme((
-  color: (
-    primary: $personal-website-primary,
-    accent: $personal-website-accent,
-    warn: $personal-website-warn,
-  )
-));
-
-@include mat.all-component-themes($personal-website-theme);
-
-$my-typography: mat.define-typography-config(
-  $font-family: $font-family,
-);
-
-@include mat.core($my-typography);
 
 html {
   scrollbar-color: grey $background;
