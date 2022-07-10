@@ -1,0 +1,10 @@
+{
+  "hello": "Cześć,",
+  "accept": "Wybierz",
+  "cancel": "Anuluj",
+  "MENU": {
+    "home": "Start",
+    "form": "Fajny formularz",
+    "grid": "Spoko tabela"
+  }
+}
