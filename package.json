@@ -31,7 +31,6 @@
     "@ctrl/tinycolor": "^3.4.1",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
-    "husky": "^8.0.1",
     "ngx-colors": "^3.0.2",
     "normalize.css": "^8.0.1",
     "rxjs": "~7.5.0",
@@ -45,13 +44,14 @@
     "@cypress/schematic": "^2.0.0",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
+    "cypress": "latest",
+    "husky": "^8.0.1",
     "jasmine-core": "~4.0.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~4.7.4",
-    "cypress": "latest"
+    "typescript": "~4.7.4"
   }
 }
