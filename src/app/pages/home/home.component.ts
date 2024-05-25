@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {CardComponent} from "../../components/card/card.component";
 import {MatList, MatListItem} from "@angular/material/list";
+import {MatAnchor} from "@angular/material/button";
 
 @Component({
   selector: 'psa-home',
@@ -8,7 +9,8 @@ import {MatList, MatListItem} from "@angular/material/list";
   imports: [
     CardComponent,
     MatList,
-    MatListItem
+    MatListItem,
+    MatAnchor
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
