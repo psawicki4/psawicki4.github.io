@@ -1,0 +1,9 @@
+@use "variables" as var;
+
+.menu-list {
+  min-width: 150px;
+}
+
+.active {
+  background-color: var.$background-9;
+}

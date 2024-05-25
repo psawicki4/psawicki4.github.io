@@ -1,0 +1,8 @@
+<span class="flex flex-row items-center">
+    <button mat-button [class]="langCode === 'pl' ? 'lang-button__active' : 'lang-button'"
+            (click)="changeLanguage('pl')">PL</button>
+  <p>/</p>
+    <button mat-button [class]="langCode === 'en' ? 'lang-button__active' : 'lang-button'"
+            (click)="changeLanguage('en')">EN
+    </button>
+</span>

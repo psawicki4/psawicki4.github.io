@@ -1,0 +1,15 @@
+@use "sass:color";
+
+$background: #131313;
+$background-5: color.mix(#fff, $background, 5%);
+$background-7: color.mix(#fff, $background, 7%);
+$background-8: color.mix(#fff, $background, 8%);
+$background-9: color.mix(#fff, $background, 9%);
+$background-11: color.mix(#fff, $background, 11%);
+$background-12: color.mix(#fff, $background, 12%);
+$background-14: color.mix(#fff, $background, 14%);
+$background-15: color.mix(#fff, $background, 15%);
+$background-16: color.mix(#fff, $background, 16%);
+
+$text-color: #e2e3e0;
+$font-family: 'Open Sans', sans-serif;

@@ -1,0 +1,17 @@
+.content {
+  min-height: calc(100vh - 96px - 2rem);
+  margin: 1rem;
+}
+
+.divider {
+  height: 100%;
+  width: 1px;
+  background-color: rebeccapurple;
+}
+
+.footer {
+  margin-top: auto;
+  margin-bottom: 2px;
+  text-align: center;
+  font-size: 8px;
+}

@@ -1,0 +1,8 @@
+.lang-button {
+  min-width: 0;
+  padding: 0 6px;
+  &__active {
+    @extend .lang-button;
+    text-decoration: underline;
+  }
+}
