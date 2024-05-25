@@ -1,15 +1,36 @@
-<div class="h-dvh flex flex-col gap-4">
-  <mat-toolbar class="flex flex-row gap-8" color="primary">
-   <!-- <button mat-icon-button class="mr-auto">
-      <mat-icon>menu</mat-icon>
-    </button>-->
-    <psa-lang-switch class="ml-auto"></psa-lang-switch>
-  </mat-toolbar>
-  <div class="flex flex-row gap-4 mx-8 flex-grow">
-    <psa-menu></psa-menu>
-    <div class="divider"></div>
-    <router-outlet></router-outlet>
+@if (isMobile) {
+
+    <mat-sidenav-container>
+      <mat-sidenav #sidenav>
+        <psa-menu></psa-menu>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <div class="h-dvh flex flex-col gap-4">
+          <mat-toolbar class="flex flex-row gap-8" color="primary">
+            <button mat-icon-button class="mr-auto" (click)="sidenav.open()">
+              <mat-icon>menu</mat-icon>
+            </button>
+            <psa-lang-switch class="ml-auto"></psa-lang-switch>
+          </mat-toolbar>
+          <div class="flex flex-row mx-8 flex-grow">
+            <router-outlet></router-outlet>
+          </div>
+          <p class="footer">&copy; {{ date.getFullYear() }} Piotr Sawicki</p>
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+
+} @else {
+  <div class="h-dvh flex flex-col gap-4">
+    <mat-toolbar class="flex flex-row gap-8" color="primary">
+      <psa-lang-switch class="ml-auto"></psa-lang-switch>
+    </mat-toolbar>
+    <div class="flex flex-row mx-8 flex-grow">
+      <psa-menu></psa-menu>
+      <div class="divider"></div>
+      <router-outlet></router-outlet>
+    </div>
+    <p class="footer">&copy; {{ date.getFullYear() }} Piotr Sawicki</p>
   </div>
-  <p class="footer">&copy; {{ date.getFullYear() }} Piotr Sawicki</p>
-</div>
+}
 

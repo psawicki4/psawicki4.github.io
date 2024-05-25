@@ -17,4 +17,5 @@ html {
   @include mat.core-theme($custom-theme);
   @include mat.button-theme($custom-theme);
   @include mat.list-theme($custom-theme);
+  @include mat.sidenav-theme($custom-theme);
 }

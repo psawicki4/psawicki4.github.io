@@ -1,11 +1,9 @@
-.content {
-  min-height: calc(100vh - 96px - 2rem);
-  margin: 1rem;
-}
+@use "variables" as ver;
 
 .divider {
   height: 100%;
   width: 1px;
+  margin-inline: 2rem;
   background-color: rebeccapurple;
 }
 
@@ -14,4 +12,12 @@
   margin-bottom: 2px;
   text-align: center;
   font-size: 8px;
+}
+
+mat-sidenav {
+  width: 200px;
+}
+
+.mat-drawer-container {
+  background-color: ver.$background;
 }
