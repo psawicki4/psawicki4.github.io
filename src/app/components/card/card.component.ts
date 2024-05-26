@@ -1,7 +1,5 @@
-import {ChangeDetectionStrategy, Component, input, InputSignal, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {NgClass} from "@angular/common";
-
-export type ElevationLevel = '01dp' | '02dp' | '03dp' | '04dp' | '06dp' | '08dp' | '12dp' | '16dp' | '24dp'
 
 @Component({
   selector: 'psa-card',
@@ -13,13 +11,6 @@ export type ElevationLevel = '01dp' | '02dp' | '03dp' | '04dp' | '06dp' | '08dp'
   styleUrl: './card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
 
-  level = input<ElevationLevel>('01dp');
-
-  cardClass = '';
-
-  ngOnInit(): void {
-    this.cardClass = 'card__' + this.level();
-  }
 }

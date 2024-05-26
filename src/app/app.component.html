@@ -1,24 +1,27 @@
 @if (isMobile) {
 
-    <mat-sidenav-container>
-      <mat-sidenav #sidenav>
-        <psa-menu></psa-menu>
-      </mat-sidenav>
-      <mat-sidenav-content>
-        <div class="h-dvh flex flex-col gap-4">
-          <mat-toolbar class="flex flex-row gap-8" color="primary">
-            <button mat-icon-button class="mr-auto" (click)="sidenav.open()">
-              <mat-icon>menu</mat-icon>
-            </button>
-            <psa-lang-switch class="ml-auto"></psa-lang-switch>
-          </mat-toolbar>
-          <div class="flex flex-row mx-8 flex-grow">
-            <router-outlet></router-outlet>
-          </div>
-          <p class="footer">&copy; {{ date.getFullYear() }} Piotr Sawicki</p>
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav>
+      <psa-menu></psa-menu>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="h-dvh flex flex-col gap-4">
+        <mat-toolbar class="flex flex-row gap-8" color="primary">
+          <button mat-icon-button class="mr-auto" (click)="sidenav.open()">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <psa-lang-switch class="ml-auto"></psa-lang-switch>
+        </mat-toolbar>
+        <div class="flex flex-row mx-8 flex-grow">
+          <router-outlet></router-outlet>
         </div>
-      </mat-sidenav-content>
-    </mat-sidenav-container>
+        <div class="footer">
+          <p>&copy; {{ date.getFullYear() }} Piotr Sawicki</p>
+          <a href="https://pl.freepik.com">Image by kjpargeter on Freepik</a>
+        </div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 
 } @else {
   <div class="h-dvh flex flex-col gap-4">
@@ -32,7 +35,10 @@
         <router-outlet></router-outlet>
       </div>
     </div>
-    <p class="footer">&copy; {{ date.getFullYear() }} Piotr Sawicki</p>
+    <div class="footer">
+      <p>&copy; {{ date.getFullYear() }} Piotr Sawicki</p>
+      <a href="https://pl.freepik.com">Image by kjpargeter on Freepik</a>
+    </div>
   </div>
 }
 

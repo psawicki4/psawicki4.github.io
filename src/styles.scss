@@ -36,5 +36,23 @@ body {
   //background-color: var.$background;
   background-image: url("assets/background_1080.webp");
   background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
   color: var.$text-color;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    min-height: 100dvh;
+    box-sizing: border-box;
+    font-family: var.$font-family;
+    //background-color: var.$background;
+    background-image: url("assets/background_640.webp");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    color: var.$text-color;
+  }
 }
