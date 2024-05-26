@@ -22,13 +22,15 @@
 
 } @else {
   <div class="h-dvh flex flex-col gap-4">
-    <mat-toolbar class="flex flex-row gap-8" color="primary">
+    <mat-toolbar class="flex flex-row gap-8 px-8" color="primary">
       <psa-lang-switch class="ml-auto"></psa-lang-switch>
     </mat-toolbar>
-    <div class="flex flex-row mx-8 flex-grow">
+    <div class="flex flex-row flex-grow gap-8 mx-8">
       <psa-menu></psa-menu>
       <div class="divider"></div>
-      <router-outlet></router-outlet>
+      <div>
+        <router-outlet></router-outlet>
+      </div>
     </div>
     <p class="footer">&copy; {{ date.getFullYear() }} Piotr Sawicki</p>
   </div>

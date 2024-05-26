@@ -3,7 +3,6 @@
 .divider {
   height: 100%;
   width: 1px;
-  margin-inline: 2rem;
   background-color: rebeccapurple;
 }
 
@@ -20,4 +19,8 @@ mat-sidenav {
 
 .mat-drawer-container {
   background-color: ver.$background;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  padding: 0 2rem;
 }
