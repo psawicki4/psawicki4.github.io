@@ -3,8 +3,8 @@ import { RouterOutlet } from '@angular/router';
 import {CardComponent} from "./components/card/card.component";
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatIcon} from "@angular/material/icon";
-import {MatIconButton} from "@angular/material/button";
-import {TranslateService} from "@ngx-translate/core";
+import {MatButton, MatIconButton} from "@angular/material/button";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import {MenuComponent} from "./components/menu/menu.component";
 import {LangSwitchComponent} from "./components/lang-switch/lang-switch.component";
 import {MatSidenav, MatSidenavContainer, MatSidenavContent} from "@angular/material/sidenav";
@@ -12,7 +12,7 @@ import {MatSidenav, MatSidenavContainer, MatSidenavContent} from "@angular/mater
 @Component({
   selector: 'psa-root',
   standalone: true,
-  imports: [RouterOutlet, CardComponent, MatToolbar, MatIcon, MatIconButton, MenuComponent, LangSwitchComponent, MatSidenavContainer, MatSidenavContent, MatSidenav],
+  imports: [RouterOutlet, CardComponent, MatToolbar, MatIcon, MatIconButton, MenuComponent, LangSwitchComponent, MatSidenavContainer, MatSidenavContent, MatSidenav, MatButton, TranslateModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
