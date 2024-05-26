@@ -9,15 +9,13 @@
           <button mat-icon-button class="mr-auto" (click)="sidenav.open()">
             <mat-icon>menu</mat-icon>
           </button>
-          <psa-lang-switch class="ml-auto"></psa-lang-switch>
+          <button mat-stroked-button class="ml-auto">{{'contact' | translate}}</button>
+          <psa-lang-switch ></psa-lang-switch>
         </mat-toolbar>
         <div class="flex flex-row mx-8 flex-grow">
           <router-outlet></router-outlet>
         </div>
-        <div class="footer">
-          <p>&copy; {{ date.getFullYear() }} Piotr Sawicki</p>
-          <a href="https://pl.freepik.com">Image by kjpargeter on Freepik</a>
-        </div>
+        <ng-container [ngTemplateOutlet]="footer"></ng-container>
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
@@ -35,10 +33,13 @@
         <router-outlet></router-outlet>
       </div>
     </div>
-    <div class="footer">
-      <p>&copy; {{ date.getFullYear() }} Piotr Sawicki</p>
-      <a href="https://pl.freepik.com">Image by kjpargeter on Freepik</a>
-    </div>
+    <ng-container [ngTemplateOutlet]="footer"></ng-container>
   </div>
 }
 
+<ng-template #footer>
+  <div class="footer">
+    <p>&copy; {{ date.getFullYear() }} Piotr Sawicki</p>
+    <a href="https://pl.freepik.com">Image by kjpargeter on Freepik</a>
+  </div>
+</ng-template>

@@ -8,11 +8,12 @@ import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import {MenuComponent} from "./components/menu/menu.component";
 import {LangSwitchComponent} from "./components/lang-switch/lang-switch.component";
 import {MatSidenav, MatSidenavContainer, MatSidenavContent} from "@angular/material/sidenav";
+import {NgTemplateOutlet} from "@angular/common";
 
 @Component({
   selector: 'psa-root',
   standalone: true,
-  imports: [RouterOutlet, CardComponent, MatToolbar, MatIcon, MatIconButton, MenuComponent, LangSwitchComponent, MatSidenavContainer, MatSidenavContent, MatSidenav, MatButton, TranslateModule],
+  imports: [RouterOutlet, CardComponent, MatToolbar, MatIcon, MatIconButton, MenuComponent, LangSwitchComponent, MatSidenavContainer, MatSidenavContent, MatSidenav, MatButton, TranslateModule, NgTemplateOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
