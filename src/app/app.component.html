@@ -5,13 +5,7 @@
     </mat-sidenav>
     <mat-sidenav-content>
       <div class="h-dvh flex flex-col gap-4">
-        <mat-toolbar class="flex flex-row gap-8" color="primary">
-          <button mat-icon-button class="mr-auto" (click)="sidenav.open()">
-            <mat-icon>menu</mat-icon>
-          </button>
-          <button mat-stroked-button class="ml-auto">{{'contact' | translate}}</button>
-          <psa-lang-switch ></psa-lang-switch>
-        </mat-toolbar>
+        <psa-header [isMobile]="isMobile" (open)="sidenav.open()"></psa-header>
         <div class="flex flex-row mx-8 flex-grow">
           <router-outlet></router-outlet>
         </div>
@@ -22,10 +16,7 @@
 
 } @else {
   <div class="h-dvh flex flex-col gap-4">
-    <mat-toolbar class="flex flex-row gap-8 px-8 pt-8" color="primary">
-      <button mat-stroked-button class="ml-auto">{{'contact' | translate}}</button>
-      <psa-lang-switch ></psa-lang-switch>
-    </mat-toolbar>
+    <psa-header [isMobile]="isMobile"></psa-header>
     <div class="flex flex-row flex-grow gap-8 mx-8">
       <psa-menu></psa-menu>
       <div class="divider"></div>

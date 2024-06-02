@@ -1,4 +1,5 @@
 @use '../../node_modules/@angular/material/index' as mat;
+@use "variables" as var;
 
 @include mat.core();
 
@@ -18,4 +19,9 @@ html {
   @include mat.button-theme($custom-theme);
   @include mat.list-theme($custom-theme);
   @include mat.sidenav-theme($custom-theme);
+  @include mat.dialog-theme($custom-theme);
+  --mdc-dialog-supporting-text-color: var.$text-color;
+  --mdc-dialog-supporting-text-size: 1rem;
+  --mat-dialog-with-actions-content-padding: 0 2rem;
+  --mat-dialog-headline-padding: 0.5rem 2rem 1rem;
 }

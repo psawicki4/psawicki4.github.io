@@ -1,0 +1,13 @@
+.email {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  cursor: pointer;
+}
+
+.email b {
+  display: none;
+}
+
+.email:hover {
+  text-decoration: underline;
+}
