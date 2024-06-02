@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, inject, input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input, output} from '@angular/core';
 import {LangSwitchComponent} from "../lang-switch/lang-switch.component";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
@@ -25,10 +25,8 @@ import {ContactDialogComponent} from "../contact-dialog/contact-dialog.component
 export class HeaderComponent {
 
   isMobile = input<boolean>(false);
+  open = output();
   dialog = inject(MatDialog);
-
-  @Output()
-  open = new EventEmitter<null>
 
   onClick() {
     this.open.emit();

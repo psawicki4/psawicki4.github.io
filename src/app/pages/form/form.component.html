@@ -1,0 +1,40 @@
+<psa-card>
+  <h1 class="text-2xl mb-8">Demo formularza</h1>
+  <div class="w-full flex flex-row">
+    <form [formGroup]="form" class="w-1/2 flex flex-col gap-4 items-center">
+        <p>Pies czy kot?</p>
+        <mat-radio-group formControlName="petType">
+          <mat-radio-button value="dog">pies</mat-radio-button>
+          <mat-radio-button value="cat" class="ml-8">kot</mat-radio-button>
+        </mat-radio-group>
+        @if (petType === 'cat') {
+          <ng-container formGroupName="cat">
+            <mat-form-field class="w-64">
+              <mat-label>Imię</mat-label>
+              <input matInput formControlName="name">
+            </mat-form-field>
+            <mat-form-field class="w-64">
+              <mat-label>Wiek</mat-label>
+              <input matInput type="number" class="number" formControlName="age">
+              <mat-hint>Podaj w latach. Jeśli kot jeszcze nie skończył roku, wpisz 0.</mat-hint>
+            </mat-form-field>
+            <mat-form-field class="w-64">
+              <mat-label>Data urodzin (jeśli znana)</mat-label>
+              <input matInput [matDatepicker]="picker" [max]="maxDate" formControlName="birthday">
+              <mat-hint>YYYY-MM-DD</mat-hint>
+              <mat-datepicker-toggle  matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-checkbox labelPosition="before" formControlName="castrated">Wysterylizowany</mat-checkbox>
+          </ng-container>
+
+        }
+    </form>
+    <div class="w-1/2 flex flex-col gap-8">
+      <p>Model:</p>
+      <pre>
+      {{form.getRawValue() | json}}
+    </pre>
+    </div>
+  </div>
+</psa-card>

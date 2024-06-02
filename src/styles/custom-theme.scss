@@ -20,6 +20,12 @@ html {
   @include mat.list-theme($custom-theme);
   @include mat.sidenav-theme($custom-theme);
   @include mat.dialog-theme($custom-theme);
+  @include mat.radio-theme($custom-theme);
+  @include mat.snack-bar-theme($custom-theme);
+  @include mat.input-theme($custom-theme);
+  @include mat.form-field-theme($custom-theme);
+  @include mat.datepicker-theme($custom-theme);
+  @include mat.checkbox-theme($custom-theme);
   --mdc-dialog-supporting-text-color: var.$text-color;
   --mdc-dialog-supporting-text-size: 1rem;
   --mat-dialog-with-actions-content-padding: 0 2rem;
