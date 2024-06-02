@@ -5,5 +5,10 @@
     "home": "Start",
     "form": "Formularz",
     "test": "Test"
+  },
+  "CONTACT": {
+    "contact": "Kontakt",
+    "content": "Zapraszam do pisania na mail:",
+    "close": "Zamknij"
   }
 }
