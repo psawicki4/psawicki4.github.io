@@ -40,6 +40,9 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "psa",
+      "i18n": {
+        "sourceLocale": "pl"
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
