@@ -9,6 +9,7 @@ import {MatInput} from "@angular/material/input";
 import {JsonPipe} from "@angular/common";
 import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from "@angular/material/datepicker";
 import {MatCheckbox} from "@angular/material/checkbox";
+import {MatButton} from "@angular/material/button";
 
 @Component({
   selector: 'psa-form',
@@ -29,6 +30,7 @@ import {MatCheckbox} from "@angular/material/checkbox";
     MatDatepicker,
     MatSuffix,
     MatCheckbox,
+    MatButton,
   ],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss',

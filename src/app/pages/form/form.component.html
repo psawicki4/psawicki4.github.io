@@ -1,7 +1,8 @@
 <psa-card>
   <h1 class="text-2xl mb-8">Demo formularza</h1>
   <div class="w-full flex flex-row">
-    <form [formGroup]="form" class="w-1/2 flex flex-col gap-4 items-center">
+    <div class="w-1/2 flex flex-col items-center">
+      <form [formGroup]="form" class="flex flex-col gap-4 items-center">
         <p>Pies czy kot?</p>
         <mat-radio-group formControlName="petType">
           <mat-radio-button value="dog">pies</mat-radio-button>
@@ -26,12 +27,15 @@
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
             <mat-checkbox labelPosition="before" formControlName="castrated">Wysterylizowany</mat-checkbox>
+            <button mat-flat-button class="self-end">Sprawdź</button>
           </ng-container>
 
         }
-    </form>
-    <div class="w-1/2 flex flex-col gap-8">
-      <p>Model:</p>
+      </form>
+    </div>
+    <div class="divider"></div>
+    <div class="w-1/2 ml-8 flex flex-col gap-8">
+      <p>Model formularza:</p>
       <pre>
       {{form.getRawValue() | json}}
     </pre>

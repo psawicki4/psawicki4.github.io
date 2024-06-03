@@ -1,3 +1,5 @@
+@use "variables" as var;
+
 input.number::-webkit-outer-spin-button,
 input.number::-webkit-inner-spin-button {
   display: none;
@@ -5,4 +7,9 @@ input.number::-webkit-inner-spin-button {
 
 input.number {
   -moz-appearance: textfield;
+}
+
+.divider {
+  width: 1px;
+  background-color: var.$grey-color;
 }
