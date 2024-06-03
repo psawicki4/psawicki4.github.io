@@ -1,6 +1,8 @@
 import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
 import {MatButton} from "@angular/material/button";
 import {TranslateService} from "@ngx-translate/core";
+import {LangService} from "../../common-services/lang.service";
+import {DateAdapter} from "@angular/material/core";
 
 @Component({
   selector: 'psa-lang-switch',
@@ -14,8 +16,9 @@ import {TranslateService} from "@ngx-translate/core";
 })
 export class LangSwitchComponent implements OnInit {
 
-  langCode: string = '';
   translate = inject(TranslateService);
+  langService = inject(LangService);
+  dateAdapter = inject(DateAdapter);
 
   ngOnInit(): void {
     this.setLanguage();
@@ -28,12 +31,22 @@ export class LangSwitchComponent implements OnInit {
     }
     this.translate.setDefaultLang(langCode);
     this.translate.use(langCode);
-    this.langCode = langCode;
+    this.langService.lang.set(langCode);
+    this.setLocale();
   }
 
   changeLanguage(langCode: string) {
     this.translate.use(langCode);
     localStorage.setItem('langCode', langCode);
-    this.langCode = langCode;
+    this.langService.lang.set(langCode);
+    this.setLocale();
+  }
+
+  private setLocale() {
+    this.dateAdapter.setLocale(this.lang);
+  }
+
+  get lang() {
+    return this.langService.lang();
   }
 }

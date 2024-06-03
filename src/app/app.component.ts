@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {CardComponent} from "./components/card/card.component";
 import {MatToolbar} from "@angular/material/toolbar";
@@ -10,6 +10,8 @@ import {LangSwitchComponent} from "./components/lang-switch/lang-switch.componen
 import {MatSidenav, MatSidenavContainer, MatSidenavContent} from "@angular/material/sidenav";
 import {NgTemplateOutlet} from "@angular/common";
 import {HeaderComponent} from "./components/header/header.component";
+import {DateAdapter} from "@angular/material/core";
+import {IsMobileService} from "./common-services/is-mobile.service";
 
 @Component({
   selector: 'psa-root',
@@ -20,23 +22,17 @@ import {HeaderComponent} from "./components/header/header.component";
 })
 export class AppComponent implements OnInit{
   date = new Date();
-  isMobile = false;
+  isMobileService = inject(IsMobileService);
   translate = inject(TranslateService);
-  cd = inject(ChangeDetectorRef);
+  dateAdapter = inject(DateAdapter);
 
   ngOnInit() {
     this.translate.setDefaultLang('pl');
     this.translate.use('pl');
-    this.isMobile = this.getIsMobile();
-    window.onresize = () => {
-      this.isMobile = this.getIsMobile();
-      this.cd.markForCheck();
-    };
+    this.dateAdapter.getFirstDayOfWeek = () => 1;
   }
 
-  getIsMobile(): boolean {
-    const w = document.documentElement.clientWidth;
-    const breakpoint = 992;
-    return w < breakpoint;
+  get isMobile() {
+    return this.isMobileService.isMobile();
   }
 }

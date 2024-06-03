@@ -1,7 +1,6 @@
 import {
   ApplicationConfig,
   importProvidersFrom,
-  LOCALE_ID,
   provideExperimentalZonelessChangeDetection
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
@@ -30,7 +29,6 @@ export const appConfig: ApplicationConfig = {
       },
       defaultLanguage: 'pl'
     })),
-    {provide: LOCALE_ID, useValue: 'pl' },
     provideLuxonDateAdapter({
       parse: {
         dateInput: 'yyyy-MM-dd',
@@ -40,7 +38,7 @@ export const appConfig: ApplicationConfig = {
         monthYearLabel: 'MMM yyyy',
         dateA11yLabel: 'LL',
         monthYearA11yLabel: 'MMMM-yyyy',
-      }
+      },
     })
   ]
 };
