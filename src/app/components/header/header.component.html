@@ -1,7 +1,7 @@
 @if (isMobile()) {
   <mat-toolbar color="primary">
     <span class="flex flex-row justify-between gap-8 w-full pt-2">
-      <button mat-icon-button (click)="onClick()">
+      <button mat-icon-button (click)="onClick()" aria-label="menu">
       <mat-icon>menu</mat-icon>
     </button>
     <button mat-stroked-button (click)="openContactDialog()">{{ 'contact' | translate }}</button>
