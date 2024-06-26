@@ -27,6 +27,8 @@ html {
   @include mat.datepicker-theme($custom-theme);
   @include mat.checkbox-theme($custom-theme);
   @include mat.autocomplete-theme($custom-theme);
+  @include mat.slider-theme($custom-theme);
+  @include mat.chips-theme($custom-theme);
   --mdc-dialog-supporting-text-color: var.$text-color;
   --mdc-dialog-supporting-text-size: 1rem;
   --mat-dialog-with-actions-content-padding: 0 2rem;

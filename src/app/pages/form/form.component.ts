@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ElementRef, inject, OnInit, viewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, inject, OnInit, signal, viewChild} from '@angular/core';
 import {CardComponent} from "../../components/card/card.component";
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators, ValueChangeEvent} from "@angular/forms";
 import {MatRadioButton, MatRadioGroup} from "@angular/material/radio";
@@ -11,6 +11,12 @@ import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from "@angular/m
 import {MatCheckbox} from "@angular/material/checkbox";
 import {MatButton} from "@angular/material/button";
 import {MatAutocomplete, MatAutocompleteTrigger, MatOption} from "@angular/material/autocomplete";
+import {CdkTextareaAutosize} from "@angular/cdk/text-field";
+import {OnlyDigitsDirective} from "./only-digits.directive";
+import {MatSlider, MatSliderThumb} from "@angular/material/slider";
+import {MatChipGrid, MatChipInput, MatChipInputEvent, MatChipRemove, MatChipRow} from "@angular/material/chips";
+import {MatIcon} from "@angular/material/icon";
+import {COMMA, ENTER} from "@angular/cdk/keycodes";
 
 @Component({
   selector: 'psa-form',
@@ -35,6 +41,15 @@ import {MatAutocomplete, MatAutocompleteTrigger, MatOption} from "@angular/mater
     MatAutocomplete,
     MatOption,
     MatAutocompleteTrigger,
+    CdkTextareaAutosize,
+    OnlyDigitsDirective,
+    MatSlider,
+    MatSliderThumb,
+    MatChipGrid,
+    MatChipRow,
+    MatIcon,
+    MatChipInput,
+    MatChipRemove,
   ],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss',
@@ -48,12 +63,14 @@ export class FormComponent implements OnInit {
   options: string[] = ['Kot sfinks', ' Kot syberyjski', 'Kot norweski leśny', 'Kot bengalski', 'Kot syjamski', 'Ragdoll',
     'Kot rosyjski niebieski', 'Kot perski', 'Maine Coon', 'Kot brytyjski', 'inny'];
   filteredOptions: string[];
+  toys = signal<string[]>([]);
+  separatorKeysCodes = [ENTER, COMMA];
 
   constructor() {
     this.filteredOptions = this.options.slice();
   }
 
-  bred = viewChild<ElementRef>('bred');
+  bredInput = viewChild<ElementRef>('bred');
 
   form = new FormGroup<DemoForm>({
     petType: new FormControl('', {nonNullable: true})
@@ -75,10 +92,14 @@ export class FormComponent implements OnInit {
   private addCatForm() {
     this.form.addControl('cat', this.fb.group({
       name: ['', Validators.required],
-      age: [null, [Validators.required, Validators.pattern(/^[0-9]+$/), Validators.min(0), Validators.max(99)]],
+      age: [null, [Validators.required, Validators.min(0), Validators.max(99)]],
       birthday: [null],
+      description: ['', Validators.maxLength(200)],
       castrated: [false, Validators.required],
       purebred: [false, Validators.required],
+      toys: [[]],
+      beauty: [0, Validators.required],
+      malice: [0, Validators.required],
     }));
     this.cat.get('purebred')?.events.subscribe(e => {
       if (e instanceof ValueChangeEvent && e.value === true) {
@@ -101,9 +122,38 @@ export class FormComponent implements OnInit {
     this.cat?.removeControl('bred');
   }
 
-  filterBred(): void {
-    const filterValue = this.bred()?.nativeElement.value.toLowerCase();
+  filterBred() {
+    const filterValue = this.bredInput()?.nativeElement.value.toLowerCase();
     this.filteredOptions = this.options.filter(o => o.toLowerCase().includes(filterValue));
+  }
+
+
+  removeToy(toy: string) {
+    this.toys.update(toys => {
+      const index = toys.indexOf(toy);
+      if (index < 0) {
+        return toys;
+      }
+      toys.splice(index, 1);
+      return [...toys];
+    });
+  }
+
+  addToy(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+    if (value) {
+      this.toys.update(toys => [...toys, value]);
+    }
+    event.chipInput!.clear();
+  }
+
+  reset() {
+    this.removeCatForm();
+    this.form.reset();
+  }
+
+  check() {
+    this.form.markAllAsTouched();
   }
 
   get petType() {
@@ -112,6 +162,30 @@ export class FormComponent implements OnInit {
 
   get cat() {
     return this.form.get('cat') as FormGroup;
+  }
+
+  get name() {
+    return this.cat?.get('name');
+  }
+
+  get age() {
+    return this.cat?.get('age');
+  }
+
+  get birthday() {
+    return this.cat?.get('birthday');
+  }
+
+  get description() {
+    return this.cat?.get('description');
+  }
+
+  get descriptionVal() {
+    return this.cat?.get('description')?.value as string;
+  }
+
+  get bred() {
+    return this.cat?.get('bred');
   }
 
 }
