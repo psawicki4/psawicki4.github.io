@@ -4,6 +4,38 @@
   "MENU": {
     "home": "Home",
     "form": "Form",
-    "test": "Test"
+    "list": "List",
+    "animations": "Animations"
+  },
+  "CONTACT": {
+    "contact": "Kontakt",
+    "content": "Zapraszam do pisania na mail:",
+    "close": "Zamknij"
+  },
+  "FORM": {
+    "header": "Demo formularza",
+    "dog-or-cat": "Pies czy kot?",
+    "dog": "pies",
+    "cat": "kot",
+    "name": "Imię",
+    "required-field": "Pole wymagane",
+    "age": "Wiek",
+    "age-hint": "Jeśli kot nie skończył jeszcze roku, wpisz 0.",
+    "age-error-real": "Podaj prawdziwy wiek",
+    "description": "Opis",
+    "birthday": "Data urodzin (jeśli znana)",
+    "castrated": "Wysterylizowany",
+    "purebred": "Rasowy",
+    "breed": "Rasa",
+    "favourite-toys": "Ulubione zabawki",
+    "new-toy": "Nowa zabawka...",
+    "beauty": "Piękno",
+    "beauty-error": "Piękno kota nie może wynosić poniżej 5",
+    "malice": "Złośliwość",
+    "reset": "Resetuj",
+    "check": "Sprawdź",
+    "form-model": "Model formularza:",
+    "choose-cat": "Wybierz lepiej kota",
+    "ok": "No dobrze..."
   }
 }
