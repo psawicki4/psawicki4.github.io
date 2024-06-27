@@ -11,7 +11,7 @@ import {MatSidenav, MatSidenavContainer, MatSidenavContent} from "@angular/mater
 import {NgTemplateOutlet} from "@angular/common";
 import {HeaderComponent} from "./components/header/header.component";
 import {DateAdapter} from "@angular/material/core";
-import {IsMobileService} from "./common-services/is-mobile.service";
+import {IsMobileService} from "./services/is-mobile.service";
 
 @Component({
   selector: 'psa-root',

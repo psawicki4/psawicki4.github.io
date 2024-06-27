@@ -17,6 +17,7 @@ import {MatSlider, MatSliderThumb} from "@angular/material/slider";
 import {MatChipGrid, MatChipInput, MatChipInputEvent, MatChipRemove, MatChipRow} from "@angular/material/chips";
 import {MatIcon} from "@angular/material/icon";
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'psa-form',
@@ -50,6 +51,7 @@ import {COMMA, ENTER} from "@angular/cdk/keycodes";
     MatIcon,
     MatChipInput,
     MatChipRemove,
+    TranslateModule,
   ],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss',
@@ -59,27 +61,28 @@ export class FormComponent implements OnInit {
 
   fb = inject(FormBuilder);
   snackBar = inject(MatSnackBar);
+  translate = inject(TranslateService);
   maxDate = new Date();
+  //todo: przetłumaczyć jakoś
   options: string[] = ['Kot sfinks', ' Kot syberyjski', 'Kot norweski leśny', 'Kot bengalski', 'Kot syjamski', 'Ragdoll',
     'Kot rosyjski niebieski', 'Kot perski', 'Maine Coon', 'Kot brytyjski', 'inny'];
   filteredOptions: string[];
   toys = signal<string[]>([]);
   separatorKeysCodes = [ENTER, COMMA];
-
-  constructor() {
-    this.filteredOptions = this.options.slice();
-  }
-
   bredInput = viewChild<ElementRef>('bred');
 
   form = new FormGroup<DemoForm>({
     petType: new FormControl('', {nonNullable: true})
   });
 
+  constructor() {
+    this.filteredOptions = this.options.slice();
+  }
+
   ngOnInit(): void {
     this.form.get('petType')?.events.subscribe(e => {
       if (e instanceof ValueChangeEvent && e.value === 'dog') {
-        this.snackBar.open('Wybierz lepiej kota', 'No dobrze...', {
+        this.snackBar.open(this.translate.instant('FORM.choose-cat'), this.translate.instant('FORM.ok'), {
           duration: 5000
         });
         this.removeCatForm();
@@ -98,8 +101,8 @@ export class FormComponent implements OnInit {
       castrated: [false, Validators.required],
       purebred: [false, Validators.required],
       toys: [[]],
-      beauty: [0, Validators.required],
-      malice: [0, Validators.required],
+      beauty: [5, Validators.min(5)],
+      malice: [0],
     }));
     this.cat.get('purebred')?.events.subscribe(e => {
       if (e instanceof ValueChangeEvent && e.value === true) {
@@ -172,16 +175,12 @@ export class FormComponent implements OnInit {
     return this.cat?.get('age');
   }
 
-  get birthday() {
-    return this.cat?.get('birthday');
-  }
-
-  get description() {
-    return this.cat?.get('description');
+  get beauty() {
+    return this.cat?.get('beauty');
   }
 
   get descriptionVal() {
-    return this.cat?.get('description')?.value as string;
+    return this.cat?.get('description')?.value;
   }
 
   get bred() {

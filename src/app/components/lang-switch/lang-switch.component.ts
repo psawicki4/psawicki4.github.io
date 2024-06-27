@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
 import {MatButton} from "@angular/material/button";
 import {TranslateService} from "@ngx-translate/core";
-import {LangService} from "../../common-services/lang.service";
+import {LangService} from "../../services/lang.service";
 import {DateAdapter} from "@angular/material/core";
 
 @Component({

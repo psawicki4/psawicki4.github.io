@@ -1,49 +1,49 @@
 <psa-card>
-  <h1 class="text-2xl mb-8">Demo formularza</h1>
+  <h1 class="text-2xl mb-8">{{ 'FORM.header' | translate }}</h1>
   <div class="w-full flex flex-row">
     <div class="w-1/2 flex flex-col items-center">
       <form [formGroup]="form" class="flex flex-col gap-4 items-center">
-        <p>Pies czy kot?</p>
+        <p>{{ 'FORM.dog-or-cat' | translate }}</p>
         <mat-radio-group formControlName="petType">
-          <mat-radio-button value="dog">pies</mat-radio-button>
-          <mat-radio-button value="cat" class="ml-8">kot</mat-radio-button>
+          <mat-radio-button value="dog">{{ 'FORM.dog' | translate }}</mat-radio-button>
+          <mat-radio-button value="cat" class="ml-8">{{ 'FORM.cat' | translate }}</mat-radio-button>
         </mat-radio-group>
         @if (petType === 'cat') {
           <ng-container formGroupName="cat">
             <mat-form-field class="w-80">
-              <mat-label>Imię</mat-label>
+              <mat-label>{{ 'FORM.name' | translate }}</mat-label>
               <input matInput formControlName="name">
               @if (name?.hasError('required')) {
-                <mat-error>Pole wymagane</mat-error>
+                <mat-error>{{ 'FORM.required-field' | translate }}</mat-error>
               }
             </mat-form-field>
             <mat-form-field class="w-80">
-              <mat-label>Wiek</mat-label>
+              <mat-label>{{ 'FORM.age' | translate }}</mat-label>
               <input matInput type="number" class="number" psaOnlyDigits formControlName="age">
-              <mat-hint>Jeśli kot nie skończył jeszcze roku, wpisz 0.</mat-hint>
+              <mat-hint>{{ 'FORM.age-hint' | translate }}</mat-hint>
               @if (age?.hasError('required')) {
-                <mat-error>Pole wymagane</mat-error>
+                <mat-error>{{ 'FORM.required-field' | translate }}</mat-error>
               }
               @if (age?.hasError('min') || age?.hasError('max')) {
-                <mat-error>Podaj prawdziwy wiek</mat-error>
+                <mat-error>{{ 'FORM.age-error-real' | translate }}</mat-error>
               }
             </mat-form-field>
             <mat-form-field class="w-80">
-              <mat-label>Opis</mat-label>
+              <mat-label>{{ 'FORM.description' | translate }}</mat-label>
               <textarea matInput cdkTextareaAutosize maxlength="200" formControlName="description"></textarea>
               <mat-hint align="end">{{descriptionVal?.length}}/200</mat-hint>
             </mat-form-field>
             <mat-form-field class="w-80">
-              <mat-label>Data urodzin (jeśli znana)</mat-label>
+              <mat-label>{{ 'FORM.birthday' | translate }}</mat-label>
               <input matInput [matDatepicker]="picker" [max]="maxDate" formControlName="birthday">
               <mat-datepicker-toggle  matIconSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
-            <mat-checkbox labelPosition="before" class="self-end" formControlName="castrated">Wysterylizowany</mat-checkbox>
-            <mat-checkbox labelPosition="before" class="self-end" formControlName="purebred">Rasowy</mat-checkbox>
+            <mat-checkbox labelPosition="before" class="self-end" formControlName="castrated">{{ 'FORM.castrated' | translate }}</mat-checkbox>
+            <mat-checkbox labelPosition="before" class="self-end" formControlName="purebred">{{ 'FORM.purebred' | translate }}</mat-checkbox>
             @if (cat.get('purebred')?.value === true) {
               <mat-form-field class="w-80">
-                <mat-label>Rasa</mat-label>
+                <mat-label>{{ 'FORM.breed' | translate }}</mat-label>
                 <input #bred
                        type="text"
                        matInput
@@ -59,7 +59,7 @@
               </mat-form-field>
             }
             <mat-form-field class="w-80">
-              <mat-label>Ulubione zabawki</mat-label>
+              <mat-label>{{ 'FORM.favourite-toys' | translate }}</mat-label>
               <mat-chip-grid #chipGrid formControlName="toys">
                 @for (toy of toys(); track toy) {
                   <mat-chip-row (removed)="removeToy(toy)">
@@ -71,27 +71,30 @@
                 }
               </mat-chip-grid>
               <input
-                placeholder="Nowa zabawka..."
+                placeholder="{{ 'FORM.new-toy' | translate }}"
                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                 [matChipInputFor]="chipGrid"
                 (matChipInputTokenEnd)="addToy($event)"
               />
             </mat-form-field>
-            <div class="flex flex-col gap-6 w-80">
-              <mat-label>Piękno</mat-label>
+            <div class="flex flex-col gap-4 w-80 relative">
+              <mat-label>{{ 'FORM.beauty' | translate }}</mat-label>
               <mat-slider min="0" max="10" step="1" discrete>
                 <input matSliderThumb formControlName="beauty">
               </mat-slider>
+              @if (beauty?.hasError('min')) {
+                <mat-error class="absolute -bottom-2 text-xs">{{ 'FORM.beauty-error' | translate }}</mat-error>
+              }
             </div>
-            <div class="flex flex-col gap-6 w-80">
-              <mat-label>Złośliwość</mat-label>
+            <div class="flex flex-col gap-4 w-80">
+              <mat-label>{{ 'FORM.malice' | translate }}</mat-label>
               <mat-slider min="0" max="10" step="1" discrete>
                 <input matSliderThumb formControlName="malice">
               </mat-slider>
             </div>
             <span class="w-full flex flex-row justify-end gap-4">
-              <button mat-button type="button" (click)="reset()">Resetuj</button>
-              <button mat-flat-button type="button" (click)="check()">Sprawdź</button>
+              <button mat-button type="button" (click)="reset()">{{ 'FORM.reset' | translate }}</button>
+              <button mat-flat-button type="button" (click)="check()">{{ 'FORM.check' | translate }}</button>
             </span>
           </ng-container>
 
@@ -100,7 +103,7 @@
     </div>
     <div class="divider"></div>
     <div class="w-1/2 ml-8 flex flex-col gap-8">
-      <p>Model formularza:</p>
+      <p>{{ 'FORM.form-model' | translate }}</p>
       <pre class="whitespace-pre-wrap">
       {{form.getRawValue() | json}}
     </pre>

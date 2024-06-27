@@ -1,0 +1,11 @@
+<psa-card>
+  <h1 class="text-2xl mb-8">{{ 'LIST.header' | translate }}</h1>
+  <div class="psa-list">
+    <psa-list [data]="rooms().data" [itemHeight]="88"
+              (fetchMore)="fetchMoreRooms()" (selected)="selectRoom($event)">
+      <ng-template listItemTemplate let-dataItem>
+        <p>Pokój numer {{ dataItem.roomNumber }}</p>
+      </ng-template>
+    </psa-list>
+  </div>
+</psa-card>

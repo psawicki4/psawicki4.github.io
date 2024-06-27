@@ -1,0 +1,17 @@
+<cdk-virtual-scroll-viewport #viewport [itemSize]="itemHeight()" class="list">
+  <ul role="listbox">
+    <li *cdkVirtualFor="let dataItem of data() let i = index; trackBy: trackBy"
+        [id]="i"
+        role="option"
+        [ngClass]="selectedItem === dataItem ? 'card__selected' : 'card'"
+        matRipple
+        [tabindex]="focusableIndex === i ? 0 : -1"
+        (click)="selectItem(dataItem)" (keyup.enter)="selectItem(dataItem)"
+        (keydown.arrowDown)="changeFocus(i + 1)" (keydown.arrowUp)="changeFocus(i - 1)">
+      <ng-container
+        [ngTemplateOutlet]="listItemTemplateRef()!.templateRef"
+        [ngTemplateOutletContext]="{$implicit:dataItem}">
+      </ng-container>
+    </li>
+  </ul>
+</cdk-virtual-scroll-viewport>

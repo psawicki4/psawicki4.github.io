@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng deploy --cname=psawicki.dev"
+    "deploy": "ng deploy --cname=psawicki.dev",
+    "merge": "node src/app/services/merge-to-en.js"
   },
   "private": true,
   "dependencies": {
