@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
 import {TranslateModule} from "@ngx-translate/core";
 import {MatAnchor, MatButton} from "@angular/material/button";
-import {MatList, MatListItem} from "@angular/material/list";
 import {ReverseMailDirective} from "./reverse-mail.directive";
 
 @Component({
@@ -16,8 +15,6 @@ import {ReverseMailDirective} from "./reverse-mail.directive";
     MatButton,
     MatDialogClose,
     MatAnchor,
-    MatList,
-    MatListItem,
     ReverseMailDirective
   ],
   templateUrl: './contact-dialog.component.html',

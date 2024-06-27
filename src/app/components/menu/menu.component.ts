@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {MatListItem, MatNavList} from "@angular/material/list";
-import {CardComponent} from "../card/card.component";
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {TranslateModule} from "@ngx-translate/core";
 
@@ -9,7 +8,6 @@ import {TranslateModule} from "@ngx-translate/core";
   standalone: true,
   imports: [
     MatNavList,
-    CardComponent,
     MatListItem,
     RouterLink,
     RouterLinkActive,

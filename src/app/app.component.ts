@@ -1,12 +1,7 @@
 import {Component, inject, OnInit} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {CardComponent} from "./components/card/card.component";
-import {MatToolbar} from "@angular/material/toolbar";
-import {MatIcon} from "@angular/material/icon";
-import {MatButton, MatIconButton} from "@angular/material/button";
-import {TranslateModule, TranslateService} from "@ngx-translate/core";
+import {TranslateService} from "@ngx-translate/core";
 import {MenuComponent} from "./components/menu/menu.component";
-import {LangSwitchComponent} from "./components/lang-switch/lang-switch.component";
 import {MatSidenav, MatSidenavContainer, MatSidenavContent} from "@angular/material/sidenav";
 import {NgTemplateOutlet} from "@angular/common";
 import {HeaderComponent} from "./components/header/header.component";
@@ -16,7 +11,7 @@ import {IsMobileService} from "./services/is-mobile.service";
 @Component({
   selector: 'psa-root',
   standalone: true,
-  imports: [RouterOutlet, CardComponent, MatToolbar, MatIcon, MatIconButton, MenuComponent, LangSwitchComponent, MatSidenavContainer, MatSidenavContent, MatSidenav, MatButton, TranslateModule, NgTemplateOutlet, HeaderComponent],
+  imports: [RouterOutlet, MenuComponent, MatSidenavContainer, MatSidenavContent, MatSidenav, NgTemplateOutlet, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
