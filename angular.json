@@ -50,7 +50,9 @@
             "outputPath": "dist/personal-website",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [],
+            "polyfills": [
+              "@angular/localize/init"
+            ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -62,7 +64,7 @@
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "src/styles",
+                "src/styles"
               ]
             },
             "scripts": []

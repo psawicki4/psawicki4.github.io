@@ -17,30 +17,38 @@
                 <mat-error>{{ 'FORM.required-field' | translate }}</mat-error>
               }
             </mat-form-field>
-            <mat-form-field class="w-80">
+            <div class="relative">
+              <mat-form-field class="w-80">
+                <mat-label>{{ 'FORM.birthday' | translate }}</mat-label>
+                <input matInput [matDatepicker]="picker" [max]="maxDate" formControlName="birthday">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker startView="multi-year"></mat-datepicker>
+              </mat-form-field>
+              @if (cat?.hasError('invalidAge')) {
+                <mat-error class="absolute -bottom-1 text-xs">{{ 'FORM.invalid-age' | translate }}</mat-error>
+              }
+            </div>
+            <mat-form-field class="w-80 mb-4">
               <mat-label>{{ 'FORM.age' | translate }}</mat-label>
               <input matInput type="number" class="number" psaOnlyDigits formControlName="age">
               <mat-hint>{{ 'FORM.age-hint' | translate }}</mat-hint>
               @if (age?.hasError('required')) {
                 <mat-error>{{ 'FORM.required-field' | translate }}</mat-error>
-              }
-              @if (age?.hasError('min') || age?.hasError('max')) {
+              } @else if (age?.hasError('min') || age?.hasError('max')) {
                 <mat-error>{{ 'FORM.age-error-real' | translate }}</mat-error>
               }
             </mat-form-field>
             <mat-form-field class="w-80">
               <mat-label>{{ 'FORM.description' | translate }}</mat-label>
               <textarea matInput cdkTextareaAutosize maxlength="200" formControlName="description"></textarea>
-              <mat-hint align="end">{{descriptionVal?.length}}/200</mat-hint>
+              <mat-hint align="end">{{ descriptionVal?.length }}/200</mat-hint>
             </mat-form-field>
-            <mat-form-field class="w-80">
-              <mat-label>{{ 'FORM.birthday' | translate }}</mat-label>
-              <input matInput [matDatepicker]="picker" [max]="maxDate" formControlName="birthday">
-              <mat-datepicker-toggle  matIconSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-            <mat-checkbox labelPosition="before" class="self-end" formControlName="castrated">{{ 'FORM.castrated' | translate }}</mat-checkbox>
-            <mat-checkbox labelPosition="before" class="self-end" formControlName="purebred">{{ 'FORM.purebred' | translate }}</mat-checkbox>
+            <mat-checkbox labelPosition="before" class="self-end"
+                          formControlName="castrated">{{ 'FORM.castrated' | translate }}
+            </mat-checkbox>
+            <mat-checkbox labelPosition="before" class="self-end"
+                          formControlName="purebred">{{ 'FORM.purebred' | translate }}
+            </mat-checkbox>
             @if (cat.get('purebred')?.value === true) {
               <mat-form-field class="w-80">
                 <mat-label>{{ 'FORM.breed' | translate }}</mat-label>
@@ -53,9 +61,12 @@
                        (focus)="filterBred()">
                 <mat-autocomplete requireSelection #auto="matAutocomplete">
                   @for (option of filteredOptions; track option) {
-                    <mat-option [value]="option">{{option}}</mat-option>
+                    <mat-option [value]="option">{{ option }}</mat-option>
                   }
                 </mat-autocomplete>
+                @if (cat.get('bred')?.hasError('required')) {
+                  <mat-error>{{ 'FORM.required-field' | translate }}</mat-error>
+                }
               </mat-form-field>
             }
             <mat-form-field class="w-80">
@@ -63,7 +74,7 @@
               <mat-chip-grid #chipGrid formControlName="toys">
                 @for (toy of toys(); track toy) {
                   <mat-chip-row (removed)="removeToy(toy)">
-                    {{toy}}
+                    {{ toy }}
                     <button matChipRemove>
                       <mat-icon fontIcon="cancel"></mat-icon>
                     </button>
@@ -75,7 +86,9 @@
                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                 [matChipInputFor]="chipGrid"
                 (matChipInputTokenEnd)="addToy($event)"
+                [matChipInputAddOnBlur]="true"
               />
+              <mat-hint>{{ 'FORM.toys-hint' | translate }}</mat-hint>
             </mat-form-field>
             <div class="flex flex-col gap-4 w-80 relative">
               <mat-label>{{ 'FORM.beauty' | translate }}</mat-label>
@@ -105,7 +118,7 @@
     <div class="w-1/2 ml-8 flex flex-col gap-8">
       <p>{{ 'FORM.form-model' | translate }}</p>
       <pre class="whitespace-pre-wrap">
-      {{form.getRawValue() | json}}
+      {{ form.getRawValue() | json }}
     </pre>
     </div>
   </div>

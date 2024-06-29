@@ -33,4 +33,18 @@ html {
   --mdc-dialog-supporting-text-size: 1rem;
   --mat-dialog-with-actions-content-padding: 0 2rem;
   --mat-dialog-headline-padding: 0.5rem 2rem 1rem;
+
+  .success-snackbar {
+    --mdc-snackbar-supporting-text-color: #ffffff;
+    --mdc-snackbar-container-color: #198754;
+    --mat-snack-bar-button-color: #ffffff;
+  }
+
+  .error-snackbar {
+    --mdc-snackbar-supporting-text-color: #ffffff;
+    --mdc-snackbar-container-color: #dc3545;
+    --mat-snack-bar-button-color: #ffffff;
+  }
 }
+
+

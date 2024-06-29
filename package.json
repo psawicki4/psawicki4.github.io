@@ -26,6 +26,7 @@
     "@ctrl/tinycolor": "^4.1.0",
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
+    "dayjs": "^1.11.11",
     "husky": "^9.0.11",
     "luxon": "^3.4.4",
     "ngx-colors": "^3.6.0",
