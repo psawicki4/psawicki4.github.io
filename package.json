@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "deploy": "ng deploy --cname=psawicki.dev",
-    "merge": "node src/app/services/merge-to-en.js"
+    "merge": "node src/app/services/merge-to-en.js",
+    "cy:open": "cypress open"
   },
   "private": true,
   "dependencies": {
@@ -43,6 +44,7 @@
     "@types/jasmine": "~5.1.4",
     "angular-cli-ghpages": "2.0.0",
     "autoprefixer": "^10.4.19",
+    "cypress": "^13.12.0",
     "jasmine-core": "~5.1.2",
     "karma": "~6.4.3",
     "karma-chrome-launcher": "~3.2.0",

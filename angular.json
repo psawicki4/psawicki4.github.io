@@ -67,7 +67,10 @@
                 "src/styles"
               ]
             },
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "dayjs"
+            ]
           },
           "configurations": {
             "production": {
