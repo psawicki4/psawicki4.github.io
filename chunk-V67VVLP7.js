@@ -1,0 +1,1 @@
+import{Kb as i,Lb as o,fc as r,ma as a,mc as s}from"./chunk-HJF5PFZU.js";var d=(()=>{let e=class e{};e.\u0275fac=function(n){return new(n||e)},e.\u0275cmp=a({type:e,selectors:[["psa-animations"]],standalone:!0,features:[s],decls:2,vars:0,template:function(n,m){n&1&&(i(0,"p"),r(1,"animations works!"),o())},changeDetection:0});let t=e;return t})();export{d as AnimationsComponent};
