@@ -1,5 +1,6 @@
 <psa-card>
-  <h1 class="text-2xl mb-8">{{ 'FORM.header' | translate }}</h1>
+  <h1 class="text-2xl mb-4">{{ 'FORM.header' | translate }}</h1>
+  <p class="mb-8">{{ 'FORM.component-desc' | translate }}</p>
   <div class="w-full flex flex-row">
     <div class="w-1/2 flex flex-col items-center">
       <form [formGroup]="form" class="flex flex-col gap-4 items-center">
@@ -20,9 +21,13 @@
             <div class="relative">
               <mat-form-field class="w-80">
                 <mat-label>{{ 'FORM.birthday' | translate }}</mat-label>
-                <input matInput [matDatepicker]="picker" [max]="maxDate" formControlName="birthday">
+                <input matInput [matDatepicker]="picker" [max]="maxDate" placeholder="YYYY-MM-DD"
+                       formControlName="birthday">
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker startView="multi-year"></mat-datepicker>
+                @if (cat.get('birthday')?.hasError('matDatepickerParse')) {
+                  <mat-error>{{ 'FORM.invalid-date-format' | translate }}</mat-error>
+                }
               </mat-form-field>
               @if (cat?.hasError('invalidAge')) {
                 <mat-error class="absolute -bottom-1 text-xs">{{ 'FORM.invalid-age' | translate }}</mat-error>
