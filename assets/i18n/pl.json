@@ -1,6 +1,13 @@
 {
   "contact": "Kontakt",
-  "hello": "Cześć",
+  "HOME": {
+    "hello": "Cześć,",
+    "my-name-is": "nazywam się",
+    "my-webpage": "a to moja strona w formie technologicznego demo.",
+    "repository": "Cały kod aplikacji jest dostępny w publicznym repozytorium, zapraszam do przeglądania:",
+    "tools": "Do zbudowania strony wykorzystałem:",
+    "including": "w tym Signals, Standalone i Zone-less"
+  },
   "MENU": {
     "home": "Start",
     "form": "Formularz",
@@ -14,6 +21,7 @@
   },
   "FORM": {
     "header": "Demo formularza",
+    "component-desc": "Dynamiczny formularz zbudowany z różnych komponentów Angular Material. Po prawej stronie podgląd na żywo modelu formularza.",
     "dog-or-cat": "Pies czy kot?",
     "dog": "pies",
     "cat": "kot",
@@ -23,6 +31,7 @@
     "age-hint": "Podaj w latach. Jeśli kot nie skończył jeszcze jednego roku, wpisz 0.",
     "age-error-real": "Podaj prawdziwy wiek",
     "invalid-age": "Data urodzin nie zgadza się z podanym wiekiem",
+    "invalid-date-format": "Błędny format daty (YYYY-MM-DD)",
     "description": "Opis",
     "birthday": "Data urodzin (jeśli znana)",
     "castrated": "Wysterylizowany",
