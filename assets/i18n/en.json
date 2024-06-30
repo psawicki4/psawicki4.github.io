@@ -1,6 +1,13 @@
 {
   "contact": "Contact",
-  "hello": "Hello",
+  "HOME": {
+    "hello": "Cześć,",
+    "my-name-is": "nazywam się",
+    "my-webpage": "a to moja strona w formie technologicznego demo.",
+    "repository": "Cały kod aplikacji jest dostępny w publicznym repozytorium, zapraszam do przeglądania:",
+    "tools": "Do zbudowania strony wykorzystałem:",
+    "including": "w tym Signals, Standalone i Zone-less"
+  },
   "MENU": {
     "home": "Home",
     "form": "Form",
@@ -14,6 +21,7 @@
   },
   "FORM": {
     "header": "Demo formularza",
+    "component-desc": "Dynamiczny formularz zbudowany z różnych komponentów Angular Material. Po prawej stronie podgląd na żywo modelu formularza.",
     "dog-or-cat": "Pies czy kot?",
     "dog": "pies",
     "cat": "kot",
@@ -23,6 +31,7 @@
     "age-hint": "Jeśli kot nie skończył jeszcze roku, wpisz 0.",
     "age-error-real": "Podaj prawdziwy wiek",
     "invalid-age": "Data urodzin nie zgadza się z podanym wiekiem",
+    "invalid-date-format": "Błędny format daty (YYYY-MM-DD)",
     "description": "Opis",
     "birthday": "Data urodzin (jeśli znana)",
     "castrated": "Wysterylizowany",
@@ -44,6 +53,17 @@
     "invalid-form": "Uzupełnij wymagane pola"
   },
   "LIST": {
-    "header": "\"Nieskończona\" wirtualna lista"
-  }
+    "header": "\"Nieskończona\" wirtualna lista",
+    "component-desc": "Implementacja listy, która łączy w sobie dwa rozwiązania: \"Nieskończoność\", czyli ciagłe dokładanie kolejnych elementów do źródła danych listy oraz \"wirtualność\", czyli dynamiczne dodawanie i usuwanie elementów listy z struktury dokumentu. Dzięki temu nawet największe listy szybko się ładują i pozostają responsywne.",
+    "hello": "Witamy w nieskończonym hotelu.<br> Prosimy wybrać pokój:",
+    "room-number": "Pokój numer",
+    "room-nr": "Pokój nr.",
+    "booked": "rezerwacja",
+    "selected-room": "Wybrany pokój:",
+    "cancel": "Anuluj",
+    "book": "Rezerwuj",
+    "delete-reservation": "Usuń rezerwację",
+    "your-reservations": "Twoje rezerwacje:"
+  },
+  "hello": "Hello"
 }
