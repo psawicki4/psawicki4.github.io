@@ -1,9 +1,11 @@
-import {ChangeDetectionStrategy, Component, OnInit, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, OnInit, signal} from '@angular/core';
 import {CardComponent} from "../../components/card/card.component";
 import {ListComponent} from "../../components/list/list.component";
 import {ListItemTemplateDirective} from "../../components/list/list-item-template.directive";
 import {Room, RoomsList} from "./room.interface";
 import {TranslateModule} from "@ngx-translate/core";
+import {NgClass} from "@angular/common";
+import {MatButton} from "@angular/material/button";
 
 @Component({
   selector: 'psa-list-page',
@@ -12,7 +14,9 @@ import {TranslateModule} from "@ngx-translate/core";
     CardComponent,
     ListComponent,
     ListItemTemplateDirective,
-    TranslateModule
+    TranslateModule,
+    NgClass,
+    MatButton
   ],
   templateUrl: './list-page.component.html',
   styleUrl: './list-page.component.scss',
@@ -21,10 +25,12 @@ import {TranslateModule} from "@ngx-translate/core";
 export class ListPageComponent implements OnInit {
 
   rooms = signal<RoomsList>({total: 0, data: []});
-  selectedRoom = signal<Room>({roomNumber: 0})
+  bookedRooms = computed(() => this.rooms().data.filter(i => i.booked));
+  selectedRoom = signal<Room>({roomNumber: 0, booked: false})
   skip = 0;
-  allRooms = Array.from({ length: 1000 }, (value, index): Room => ({
-    roomNumber: index,
+  allRooms = Array.from({length: 10000}, (value, index): Room => ({
+    roomNumber: index + 1,
+    booked: false
   }));
 
   ngOnInit(): void {
@@ -34,7 +40,7 @@ export class ListPageComponent implements OnInit {
   getFirstRooms() {
     this.skip = 0;
     const firstRooms = this.allRooms.slice(this.skip, this.skip + 50);
-    this.rooms.set({total: 1000, data: firstRooms});
+    this.rooms.set({total: 10000, data: firstRooms});
   }
 
   fetchMoreRooms() {
@@ -43,7 +49,7 @@ export class ListPageComponent implements OnInit {
     }
     this.skip += 50;
     const nextRooms = this.allRooms.slice(this.skip, this.skip + 50);
-    const totalRooms = {total: 1000, data: [...this.rooms().data, ...nextRooms]};
+    const totalRooms = {total: 10000, data: [...this.rooms().data, ...nextRooms]};
     this.rooms.set(totalRooms);
   }
 
@@ -51,5 +57,23 @@ export class ListPageComponent implements OnInit {
     if (selectedRoom) {
       this.selectedRoom.set(selectedRoom);
     }
+  }
+
+  cancel() {
+    this.selectedRoom.set({roomNumber: 0, booked: false});
+  }
+
+  book() {
+    const updatedRooms = {...this.rooms()};
+    updatedRooms.data[this.selectedRoom()?.roomNumber - 1].booked = true;
+    this.rooms.set(updatedRooms);
+    this.cancel();
+  }
+
+  deleteReservation() {
+    const updatedRooms = {...this.rooms()};
+    updatedRooms.data[this.selectedRoom()?.roomNumber - 1].booked = false;
+    this.rooms.set(updatedRooms);
+    this.cancel();
   }
 }

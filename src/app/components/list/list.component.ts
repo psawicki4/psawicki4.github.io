@@ -1,8 +1,12 @@
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
-  Component, contentChild, input,
-  OnDestroy, output, viewChild
+  Component,
+  contentChild,
+  input,
+  OnDestroy,
+  output,
+  viewChild
 } from '@angular/core';
 import {CardComponent} from "../card/card.component";
 import {filter, map, pairwise, Subscription, throttleTime} from "rxjs";
@@ -27,7 +31,7 @@ import {MatRipple} from "@angular/material/core";
   styleUrl: './list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ListComponent implements AfterViewInit, OnDestroy{
+export class ListComponent implements AfterViewInit, OnDestroy {
 
   subscription: Subscription | undefined;
   selectedItem: any;
@@ -44,8 +48,9 @@ export class ListComponent implements AfterViewInit, OnDestroy{
       map(() => this.viewport().measureScrollOffset('bottom')),
       pairwise(),
       filter(([y1, y2]) => (y2 < y1 && y2 < this.itemHeight() * 2)),
-      throttleTime(200)
+      throttleTime(50)
     ).subscribe(() => {
+        console.log('tick')
         this.fetchMore.emit();
       }
     );

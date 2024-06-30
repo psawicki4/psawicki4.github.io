@@ -1,4 +1,20 @@
+@use "variables" as var;
+
 .psa-list {
-  height: 600px;
+  height: 580px;
   width: 300px;
+}
+
+.hell {
+  color: #FF0000;
+}
+
+.divider {
+  height: 1px;
+  background-color: var.$grey-color;
+}
+
+.booked {
+  font-size: 12px;
+  color: var.$primary;
 }

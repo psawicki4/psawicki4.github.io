@@ -1,11 +1,46 @@
 <psa-card>
-  <h1 class="text-2xl mb-8">{{ 'LIST.header' | translate }}</h1>
-  <div class="psa-list">
-    <psa-list [data]="rooms().data" [itemHeight]="88"
-              (fetchMore)="fetchMoreRooms()" (selected)="selectRoom($event)">
-      <ng-template listItemTemplate let-dataItem>
-        <p>Pokój numer {{ dataItem.roomNumber }}</p>
-      </ng-template>
-    </psa-list>
+  <h1 class="text-2xl mb-4">{{ 'LIST.header' | translate }}</h1>
+  <div class="flex flex-col gap-4">
+    <p>{{ 'LIST.component-desc' | translate }}</p>
+    <div class="divider"></div>
+    <p class="ml-2" [innerHTML]="'LIST.hello' | translate"></p>
+    <div class="flex flex-row gap-8">
+      <div class="psa-list">
+        <psa-list [data]="rooms().data" [itemHeight]="88"
+                  (fetchMore)="fetchMoreRooms()" (selected)="selectRoom($event)">
+          <ng-template listItemTemplate let-dataItem>
+            <span class="flex flex-row justify-between items-center">
+              <p
+                [ngClass]="dataItem.roomNumber === 666 ? 'hell' : ''">{{ 'LIST.room-number' | translate }} {{ dataItem.roomNumber }}</p>
+              @if (dataItem.booked) {
+                <p class="booked">{{ 'LIST.booked' | translate }}</p>
+              }
+            </span>
+          </ng-template>
+        </psa-list>
+      </div>
+      <div class="flex flex-col gap-8 w-48">
+        <p>{{ 'LIST.selected-room' | translate }}</p>
+        @if (selectedRoom().roomNumber > 0) {
+          <p>Pokój nr. {{ selectedRoom().roomNumber }}</p>
+          <span class="flex flex-row self-end gap-4">
+            @if (!rooms().data[selectedRoom().roomNumber - 1].booked) {
+              <button mat-button (click)="cancel()">{{ 'LIST.cancel' | translate }}</button>
+              <button mat-flat-button (click)="book()">{{ 'LIST.book' | translate }}</button>
+            } @else {
+              <button mat-button (click)="cancel()">{{ 'LIST.cancel' | translate }}</button>
+              <button mat-flat-button (click)="deleteReservation()">{{ 'LIST.delete-reservation' | translate }}</button>
+            }
+
+        </span>
+        }
+      </div>
+      <div>
+        <p class="mb-4">{{ 'LIST.your-reservations' | translate }}</p>
+        @for (room of bookedRooms(); track room.roomNumber) {
+          <p>{{ 'LIST.room-nr' | translate }} {{ room.roomNumber }}</p>
+        }
+      </div>
+    </div>
   </div>
 </psa-card>

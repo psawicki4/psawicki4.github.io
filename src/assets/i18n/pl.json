@@ -53,6 +53,16 @@
     "invalid-form": "Uzupełnij wymagane pola"
   },
   "LIST": {
-    "header": "\"Nieskończona\" wirtualna lista"
+    "header": "Nieskończona wirtualna lista",
+    "component-desc": "Implementacja listy, która łączy w sobie dwa rozwiązania: \"Nieskończoność\", czyli ciagłe dokładanie kolejnych elementów do źródła danych listy oraz \"wirtualność\", czyli dynamiczne dodawanie i usuwanie elementów listy z struktury dokumentu. Dzięki temu nawet największe listy szybko się ładują i pozostają responsywne.",
+    "hello": "Witamy w nieskończonym hotelu.<br> Prosimy wybrać pokój:",
+    "room-number": "Pokój numer",
+    "room-nr": "Pokój nr.",
+    "booked": "rezerwacja",
+    "selected-room": "Wybrany pokój:",
+    "cancel": "Anuluj",
+    "book": "Rezerwuj",
+    "delete-reservation": "Usuń rezerwację",
+    "your-reservations": "Twoje rezerwacje:"
   }
 }
