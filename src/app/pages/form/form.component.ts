@@ -101,7 +101,7 @@ export class FormComponent {
         age: [null, [Validators.required, Validators.min(0), Validators.max(99)]],
         birthday: [null],
         description: ['', Validators.maxLength(200)],
-        castrated: [false, Validators.required],
+        sterilized: [false, Validators.required],
         purebred: [false, Validators.required],
         toys: [[]],
         beauty: [5, Validators.min(5)],

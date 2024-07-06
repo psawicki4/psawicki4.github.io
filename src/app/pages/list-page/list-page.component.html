@@ -13,7 +13,7 @@
               <p
                 [ngClass]="dataItem.roomNumber === 666 ? 'hell' : ''">{{ 'LIST.room-number' | translate }} {{ dataItem.roomNumber }}</p>
               @if (dataItem.booked) {
-                <p class="booked">{{ 'LIST.booked' | translate }}</p>
+                <p class="booked">{{ 'LIST.reservation' | translate }}</p>
               }
             </span>
           </ng-template>
@@ -26,7 +26,7 @@
           <span class="flex flex-row self-end gap-4">
             @if (!rooms().data[selectedRoom().roomNumber - 1].booked) {
               <button mat-button (click)="cancel()">{{ 'LIST.cancel' | translate }}</button>
-              <button mat-flat-button (click)="book()">{{ 'LIST.book' | translate }}</button>
+              <button mat-flat-button (click)="book()">{{ 'LIST.reserve' | translate }}</button>
             } @else {
               <button mat-button (click)="cancel()">{{ 'LIST.cancel' | translate }}</button>
               <button mat-flat-button (click)="deleteReservation()">{{ 'LIST.delete-reservation' | translate }}</button>
