@@ -2,23 +2,28 @@
   <div class="flex flex-col gap-16">
     <div>
       <h1 class="text-xl">{{ 'HOME.hello' | translate }}</h1>
-      <p class="text-base/8">{{ 'HOME.my-name-is' | translate }}&ensp;<span class="name">Piotr Sawicki</span><br>
+      <p class="text-base/8">{{ 'HOME.my-name-is' | translate }}&ensp;<span class="name">Piotr&nbsp;Sawicki</span><br>
         {{ 'HOME.my-webpage' | translate }}</p>
     </div>
 
     <div>
-      <p class="flex flex-row items-center"> {{ 'HOME.repository' | translate }}
+      <span class="flex flex-row items-center mb-4 sm:mb-0">
+        <p> {{ 'HOME.repository' | translate }} </p>
         <a mat-button href="https://github.com/psawicki4/psawicki4.github.io" target="_blank">Link</a>
-      </p>
+      </span>
       <p>{{ 'HOME.tools' | translate }}</p>
-      <mat-list role="list" class="ml-4">
-        <mat-list-item role="listitem">Angular 18 ({{ 'HOME.including' | translate }})</mat-list-item>
-        <mat-list-item role="listitem">Tailwind CSS</mat-list-item>
-        <mat-list-item role="listitem">Angular Material</mat-list-item>
-        <mat-list-item role="listitem">NgRx SignalStore</mat-list-item>
-        <mat-list-item role="listitem">Cypress</mat-list-item>
-        <mat-list-item role="listitem">ngx-translate</mat-list-item>
-      </mat-list>
+      <ul role="list" class="ml-4 my-2 leading-8">
+        @if (isMobile) {
+          <li role="listitem">Angular 18 ({{ 'HOME.including' | translate }})</li>
+        } @else {
+          <li role="listitem">Angular 18 ({{ 'HOME.including' | translate }})</li>
+        }
+        <li role="listitem">Tailwind CSS</li>
+        <li role="listitem">Angular Material</li>
+        <li role="listitem">NgRx SignalStore</li>
+        <li role="listitem">Cypress</li>
+        <li role="listitem">ngx-translate</li>
+      </ul>
     </div>
 
 

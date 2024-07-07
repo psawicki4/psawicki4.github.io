@@ -25,6 +25,7 @@
     "@angular/platform-browser-dynamic": "^18.0.5",
     "@angular/router": "^18.0.5",
     "@ctrl/tinycolor": "^4.1.0",
+    "@ngrx/signals": "^18.0.0-rc.2",
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
     "dayjs": "^1.11.11",

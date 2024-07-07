@@ -1,6 +1,6 @@
 import {FormControl, FormGroup} from "@angular/forms";
 
-export interface DemoForm {
+export type DemoForm = {
   petType: FormControl<string>,
   cat?: FormGroup
 }

@@ -2,10 +2,11 @@ import {ChangeDetectionStrategy, Component, computed, OnInit, signal} from '@ang
 import {CardComponent} from "../../components/card/card.component";
 import {ListComponent} from "../../components/list/list.component";
 import {ListItemTemplateDirective} from "../../components/list/list-item-template.directive";
-import {Room, RoomsList} from "./room.interface";
+import {Room, RoomsList} from "./room.type";
 import {TranslateModule} from "@ngx-translate/core";
 import {NgClass} from "@angular/common";
 import {MatButton} from "@angular/material/button";
+import {RoomsStore} from "./rooms.store";
 
 @Component({
   selector: 'psa-list-page',
@@ -18,6 +19,7 @@ import {MatButton} from "@angular/material/button";
     NgClass,
     MatButton
   ],
+  providers: [RoomsStore],
   templateUrl: './list-page.component.html',
   styleUrl: './list-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

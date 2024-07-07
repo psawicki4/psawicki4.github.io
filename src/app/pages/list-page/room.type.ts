@@ -1,9 +1,9 @@
-export interface Room {
+export type Room = {
   roomNumber: number,
   booked: boolean
 }
 
-export interface RoomsList {
+export type RoomsList = {
   total: number,
   data: Room[]
 }

@@ -3,7 +3,7 @@ import {CardComponent} from "../../components/card/card.component";
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators, ValueChangeEvent} from "@angular/forms";
 import {MatRadioButton, MatRadioGroup} from "@angular/material/radio";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {DemoForm} from "./form.interface";
+import {DemoForm} from "./form.type";
 import {MatError, MatFormField, MatHint, MatLabel, MatSuffix} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {JsonPipe} from "@angular/common";
