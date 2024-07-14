@@ -108,14 +108,14 @@ export class FormComponent {
         malice: [0],
       }, {validators: [ageBirthdayValidator()]}
     ));
-    this.cat.get('purebred')?.events.pipe(takeUntil(this.destroy$)).subscribe(e => {
+    this.cat?.get('purebred')?.events.pipe(takeUntil(this.destroy$)).subscribe(e => {
       if (e instanceof ValueChangeEvent && e.value === true) {
         this.addBred();
       } else if (e instanceof ValueChangeEvent && e.value === false) {
         this.removeBred();
       }
     })
-    this.cat.get('birthday')?.events.pipe(takeUntil(this.destroy$)).subscribe(e => {
+    this.cat?.get('birthday')?.events.pipe(takeUntil(this.destroy$)).subscribe(e => {
       if (e instanceof ValueChangeEvent && e.value) {
         if (this.age && !this.age.value) {
           this.age.setValue(dayjs().diff(e.value, 'year'));
@@ -184,12 +184,8 @@ export class FormComponent {
     }
   }
 
-  get petType() {
-    return this.form.get('petType')?.value;
-  }
-
   get cat() {
-    return this.form.get('cat') as FormGroup;
+    return this.form.get('cat') as FormGroup | null;
   }
 
   get name() {

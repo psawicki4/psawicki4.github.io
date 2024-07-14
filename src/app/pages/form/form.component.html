@@ -9,7 +9,7 @@
           <mat-radio-button value="dog">{{ 'FORM.dog' | translate }}</mat-radio-button>
           <mat-radio-button value="cat" class="ml-8">{{ 'FORM.cat' | translate }}</mat-radio-button>
         </mat-radio-group>
-        @if (petType === 'cat') {
+        @if (cat) {
           <ng-container formGroupName="cat">
             <mat-form-field class="w-80">
               <mat-label>{{ 'FORM.name' | translate }}</mat-label>
@@ -29,7 +29,7 @@
                   <mat-error>{{ 'FORM.invalid-date-format' | translate }}</mat-error>
                 }
               </mat-form-field>
-              @if (cat?.hasError('invalidAge')) {
+              @if (cat.hasError('invalidAge')) {
                 <mat-error class="absolute -bottom-1 text-xs">{{ 'FORM.invalid-age' | translate }}</mat-error>
               }
             </div>
@@ -112,7 +112,7 @@
             </div>
             <span class="w-full flex flex-row justify-end gap-4">
               <button mat-button type="button" (click)="reset()">{{ 'FORM.reset' | translate }}</button>
-              <button mat-flat-button type="button" (click)="check()">{{ 'FORM.check' | translate }}</button>
+              <button mat-button type="button" (click)="check()">{{ 'FORM.check' | translate }}</button>
             </span>
           </ng-container>
 
