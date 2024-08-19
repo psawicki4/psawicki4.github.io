@@ -1,7 +1,7 @@
 <psa-card>
   <h1 class="text-2xl mb-4">{{ 'FORM.header' | translate }}</h1>
   <p class="mb-8">{{ 'FORM.component-desc' | translate }}</p>
-  <div class="w-full flex flex-row">
+  <div class="w-full flex flex-col sm:flex-row">
     <div class="w-1/2 flex flex-col items-center">
       <form [formGroup]="form" class="flex flex-col gap-4 items-center">
         <p>{{ 'FORM.dog-or-cat' | translate }}</p>
