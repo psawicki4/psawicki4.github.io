@@ -4,7 +4,7 @@
     <p>{{ 'LIST.component-desc' | translate }}</p>
     <div class="divider"></div>
     <p class="ml-2" [innerHTML]="'LIST.hello' | translate"></p>
-    <div class="flex flex-row gap-8">
+    <div class="flex flex-col sm:flex-row gap-8">
       <div class="psa-list">
         <psa-list [data]="store.rooms().data" [itemHeight]="88"
                   (fetchMore)="fetchMoreRooms()" (selected)="selectRoom($event)">

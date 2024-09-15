@@ -22,6 +22,7 @@ import {ageBirthdayValidator} from "./age-birthday-validator";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {Subject, takeUntil} from "rxjs";
 import dayjs from "dayjs";
+import {IsMobileService} from "../../services/is-mobile.service";
 
 @Component({
   selector: 'psa-form',
@@ -66,6 +67,7 @@ export class FormComponent {
   fb = inject(FormBuilder);
   snackBar = inject(MatSnackBar);
   translate = inject(TranslateService);
+  isMobileService = inject(IsMobileService);
   destroy$ = new Subject<void>();
   maxDate = new Date();
   //todo: przetłumaczyć jakoś
@@ -202,6 +204,10 @@ export class FormComponent {
 
   get descriptionVal() {
     return this.cat?.get('description')?.value;
+  }
+
+  get isMobile() {
+    return this.isMobileService.isMobile();
   }
 
 }

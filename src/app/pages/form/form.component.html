@@ -1,8 +1,12 @@
 <psa-card>
   <h1 class="text-2xl mb-4">{{ 'FORM.header' | translate }}</h1>
-  <p class="mb-8">{{ 'FORM.component-desc' | translate }}</p>
-  <div class="w-full flex flex-col sm:flex-row">
-    <div class="w-1/2 flex flex-col items-center">
+  @if (isMobile) {
+    <p class="mb-8">{{ 'FORM.component-desc-mobile' | translate }}</p>
+  } @else {
+    <p class="mb-8">{{ 'FORM.component-desc-desktop' | translate }}</p>
+  }
+  <div class="w-full flex flex-col sm:flex-row gap-8">
+    <div class="flex flex-col items-center sm:w-1/2">
       <form [formGroup]="form" class="flex flex-col gap-4 items-center">
         <p>{{ 'FORM.dog-or-cat' | translate }}</p>
         <mat-radio-group formControlName="petType">
@@ -119,9 +123,11 @@
         }
       </form>
     </div>
-    <div class="divider"></div>
-    <div class="w-1/2 ml-8 flex flex-col gap-8">
-      <p>{{ 'FORM.form-model' | translate }}</p>
+    @if (!isMobile) {
+      <div class="divider"></div>
+    }
+    <div class="flex flex-col gap-8 sm:ml-8 sm:w-1/2">
+      <p class="text-center sm:text-left">{{ 'FORM.form-model' | translate }}</p>
       <pre class="whitespace-pre-wrap">
       {{ form.getRawValue() | json }}
     </pre>

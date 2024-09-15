@@ -50,7 +50,6 @@ export class ListComponent implements AfterViewInit, OnDestroy {
       filter(([y1, y2]) => (y2 < y1 && y2 < this.itemHeight() * 2)),
       throttleTime(50)
     ).subscribe(() => {
-        console.log('tick')
         this.fetchMore.emit();
       }
     );

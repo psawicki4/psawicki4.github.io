@@ -1,27 +1,20 @@
 <psa-card>
-  <div class="flex flex-col gap-16">
-    <div>
-      <h1 class="text-xl">{{ 'HOME.hello' | translate }}</h1>
-      <p class="text-base/8">{{ 'HOME.my-name-is' | translate }}&ensp;<span class="name">Piotr&nbsp;Sawicki</span><br>
-        {{ 'HOME.my-webpage' | translate }}</p>
-    </div>
 
-    <div>
-      <span class="flex flex-row items-center mb-4 sm:mb-0">
-        <p> {{ 'HOME.repository' | translate }} </p>
-        <a mat-button href="https://github.com/psawicki4/psawicki4.github.io" target="_blank">Link</a>
-      </span>
-      <p>{{ 'HOME.tools' | translate }}</p>
-      <ul role="list" class="ml-4 my-2 leading-8">
-        <li role="listitem">Angular 18 ({{ 'HOME.including' | translate }})</li>
-        <li role="listitem">Tailwind CSS</li>
-        <li role="listitem">Angular Material</li>
-        <li role="listitem">NgRx SignalStore</li>
-        <!--<li role="listitem">Cypress</li>-->
-        <li role="listitem">ngx-translate</li>
-      </ul>
-    </div>
+  <h1 class="text-xl">{{ 'HOME.hello' | translate }}</h1>
+  <p class="text-base/8 mb-8">{{ 'HOME.my-name-is' | translate }}&ensp;<span class="name">Piotr&nbsp;Sawicki</span><br>
+    {{ 'HOME.my-webpage' | translate }}</p>
 
+  <p class="mb-8"> {{ 'HOME.repository' | translate }}<a mat-button class="link"
+                                                         href="https://github.com/psawicki4/psawicki4.github.io"
+                                                         target="_blank">Link</a></p>
 
-  </div>
+  <p>{{ 'HOME.tools' | translate }}</p>
+  <ul role="list" class="ml-4 my-2 leading-8">
+    <li role="listitem">Angular 18 ({{ 'HOME.including' | translate }})</li>
+    <li role="listitem">Tailwind CSS</li>
+    <li role="listitem">Angular Material</li>
+    <li role="listitem">NgRx Signals</li>
+    <!--<li role="listitem">Cypress</li>-->
+    <li role="listitem">ngx-translate</li>
+  </ul>
 </psa-card>
