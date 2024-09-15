@@ -97,7 +97,11 @@
                 (matChipInputTokenEnd)="addToy($event)"
                 [matChipInputAddOnBlur]="true"
               />
-              <mat-hint>{{ 'FORM.toys-hint' | translate }}</mat-hint>
+              @if (isMobile) {
+                <mat-hint>{{ 'FORM.toys-hint-mobile' | translate }}</mat-hint>
+              } @else {
+                <mat-hint>{{ 'FORM.toys-hint' | translate }}</mat-hint>
+              }
             </mat-form-field>
             <div class="flex flex-col gap-4 w-80 relative">
               <mat-label>{{ 'FORM.beauty' | translate }}</mat-label>
