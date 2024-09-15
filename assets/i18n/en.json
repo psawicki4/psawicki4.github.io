@@ -21,7 +21,8 @@
   },
   "FORM": {
     "header": "Form demo",
-    "component-desc": "A dynamic form built from various Angular Material components. On the right side live preview of the form model.",
+    "component-desc-desktop": "A dynamic form built from various Angular Material components. On the right side there is a live preview of the form model.",
+    "component-desc-mobile": "A dynamic form built from various Angular Material components. At the bottom of the page there is a live preview of the form model.",
     "dog-or-cat": "Dog or cat?",
     "dog": "dog",
     "cat": "cat",
