@@ -12,7 +12,8 @@
     "home": "Start",
     "form": "Formularz",
     "list": "Lista",
-    "animations": "Animacje"
+    "animations": "Animacje",
+    "grid": "Tabela"
   },
   "CONTACT": {
     "contact": "Kontakt",
@@ -66,5 +67,16 @@
     "reserve": "Rezerwuj",
     "delete-reservation": "Usuń rezerwację",
     "your-reservations": "Twoje rezerwacje:"
+  },
+  "GRID": {
+    "header": "Tabela krajów",
+    "component-desc": "Implementacja tabeli AG Grid z sortowaniem, filtrowaniem i stronicowaniem. Możliwość zmiany rozmiaru i kolejności kolumn.",
+    "name": "Nazwa",
+    "capital": "Stolica",
+    "population": "Populacja",
+    "region": "Obszar",
+    "area": "Powierzchnia",
+    "unMember": "Członek ONZ",
+    "languages": "Język"
   }
 }

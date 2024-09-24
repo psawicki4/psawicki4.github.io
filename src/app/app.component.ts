@@ -1,6 +1,5 @@
 import {Component, inject, OnInit} from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import {TranslateService} from "@ngx-translate/core";
+import {RouterOutlet} from '@angular/router';
 import {MenuComponent} from "./components/menu/menu.component";
 import {MatSidenav, MatSidenavContainer, MatSidenavContent} from "@angular/material/sidenav";
 import {NgTemplateOutlet} from "@angular/common";
@@ -15,15 +14,12 @@ import {IsMobileService} from "./services/is-mobile.service";
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   date = new Date();
   isMobileService = inject(IsMobileService);
-  translate = inject(TranslateService);
   dateAdapter = inject(DateAdapter);
 
   ngOnInit() {
-    this.translate.setDefaultLang('pl');
-    this.translate.use('pl');
     this.dateAdapter.getFirstDayOfWeek = () => 1;
   }
 

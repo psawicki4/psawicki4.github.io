@@ -66,5 +66,16 @@
     "reserve": "Reserve",
     "delete-reservation": "Delete the reservation",
     "your-reservations": "Your reservations:"
+  },
+  "GRID": {
+    "header": "Tabela krajów",
+    "component-desc": "Implementacja tabeli z stronicowaniem, filtrowaniem, paginacją. Możliwość zmiany kolejności kolumn. Rozwijane wiersze. Dodawanie i usuwanie wierszy.",
+    "name": "Name",
+    "capital": "Capital",
+    "population": "Population",
+    "region": "Region",
+    "area": "Area",
+    "unMember": "UN member",
+    "languages": "Language"
   }
 }

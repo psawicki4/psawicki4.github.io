@@ -1,28 +1,36 @@
 @use "styles/custom-theme";
 @use "styles/variables" as var;
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 @import 'normalize.css';
+@import 'ag-grid-community/styles/ag-grid.css';
+@import 'ag-grid-community/styles/ag-theme-quartz.css';
 
 html {
   scrollbar-color: grey var.$background;
   scrollbar-width: thin;
+
   ::-webkit-scrollbar {
     width: 7.5px;
     height: 7.5px;
   }
+
   ::-webkit-scrollbar-track,
   ::-webkit-scrollbar-corner {
     background: var.$background;
   }
+
   ::-webkit-scrollbar-thumb {
     background: grey;
     border-right: 1px solid var.$background;
     border-bottom: 1px solid var.$background;
+
     &:hover {
       background: #676767;
     }
+
     &:active {
       background: #393939;
     }
