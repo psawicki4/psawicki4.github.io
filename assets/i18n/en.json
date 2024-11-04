@@ -12,7 +12,8 @@
     "home": "Home",
     "form": "Form",
     "list": "List",
-    "animations": "Animations"
+    "animations": "Animations",
+    "grid": "Grid"
   },
   "CONTACT": {
     "contact": "Contact",
@@ -66,5 +67,17 @@
     "reserve": "Reserve",
     "delete-reservation": "Delete the reservation",
     "your-reservations": "Your reservations:"
+  },
+  "GRID": {
+    "header": "Table of countries",
+    "component-desc": "AG Grid table implementation with sorting, filtering and paging. Ability to resize and reorder columns. Automatic storage of grid state. Export option to CSV file.",
+    "name": "Name",
+    "capital": "Capital",
+    "population": "Population",
+    "region": "Region",
+    "area": "Area",
+    "unMember": "UN member",
+    "languages": "Language",
+    "csv-export": "Export to CSV"
   }
 }
