@@ -1,13 +1,14 @@
-import {ChangeDetectionStrategy, Component, inject, OnInit, viewChild} from '@angular/core';
-import {CardComponent} from "../../components/card/card.component";
-import {TranslateModule, TranslateService} from "@ngx-translate/core";
-import {GridService} from "./grid.service";
-import {AgGridAngular} from "ag-grid-angular";
-import {CountriesStore} from "./countries.store";
-import {ColDef} from 'ag-grid-community';
-import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
-import {AG_GRID_LOCALE_PL} from '@ag-grid-community/locale';
-import {LangService} from "../../services/lang.service";
+import { ChangeDetectionStrategy, Component, effect, inject, TemplateRef, viewChild, ViewContainerRef } from '@angular/core';
+import { CardComponent } from "../../components/card/card.component";
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
+import { GridService } from "./grid.service";
+import { AgGridAngular } from "ag-grid-angular";
+import { CountriesStore } from "./countries.store";
+import { ColDef, GridApi, GridReadyEvent, GridState, RowSelectionOptions, StateUpdatedEvent } from 'ag-grid-community';
+import { AG_GRID_LOCALE_EN, AG_GRID_LOCALE_PL } from '@ag-grid-community/locale';
+import { LangService } from "../../services/lang.service";
+import { CommonModule } from '@angular/common';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'psa-grid',
@@ -16,6 +17,8 @@ import {LangService} from "../../services/lang.service";
     CardComponent,
     TranslateModule,
     AgGridAngular,
+    CommonModule,
+    MatButton,
   ],
   providers: [
     CountriesStore
@@ -24,16 +27,19 @@ import {LangService} from "../../services/lang.service";
   styleUrl: './grid.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class GridComponent implements OnInit {
+export class GridComponent {
 
   gridService = inject(GridService);
   translate = inject(TranslateService);
   lang = inject(LangService);
   store = inject(CountriesStore);
-  grid = viewChild.required<AgGridAngular>('grid');
+  outletRef = viewChild.required('outlet', { read: ViewContainerRef });
+  contentRef = viewChild.required('content', { read: TemplateRef<any> });
   paginationPageSize = 12;
   paginationPageSizeSelector: number[] | boolean = [12, 25, 50];
   localeText = AG_GRID_LOCALE_PL;
+  gridApi!: GridApi;
+  initialState: GridState | undefined;
   colDefs: ColDef[] = [
     {
       headerValueGetter: this.headerTranslation('GRID.name'),
@@ -81,16 +87,14 @@ export class GridComponent implements OnInit {
     },
   ];
 
-//km²
   constructor() {
-    this.translate.onLangChange.pipe(takeUntilDestroyed())
-      .subscribe(() => {
-        this.grid().api.refreshHeader()
-      });
-  }
-
-  ngOnInit(): void {
     this.getCountries();
+    effect(() => {
+      this.localeText = this.lang.lang() === 'pl' ? AG_GRID_LOCALE_PL : AG_GRID_LOCALE_EN;
+      this.initialState = JSON.parse(localStorage.getItem('gridState') ?? '{}');
+      this.outletRef().clear();
+      this.outletRef().createEmbeddedView(this.contentRef());
+    });
   }
 
   getCountries() {
@@ -101,5 +105,17 @@ export class GridComponent implements OnInit {
 
   headerTranslation(translateKey: string) {
     return () => this.translate.instant(translateKey);
+  }
+
+  export() {
+    this.gridApi.exportDataAsCsv();
+  }
+
+  onGridReady(params: GridReadyEvent) {
+    this.gridApi = params.api;
+  }
+
+  updateState(event: StateUpdatedEvent) {
+    localStorage.setItem('gridState', JSON.stringify(event.state));
   }
 }

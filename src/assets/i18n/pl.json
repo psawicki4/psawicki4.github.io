@@ -70,13 +70,14 @@
   },
   "GRID": {
     "header": "Tabela krajów",
-    "component-desc": "Implementacja tabeli AG Grid z sortowaniem, filtrowaniem i stronicowaniem. Możliwość zmiany rozmiaru i kolejności kolumn.",
+    "component-desc": "Implementacja tabeli AG Grid z sortowaniem, filtrowaniem i stronicowaniem. Możliwość zmiany rozmiaru i kolejności kolumn. Automatyczne zapamiętywanie stanu grida. Opcja eksportu do pliku CSV.",
     "name": "Nazwa",
     "capital": "Stolica",
     "population": "Populacja",
     "region": "Obszar",
     "area": "Powierzchnia",
     "unMember": "Członek ONZ",
-    "languages": "Język"
+    "languages": "Język",
+    "csv-export": "Eksport do pliku CSV"
   }
 }

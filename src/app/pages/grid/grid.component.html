@@ -3,27 +3,15 @@
     <h1 class="text-2xl">{{ 'GRID.header' | translate }}</h1>
     <p>{{ 'GRID.component-desc' | translate }}</p>
     <div class="divider"></div>
-    @if (lang.lang() === 'pl') {
-      <ag-grid-angular
-        #grid
-        [rowData]="store.countries()"
-        [columnDefs]="colDefs"
-        [pagination]="true"
-        [paginationPageSize]="paginationPageSize"
-        [paginationPageSizeSelector]="paginationPageSizeSelector"
-        [localeText]="localeText"
-        class="ag-theme-quartz-dark"
-        style="height: 603px"/>
-    } @else {
-      <ag-grid-angular
-        #grid
-        [rowData]="store.countries()"
-        [columnDefs]="colDefs"
-        [pagination]="true"
-        [paginationPageSize]="paginationPageSize"
-        [paginationPageSizeSelector]="paginationPageSizeSelector"
-        class="ag-theme-quartz-dark"
-        style="height: 603px"/>
-    }
+    <button mat-stroked-button class="self-end" (click)="export()">{{ 'GRID.csv-export' | translate }}</button>
+    <ng-container #outlet>
+    </ng-container>
   </div>
 </psa-card>
+
+<ng-template #content>
+  <ag-grid-angular [rowData]="store.countries()" [columnDefs]="colDefs" [pagination]="true"
+    [paginationPageSize]="paginationPageSize" [initialState]="initialState"
+    [paginationPageSizeSelector]="paginationPageSizeSelector" [localeText]="localeText" class="ag-theme-quartz-dark"
+    style="height: 603px" (gridReady)="onGridReady($event)" (stateUpdated)="updateState($event)" />
+</ng-template>
