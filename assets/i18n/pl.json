@@ -78,6 +78,8 @@
     "area": "Powierzchnia",
     "unMember": "Członek ONZ",
     "languages": "Język",
-    "csv-export": "Eksport do pliku CSV"
+    "csv-export": "Eksport do pliku CSV",
+    "reset-state": "Reset stanu",
+    "landscape": "Przełącz na tryb poziomy"
   }
 }
