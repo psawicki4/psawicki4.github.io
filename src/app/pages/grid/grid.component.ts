@@ -1,6 +1,6 @@
 import { AG_GRID_LOCALE_EN, AG_GRID_LOCALE_PL } from '@ag-grid-community/locale';
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, effect, inject, TemplateRef, viewChild, ViewContainerRef } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, effect, inject, TemplateRef, viewChild, ViewContainerRef } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { TranslatePipe, TranslateService } from "@ngx-translate/core";
 import { AgGridAngular } from "ag-grid-angular";
@@ -9,6 +9,7 @@ import { CardComponent } from "../../components/card/card.component";
 import { LangService } from "../../services/lang.service";
 import { CountriesStore } from "./countries.store";
 import { GridService } from "./grid.service";
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'psa-grid',
@@ -19,6 +20,7 @@ import { GridService } from "./grid.service";
     AgGridAngular,
     CommonModule,
     MatButton,
+    MatIcon
   ],
   providers: [
     CountriesStore
@@ -33,13 +35,15 @@ export class GridComponent {
   translate = inject(TranslateService);
   lang = inject(LangService);
   store = inject(CountriesStore);
-  outletRef = viewChild.required('outlet', { read: ViewContainerRef });
-  contentRef = viewChild.required('content', { read: TemplateRef<any> });
+  cd = inject(ChangeDetectorRef);
+  outletRef = viewChild('outlet', { read: ViewContainerRef });
+  contentRef = viewChild('content', { read: TemplateRef<any> });
   paginationPageSize = 12;
   paginationPageSizeSelector: number[] | boolean = [12, 25, 50];
   localeText = AG_GRID_LOCALE_PL;
   gridApi!: GridApi;
-  initialState: GridState | undefined;
+  initialState: GridState = {};
+  portrait = window.matchMedia('(orientation: portrait)').matches;
   colDefs: ColDef[] = [
     {
       headerValueGetter: this.headerTranslation('GRID.name'),
@@ -89,11 +93,15 @@ export class GridComponent {
 
   constructor() {
     this.getCountries();
+    window.matchMedia('(orientation: portrait)').addEventListener('change', e => {
+      this.portrait = e.matches;
+      this.cd.markForCheck();
+    });
     effect(() => {
       this.localeText = this.lang.lang() === 'pl' ? AG_GRID_LOCALE_PL : AG_GRID_LOCALE_EN;
       this.initialState = JSON.parse(localStorage.getItem('gridState') ?? '{}');
-      this.outletRef().clear();
-      this.outletRef().createEmbeddedView(this.contentRef());
+      this.outletRef()?.clear();
+      this.outletRef()?.createEmbeddedView(this.contentRef()!);
     });
   }
 
@@ -117,5 +125,12 @@ export class GridComponent {
 
   updateState(event: StateUpdatedEvent) {
     localStorage.setItem('gridState', JSON.stringify(event.state));
+  }
+
+  resetState() {
+    localStorage.removeItem('gridState');
+    this.initialState = {};
+    this.outletRef()?.clear();
+    this.outletRef()?.createEmbeddedView(this.contentRef()!);
   }
 }
