@@ -3,7 +3,7 @@
   "HOME": {
     "hello": "Cześć,",
     "my-name-is": "nazywam się",
-    "my-webpage": "a to moja strona w formie technologicznego demo.",
+    "my-webpage": "i to jest moja strona w formie technologicznego demo.",
     "repository": "Cały kod aplikacji jest dostępny publicznie pod adresem:",
     "tools": "Do zbudowania strony wykorzystałem:",
     "including": "w tym Signals, Standalone i Zone-less"
