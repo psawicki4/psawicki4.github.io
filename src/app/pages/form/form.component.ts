@@ -1,28 +1,28 @@
-import {ChangeDetectionStrategy, Component, ElementRef, inject, signal, viewChild} from '@angular/core';
-import {CardComponent} from "../../components/card/card.component";
-import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators, ValueChangeEvent} from "@angular/forms";
-import {MatRadioButton, MatRadioGroup} from "@angular/material/radio";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {DemoForm} from "./form.type";
-import {MatError, MatFormField, MatHint, MatLabel, MatSuffix} from "@angular/material/form-field";
-import {MatInput} from "@angular/material/input";
-import {JsonPipe} from "@angular/common";
-import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from "@angular/material/datepicker";
-import {MatCheckbox} from "@angular/material/checkbox";
-import {MatButton} from "@angular/material/button";
-import {MatAutocomplete, MatAutocompleteTrigger, MatOption} from "@angular/material/autocomplete";
-import {CdkTextareaAutosize} from "@angular/cdk/text-field";
-import {OnlyDigitsDirective} from "./only-digits.directive";
-import {MatSlider, MatSliderThumb} from "@angular/material/slider";
-import {MatChipGrid, MatChipInput, MatChipInputEvent, MatChipRemove, MatChipRow} from "@angular/material/chips";
-import {MatIcon} from "@angular/material/icon";
-import {COMMA, ENTER} from "@angular/cdk/keycodes";
-import {TranslateModule, TranslateService} from "@ngx-translate/core";
-import {ageBirthdayValidator} from "./age-birthday-validator";
-import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
-import {Subject, takeUntil} from "rxjs";
+import { COMMA, ENTER } from "@angular/cdk/keycodes";
+import { CdkTextareaAutosize } from "@angular/cdk/text-field";
+import { JsonPipe } from "@angular/common";
+import { ChangeDetectionStrategy, Component, ElementRef, inject, signal, viewChild } from '@angular/core';
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators, ValueChangeEvent } from "@angular/forms";
+import { MatAutocomplete, MatAutocompleteTrigger, MatOption } from "@angular/material/autocomplete";
+import { MatButton } from "@angular/material/button";
+import { MatCheckbox } from "@angular/material/checkbox";
+import { MatChipGrid, MatChipInput, MatChipInputEvent, MatChipRemove, MatChipRow } from "@angular/material/chips";
+import { MatDatepicker, MatDatepickerInput, MatDatepickerToggle } from "@angular/material/datepicker";
+import { MatError, MatFormField, MatHint, MatLabel, MatSuffix } from "@angular/material/form-field";
+import { MatIcon } from "@angular/material/icon";
+import { MatInput } from "@angular/material/input";
+import { MatRadioButton, MatRadioGroup } from "@angular/material/radio";
+import { MatSlider, MatSliderThumb } from "@angular/material/slider";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { TranslatePipe, TranslateService } from "@ngx-translate/core";
 import dayjs from "dayjs";
-import {IsMobileService} from "../../services/is-mobile.service";
+import { Subject, takeUntil } from "rxjs";
+import { CardComponent } from "../../components/card/card.component";
+import { IsMobileService } from "../../services/is-mobile.service";
+import { ageBirthdayValidator } from "./age-birthday-validator";
+import { DemoForm } from "./form.type";
+import { OnlyDigitsDirective } from "./only-digits.directive";
 
 @Component({
   selector: 'psa-form',
@@ -56,7 +56,7 @@ import {IsMobileService} from "../../services/is-mobile.service";
     MatIcon,
     MatChipInput,
     MatChipRemove,
-    TranslateModule,
+    TranslatePipe,
   ],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss',

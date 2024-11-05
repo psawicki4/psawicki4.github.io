@@ -1,8 +1,8 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {CardComponent} from "../../components/card/card.component";
-import {MatList, MatListItem} from "@angular/material/list";
-import {MatAnchor} from "@angular/material/button";
-import {TranslateModule} from "@ngx-translate/core";
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { MatAnchor } from "@angular/material/button";
+import { MatList, MatListItem } from "@angular/material/list";
+import { TranslatePipe } from "@ngx-translate/core";
+import { CardComponent } from "../../components/card/card.component";
 
 @Component({
   selector: 'psa-home',
@@ -12,7 +12,7 @@ import {TranslateModule} from "@ngx-translate/core";
     MatList,
     MatListItem,
     MatAnchor,
-    TranslateModule
+    TranslatePipe
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
-import {TranslateModule} from "@ngx-translate/core";
-import {MatAnchor, MatButton} from "@angular/material/button";
-import {ReverseMailDirective} from "./reverse-mail.directive";
+import { MatAnchor, MatButton } from "@angular/material/button";
+import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from "@angular/material/dialog";
+import { TranslatePipe } from "@ngx-translate/core";
+import { ReverseMailDirective } from "./reverse-mail.directive";
 
 @Component({
   selector: 'psa-contact-dialog',
@@ -10,7 +10,7 @@ import {ReverseMailDirective} from "./reverse-mail.directive";
   imports: [
     MatDialogContent,
     MatDialogTitle,
-    TranslateModule,
+    TranslatePipe,
     MatDialogActions,
     MatButton,
     MatDialogClose,

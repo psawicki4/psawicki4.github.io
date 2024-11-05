@@ -1,21 +1,21 @@
-import { ChangeDetectionStrategy, Component, effect, inject, TemplateRef, viewChild, ViewContainerRef } from '@angular/core';
-import { CardComponent } from "../../components/card/card.component";
-import { TranslateModule, TranslateService } from "@ngx-translate/core";
-import { GridService } from "./grid.service";
-import { AgGridAngular } from "ag-grid-angular";
-import { CountriesStore } from "./countries.store";
-import { ColDef, GridApi, GridReadyEvent, GridState, RowSelectionOptions, StateUpdatedEvent } from 'ag-grid-community';
 import { AG_GRID_LOCALE_EN, AG_GRID_LOCALE_PL } from '@ag-grid-community/locale';
-import { LangService } from "../../services/lang.service";
 import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, effect, inject, TemplateRef, viewChild, ViewContainerRef } from '@angular/core';
 import { MatButton } from '@angular/material/button';
+import { TranslatePipe, TranslateService } from "@ngx-translate/core";
+import { AgGridAngular } from "ag-grid-angular";
+import { ColDef, GridApi, GridReadyEvent, GridState, StateUpdatedEvent } from 'ag-grid-community';
+import { CardComponent } from "../../components/card/card.component";
+import { LangService } from "../../services/lang.service";
+import { CountriesStore } from "./countries.store";
+import { GridService } from "./grid.service";
 
 @Component({
   selector: 'psa-grid',
   standalone: true,
   imports: [
     CardComponent,
-    TranslateModule,
+    TranslatePipe,
     AgGridAngular,
     CommonModule,
     MatButton,
