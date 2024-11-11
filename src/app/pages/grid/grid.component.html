@@ -19,8 +19,8 @@
 </psa-card>
 
 <ng-template #content>
-  <ag-grid-angular [rowData]="store.countries()" [columnDefs]="colDefs" [pagination]="true"
-    [paginationPageSize]="paginationPageSize" [initialState]="initialState"
+  <ag-grid-angular [rowData]="store.countries()" [loading]="loading" [columnDefs]="colDefs"
+    [pagination]="true" [paginationPageSize]="paginationPageSize" [initialState]="initialState"
     [paginationPageSizeSelector]="paginationPageSizeSelector" [localeText]="localeText" class="ag-theme-quartz-dark"
     style="height: 603px" (gridReady)="onGridReady($event)" (stateUpdated)="updateState($event)" />
 </ng-template>

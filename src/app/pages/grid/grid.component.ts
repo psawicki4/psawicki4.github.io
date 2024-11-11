@@ -10,6 +10,7 @@ import { LangService } from "../../services/lang.service";
 import { CountriesStore } from "./countries.store";
 import { GridService } from "./grid.service";
 import { MatIcon } from '@angular/material/icon';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'psa-grid',
@@ -44,6 +45,7 @@ export class GridComponent {
   gridApi!: GridApi;
   initialState: GridState = {};
   portrait = window.matchMedia('(orientation: portrait)').matches;
+  loading = true;
   colDefs: ColDef[] = [
     {
       headerValueGetter: this.headerTranslation('GRID.name'),
@@ -53,7 +55,7 @@ export class GridComponent {
     },
     {
       headerValueGetter: this.headerTranslation('GRID.capital'),
-      field: "capital",
+      valueGetter: p => Object.values(p.data.capital).join(', '),
       filter: true,
       flex: 1
     },
@@ -106,9 +108,12 @@ export class GridComponent {
   }
 
   getCountries() {
-    this.gridService.getCountries().subscribe(res => {
-      this.store.setCountries(res);
-    })
+    this.loading = true;
+    this.gridService.getCountries()
+      .pipe(finalize(() => this.loading = false))
+      .subscribe(res => {
+        this.store.setCountries(res);
+      })
   }
 
   headerTranslation(translateKey: string) {
