@@ -1,31 +1,31 @@
 @if (isMobile) {
-  <mat-sidenav-container>
-    <mat-sidenav #sidenav>
-      <psa-menu></psa-menu>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <div class="h-dvh flex flex-col gap-4">
-        <psa-header [isMobile]="isMobile" (open)="sidenav.open()"></psa-header>
-        <div class="w-full">
-          <router-outlet></router-outlet>
-        </div>
-        <ng-container [ngTemplateOutlet]="footer"></ng-container>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-
-} @else {
-  <div class="h-dvh flex flex-col gap-4">
-    <psa-header [isMobile]="isMobile"></psa-header>
-    <div class="flex flex-row flex-grow gap-8 mx-8">
-      <psa-menu></psa-menu>
-      <div class="divider"></div>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <psa-menu (navigate)="sidenav.close()"></psa-menu>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="h-dvh flex flex-col gap-4">
+      <psa-header [isMobile]="isMobile" (open)="sidenav.open()"></psa-header>
       <div class="w-full">
         <router-outlet></router-outlet>
       </div>
+      <ng-container [ngTemplateOutlet]="footer"></ng-container>
     </div>
-    <ng-container [ngTemplateOutlet]="footer"></ng-container>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+} @else {
+<div class="h-dvh flex flex-col gap-4">
+  <psa-header [isMobile]="isMobile"></psa-header>
+  <div class="flex flex-row flex-grow gap-8 mx-8">
+    <psa-menu></psa-menu>
+    <div class="divider"></div>
+    <div class="w-full">
+      <router-outlet></router-outlet>
+    </div>
   </div>
+  <ng-container [ngTemplateOutlet]="footer"></ng-container>
+</div>
 }
 
 <ng-template #footer>

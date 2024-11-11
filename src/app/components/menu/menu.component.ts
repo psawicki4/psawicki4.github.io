@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, output } from '@angular/core';
 import { MatListItem, MatNavList } from "@angular/material/list";
 import { RouterLink, RouterLinkActive } from "@angular/router";
 import { TranslatePipe } from "@ngx-translate/core";
@@ -18,5 +18,9 @@ import { TranslatePipe } from "@ngx-translate/core";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MenuComponent {
+  navigate = output();
 
+  onClick() {
+    this.navigate.emit();
+  }
 }

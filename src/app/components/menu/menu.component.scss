@@ -7,3 +7,9 @@
 .active {
   background-color: var.$background-9;
 }
+
+@media (max-width: 992px) {
+  .mdc-list-item:focus::before {
+    background: transparent;
+  }
+}
