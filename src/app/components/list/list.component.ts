@@ -8,18 +8,16 @@ import {
   output,
   viewChild
 } from '@angular/core';
-import {CardComponent} from "../card/card.component";
-import {filter, map, pairwise, Subscription, throttleTime} from "rxjs";
-import {CdkFixedSizeVirtualScroll, CdkVirtualForOf, CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
-import {NgClass, NgTemplateOutlet} from "@angular/common";
-import {ListItemTemplateDirective} from "./list-item-template.directive";
-import {MatRipple} from "@angular/material/core";
+import { filter, map, pairwise, Subscription, throttleTime } from "rxjs";
+import { CdkFixedSizeVirtualScroll, CdkVirtualForOf, CdkVirtualScrollViewport } from "@angular/cdk/scrolling";
+import { NgClass, NgTemplateOutlet } from "@angular/common";
+import { ListItemTemplateDirective } from "./list-item-template.directive";
+import { MatRipple } from "@angular/material/core";
 
 @Component({
   selector: 'psa-list',
   standalone: true,
   imports: [
-    CardComponent,
     CdkVirtualScrollViewport,
     CdkFixedSizeVirtualScroll,
     CdkVirtualForOf,
@@ -50,8 +48,8 @@ export class ListComponent implements AfterViewInit, OnDestroy {
       filter(([y1, y2]) => (y2 < y1 && y2 < this.itemHeight() * 2)),
       throttleTime(50)
     ).subscribe(() => {
-        this.fetchMore.emit();
-      }
+      this.fetchMore.emit();
+    }
     );
   }
 
