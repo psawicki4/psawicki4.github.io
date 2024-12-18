@@ -4,13 +4,15 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, effect, inject, 
 import { MatButton } from '@angular/material/button';
 import { TranslatePipe, TranslateService } from "@ngx-translate/core";
 import { AgGridAngular } from "ag-grid-angular";
-import { ColDef, GridApi, GridReadyEvent, GridState, StateUpdatedEvent } from 'ag-grid-community';
+import { AllCommunityModule, ColDef, colorSchemeDarkBlue, GridApi, GridReadyEvent, GridState, ModuleRegistry, StateUpdatedEvent, themeQuartz } from 'ag-grid-community';
 import { CardComponent } from "../../components/card/card.component";
 import { LangService } from "../../services/lang.service";
 import { CountriesStore } from "./countries.store";
 import { GridService } from "./grid.service";
 import { MatIcon } from '@angular/material/icon';
 import { finalize } from 'rxjs';
+
+ModuleRegistry.registerModules([AllCommunityModule])
 
 @Component({
   selector: 'psa-grid',
@@ -38,6 +40,7 @@ export class GridComponent {
   cd = inject(ChangeDetectorRef);
   outletRef = viewChild('outlet', { read: ViewContainerRef });
   contentRef = viewChild('content', { read: TemplateRef<any> });
+  theme = themeQuartz.withPart(colorSchemeDarkBlue);
   paginationPageSize = 12;
   paginationPageSizeSelector: number[] | boolean = [12, 25, 50];
   localeText: typeof AG_GRID_LOCALE_PL | typeof AG_GRID_LOCALE_EN = AG_GRID_LOCALE_PL;
