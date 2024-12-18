@@ -1,0 +1,1 @@
+import{ba as r,nb as o}from"./chunk-3QQVATQK.js";var s=(()=>{class t{constructor(){this.lang=o("pl")}static{this.\u0275fac=function(e){return new(e||t)}}static{this.\u0275prov=r({token:t,factory:t.\u0275fac,providedIn:"root"})}}return t})();export{s as a};
