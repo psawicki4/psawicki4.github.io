@@ -14,7 +14,6 @@ import { finalize } from 'rxjs';
 
 @Component({
   selector: 'psa-grid',
-  standalone: true,
   imports: [
     CardComponent,
     TranslatePipe,
@@ -41,7 +40,7 @@ export class GridComponent {
   contentRef = viewChild('content', { read: TemplateRef<any> });
   paginationPageSize = 12;
   paginationPageSizeSelector: number[] | boolean = [12, 25, 50];
-  localeText = AG_GRID_LOCALE_PL;
+  localeText: typeof AG_GRID_LOCALE_PL | typeof AG_GRID_LOCALE_EN = AG_GRID_LOCALE_PL;
   gridApi!: GridApi;
   initialState: GridState = {};
   portrait = window.matchMedia('(orientation: portrait)').matches;

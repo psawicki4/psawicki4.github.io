@@ -5,14 +5,13 @@ import {LangService} from "../../services/lang.service";
 import {DateAdapter} from "@angular/material/core";
 
 @Component({
-  selector: 'psa-lang-switch',
-  standalone: true,
-  imports: [
-    MatButton
-  ],
-  templateUrl: './lang-switch.component.html',
-  styleUrl: './lang-switch.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'psa-lang-switch',
+    imports: [
+        MatButton
+    ],
+    templateUrl: './lang-switch.component.html',
+    styleUrl: './lang-switch.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LangSwitchComponent implements OnInit {
 

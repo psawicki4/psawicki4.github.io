@@ -5,16 +5,15 @@ import { CardComponent } from "../../components/card/card.component";
 import { IsMobileService } from '../../services/is-mobile.service';
 
 @Component({
-  selector: 'psa-home',
-  standalone: true,
-  imports: [
-    CardComponent,
-    MatAnchor,
-    TranslatePipe
-  ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'psa-home',
+    imports: [
+        CardComponent,
+        MatAnchor,
+        TranslatePipe
+    ],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent {
 

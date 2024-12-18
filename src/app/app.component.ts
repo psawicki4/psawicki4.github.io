@@ -8,11 +8,10 @@ import {DateAdapter} from "@angular/material/core";
 import {IsMobileService} from "./services/is-mobile.service";
 
 @Component({
-  selector: 'psa-root',
-  standalone: true,
-  imports: [RouterOutlet, MenuComponent, MatSidenavContainer, MatSidenavContent, MatSidenav, NgTemplateOutlet, HeaderComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'psa-root',
+    imports: [RouterOutlet, MenuComponent, MatSidenavContainer, MatSidenavContent, MatSidenav, NgTemplateOutlet, HeaderComponent],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
   date = new Date();

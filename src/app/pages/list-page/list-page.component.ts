@@ -9,20 +9,19 @@ import { Room } from "./room.type";
 import { RoomsStore } from "./rooms.store";
 
 @Component({
-  selector: 'psa-list-page',
-  standalone: true,
-  imports: [
-    CardComponent,
-    ListComponent,
-    ListItemTemplateDirective,
-    TranslatePipe,
-    NgClass,
-    MatButton
-  ],
-  providers: [RoomsStore],
-  templateUrl: './list-page.component.html',
-  styleUrl: './list-page.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'psa-list-page',
+    imports: [
+        CardComponent,
+        ListComponent,
+        ListItemTemplateDirective,
+        TranslatePipe,
+        NgClass,
+        MatButton
+    ],
+    providers: [RoomsStore],
+    templateUrl: './list-page.component.html',
+    styleUrl: './list-page.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListPageComponent implements OnInit {
 

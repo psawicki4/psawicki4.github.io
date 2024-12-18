@@ -15,19 +15,18 @@ import { ListItemTemplateDirective } from "./list-item-template.directive";
 import { MatRipple } from "@angular/material/core";
 
 @Component({
-  selector: 'psa-list',
-  standalone: true,
-  imports: [
-    CdkVirtualScrollViewport,
-    CdkFixedSizeVirtualScroll,
-    CdkVirtualForOf,
-    NgClass,
-    NgTemplateOutlet,
-    MatRipple
-  ],
-  templateUrl: './list.component.html',
-  styleUrl: './list.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'psa-list',
+    imports: [
+      CdkVirtualScrollViewport,
+      CdkFixedSizeVirtualScroll,
+      CdkVirtualForOf,
+      NgClass,
+      NgTemplateOutlet,
+      MatRipple
+    ],
+    templateUrl: './list.component.html',
+    styleUrl: './list.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListComponent implements AfterViewInit, OnDestroy {
 

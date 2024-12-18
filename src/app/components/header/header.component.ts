@@ -8,19 +8,18 @@ import { ContactDialogComponent } from "../contact-dialog/contact-dialog.compone
 import { LangSwitchComponent } from "../lang-switch/lang-switch.component";
 
 @Component({
-  selector: 'psa-header',
-  standalone: true,
-  imports: [
-    LangSwitchComponent,
-    MatButton,
-    MatIcon,
-    MatIconButton,
-    MatToolbar,
-    TranslatePipe
-  ],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'psa-header',
+    imports: [
+        LangSwitchComponent,
+        MatButton,
+        MatIcon,
+        MatIconButton,
+        MatToolbar,
+        TranslatePipe
+    ],
+    templateUrl: './header.component.html',
+    styleUrl: './header.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {
 
