@@ -1,10 +1,7 @@
 @use "styles/custom-theme";
 @use "styles/variables" as var;
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@import 'normalize.css';
+@use "tailwindcss";
+@use "normalize.css";
 
 html {
   scrollbar-color: grey var.$background;
