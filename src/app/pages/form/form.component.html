@@ -67,7 +67,7 @@
                        formControlName="bred"
                        [matAutocomplete]="auto"
                        (input)="filterBred()"
-                       (focus)="filterBred()">
+                       (focus)="filterBred()"/>
                 <mat-autocomplete requireSelection #auto="matAutocomplete">
                   @for (option of filteredOptions; track option) {
                     <mat-option [value]="option">{{ option }}</mat-option>
