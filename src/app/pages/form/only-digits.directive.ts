@@ -1,4 +1,4 @@
-import {Directive, HostListener} from '@angular/core';
+import { Directive, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[psaOnlyDigits]',
@@ -20,7 +20,7 @@ export class OnlyDigitsDirective {
     let clipboardData = event.clipboardData;
     if (clipboardData) {
       const pastedText = clipboardData.getData('text');
-      const pattern =/^[0-9]+$/g;
+      const pattern = /^\d+$/g;
       if (!pattern.test(pastedText)) {
         event.preventDefault();
       }

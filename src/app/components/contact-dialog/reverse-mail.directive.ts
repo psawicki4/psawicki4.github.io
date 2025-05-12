@@ -1,4 +1,4 @@
-import {Directive, ElementRef, HostListener} from '@angular/core';
+import { Directive, ElementRef, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[reverseMail]',
@@ -6,7 +6,7 @@ import {Directive, ElementRef, HostListener} from '@angular/core';
 })
 export class ReverseMailDirective {
 
-  constructor(private el: ElementRef) {
+  constructor(private readonly el: ElementRef) {
   }
 
   @HostListener('copy', ['$event'])

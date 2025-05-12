@@ -156,7 +156,7 @@ export class FormComponent {
   }
 
   addToy(event: MatChipInputEvent): void {
-    const value = (event.value || '').trim();
+    const value = (event.value ?? '').trim();
     if (value) {
       this.toys.update(toys => [...toys, value]);
     }
@@ -186,7 +186,7 @@ export class FormComponent {
   }
 
   get cat() {
-    return this.form.get('cat') as FormGroup | null;
+    return this.form.controls['cat'];
   }
 
   get name() {

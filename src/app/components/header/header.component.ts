@@ -18,7 +18,6 @@ import { LangSwitchComponent } from "../lang-switch/lang-switch.component";
     TranslatePipe
   ],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {

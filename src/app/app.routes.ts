@@ -1,4 +1,4 @@
-import {Routes} from '@angular/router';
+import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
@@ -12,10 +12,6 @@ export const routes: Routes = [
   {
     path: 'list',
     loadComponent: () => import('./pages/list-page/list-page.component').then(mod => mod.ListPageComponent)
-  },
-  {
-    path: 'animations',
-    loadComponent: () => import('./pages/animations/animations.component').then(mod => mod.AnimationsComponent)
   },
   {
     path: 'grid',

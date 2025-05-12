@@ -39,7 +39,7 @@ export class GridComponent {
   store = inject(CountriesStore);
   cd = inject(ChangeDetectorRef);
   outletRef = viewChild('outlet', { read: ViewContainerRef });
-  contentRef = viewChild('content', { read: TemplateRef<any> });
+  contentRef = viewChild.required('content', { read: TemplateRef<any> });
   theme = themeQuartz.withPart(colorSchemeDarkBlue);
   paginationPageSize = 12;
   paginationPageSizeSelector: number[] | boolean = [12, 25, 50];
@@ -105,7 +105,7 @@ export class GridComponent {
       this.localeText = this.lang.lang() === 'pl' ? AG_GRID_LOCALE_PL : AG_GRID_LOCALE_EN;
       this.initialState = JSON.parse(localStorage.getItem('gridState') ?? '{}');
       this.outletRef()?.clear();
-      this.outletRef()?.createEmbeddedView(this.contentRef()!);
+      this.outletRef()?.createEmbeddedView(this.contentRef());
     });
   }
 
@@ -138,6 +138,6 @@ export class GridComponent {
     localStorage.removeItem('gridState');
     this.initialState = {};
     this.outletRef()?.clear();
-    this.outletRef()?.createEmbeddedView(this.contentRef()!);
+    this.outletRef()?.createEmbeddedView(this.contentRef());
   }
 }
