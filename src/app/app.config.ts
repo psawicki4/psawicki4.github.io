@@ -1,8 +1,5 @@
 import { HttpClient, provideHttpClient } from "@angular/common/http";
-import {
-  ApplicationConfig,
-  provideExperimentalZonelessChangeDetection
-} from '@angular/core';
+import {ApplicationConfig, provideZonelessChangeDetection} from '@angular/core';
 import { provideLuxonDateAdapter } from "@angular/material-luxon-adapter";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
@@ -18,7 +15,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideAnimationsAsync(),
-    provideExperimentalZonelessChangeDetection(),
+    provideZonelessChangeDetection(),
     provideHttpClient(),
     provideTranslateService({
       loader: {
