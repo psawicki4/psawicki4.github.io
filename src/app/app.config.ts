@@ -1,15 +1,12 @@
-import { HttpClient, provideHttpClient } from "@angular/common/http";
+import { provideHttpClient } from "@angular/common/http";
 import {ApplicationConfig, provideZonelessChangeDetection} from '@angular/core';
 import { provideLuxonDateAdapter } from "@angular/material-luxon-adapter";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
-import { provideTranslateService, TranslateLoader } from "@ngx-translate/core";
-import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import { provideTranslateService } from "@ngx-translate/core";
+import {provideTranslateHttpLoader} from '@ngx-translate/http-loader';
 import { routes } from './app.routes';
 
-export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,12 +15,8 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideHttpClient(),
     provideTranslateService({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient],
-      },
-      defaultLanguage: 'pl'
+      loader: provideTranslateHttpLoader({prefix:"./assets/i18n/", suffix:".json"}),
+      fallbackLang: 'pl'
     }),
     provideLuxonDateAdapter({
       parse: {

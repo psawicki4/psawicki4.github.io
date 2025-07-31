@@ -28,7 +28,7 @@ export class LangSwitchComponent implements OnInit {
     if (langCode !== 'pl' && langCode !== 'en') {
       langCode = 'pl';
     }
-    this.translate.setDefaultLang(langCode);
+    this.translate.setFallbackLang(langCode);
     this.translate.use(langCode);
     this.langService.lang.set(langCode);
     this.setLocale();
