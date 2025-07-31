@@ -1,1 +1,0 @@
-import{ba as r,va as i}from"./chunk-6QZFDAGR.js";var f=(()=>{let t=class t{constructor(){this.lang=i("pl")}};t.\u0275fac=function(n){return new(n||t)},t.\u0275prov=r({token:t,factory:t.\u0275fac,providedIn:"root"});let o=t;return o})();export{f as a};

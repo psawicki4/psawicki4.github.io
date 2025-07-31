@@ -4,7 +4,7 @@
     "hello": "Cześć,",
     "my-name-is": "nazywam się",
     "my-webpage": "i to jest moja strona w formie technologicznego demo.",
-    "repository": "Cały kod aplikacji jest dostępny publicznie pod adresem:",
+    "repository": "Cały kod aplikacji jest dostępny pod adresem:",
     "tools": "Do zbudowania strony wykorzystałem:",
     "including": "w tym Signals, Standalone i Zone-less"
   },
@@ -60,7 +60,7 @@
     "component-desc": "Implementacja listy, która łączy w sobie dwa rozwiązania: \"Nieskończoność\", czyli ciągłe dokładanie kolejnych elementów do źródła danych listy oraz \"wirtualność\", czyli dynamiczne dodawanie i usuwanie elementów listy z struktury dokumentu. Dzięki temu nawet największe listy szybko się ładują i pozostają responsywne.",
     "hello": "Witamy w nieskończonym hotelu.<br> Prosimy wybrać pokój:",
     "room-number": "Pokój numer",
-    "room-nr": "Pokój nr.",
+    "room-nr": "Pokój nr",
     "reservation": "rezerwacja",
     "selected-room": "Wybrany pokój:",
     "cancel": "Anuluj",
