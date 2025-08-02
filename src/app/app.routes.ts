@@ -17,4 +17,8 @@ export const routes: Routes = [
     path: 'grid',
     loadComponent: () => import('./pages/grid/grid.component').then(mod => mod.GridComponent)
   },
+  {
+    path: 'model-3d',
+    loadComponent: () => import('./pages/model-3d/model-3d.component').then(mod => mod.Model3DComponent)
+  }
 ];

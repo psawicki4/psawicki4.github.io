@@ -13,7 +13,8 @@
     "form": "Form",
     "list": "List",
     "animations": "Animations",
-    "grid": "Grid"
+    "grid": "Grid",
+    "model-3d": "3D Model"
   },
   "CONTACT": {
     "contact": "Contact",
