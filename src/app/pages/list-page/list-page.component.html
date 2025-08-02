@@ -19,7 +19,7 @@
           </ng-template>
         </psa-list>
       </div>
-      <div class="flex flex-col gap-8 w-48">
+      <div class="flex flex-col gap-8 w-72">
         <p>{{ 'LIST.selected-room' | translate }}</p>
         @if (store.selectedRoom().roomNumber > 0) {
         <p>{{ 'LIST.room-nr' | translate }} {{ store.selectedRoom().roomNumber }}</p>
@@ -34,7 +34,7 @@
         </span>
         }
       </div>
-      <div>
+      <div class="w-72">
         <p class="mb-4">{{ 'LIST.your-reservations' | translate }}</p>
         @for (room of store.bookedRooms(); track room.roomNumber) {
         <p>{{ 'LIST.room-nr' | translate }} {{ room.roomNumber }}</p>
