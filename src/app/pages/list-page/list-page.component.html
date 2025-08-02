@@ -1,43 +1,43 @@
-<psa-card class="h-full">
+<psa-card>
   <h1 class="text-2xl mb-4">{{ 'LIST.header' | translate }}</h1>
-  <div class="flex flex-col gap-4">
+  <div class="flex flex-col gap-4 items-center">
     <p>{{ 'LIST.component-desc' | translate }}</p>
     <div class="divider"></div>
-    <p class="ml-2 text-lg" [innerHTML]="'LIST.hello' | translate"></p>
-    <div class="flex flex-col sm:flex-row gap-8">
+    <p class="text-lg">{{ 'LIST.hello' | translate }}</p>
+    <div class="flex flex-col sm:flex-row gap-16">
       <div class="psa-list">
-        <psa-list [data]="store.rooms().data" [itemHeight]="88"
-                  (fetchMore)="fetchMoreRooms()" (selected)="selectRoom($event)">
+        <psa-list [data]="store.rooms().data" [itemHeight]="88" (fetchMore)="fetchMoreRooms()"
+          (selected)="selectRoom($event)">
           <ng-template listItemTemplate let-dataItem>
             <span class="flex flex-row justify-between items-center">
-              <p
-                [ngClass]="dataItem.roomNumber === 666 ? 'hell' : ''">{{ 'LIST.room-number' | translate }} {{ dataItem.roomNumber }}</p>
+              <p [ngClass]="dataItem.roomNumber === 666 ? 'hell' : ''">{{ 'LIST.room-number' | translate }} {{
+                dataItem.roomNumber }}</p>
               @if (dataItem.booked) {
-                <p class="booked">{{ 'LIST.reservation' | translate }}</p>
+              <p class="booked">{{ 'LIST.reservation' | translate }}</p>
               }
             </span>
           </ng-template>
         </psa-list>
       </div>
-      <div class="flex flex-col gap-8 w-48">
+      <div class="flex flex-col gap-8 w-72">
         <p>{{ 'LIST.selected-room' | translate }}</p>
         @if (store.selectedRoom().roomNumber > 0) {
-          <p>{{ 'LIST.room-nr' | translate }} {{ store.selectedRoom().roomNumber }}</p>
-          <span class="flex flex-row gap-4">
-            @if (!store.rooms().data[store.selectedRoom().roomNumber - 1].booked) {
-              <button mat-button (click)="cancel()">{{ 'LIST.cancel' | translate }}</button>
-              <button mat-button (click)="book()">{{ 'LIST.reserve' | translate }}</button>
-            } @else {
-              <button mat-button (click)="cancel()">{{ 'LIST.cancel' | translate }}</button>
-              <button mat-button (click)="deleteReservation()">{{ 'LIST.delete-reservation' | translate }}</button>
-            }
+        <p>{{ 'LIST.room-nr' | translate }} {{ store.selectedRoom().roomNumber }}</p>
+        <span class="flex flex-row gap-4">
+          @if (!store.rooms().data[store.selectedRoom().roomNumber - 1].booked) {
+          <button mat-button (click)="cancel()">{{ 'LIST.cancel' | translate }}</button>
+          <button mat-button (click)="book()">{{ 'LIST.reserve' | translate }}</button>
+          } @else {
+          <button mat-button (click)="cancel()">{{ 'LIST.cancel' | translate }}</button>
+          <button mat-button (click)="deleteReservation()">{{ 'LIST.delete-reservation' | translate }}</button>
+          }
         </span>
         }
       </div>
-      <div>
+      <div class="w-72">
         <p class="mb-4">{{ 'LIST.your-reservations' | translate }}</p>
         @for (room of store.bookedRooms(); track room.roomNumber) {
-          <p>{{ 'LIST.room-nr' | translate }} {{ room.roomNumber }}</p>
+        <p>{{ 'LIST.room-nr' | translate }} {{ room.roomNumber }}</p>
         }
       </div>
     </div>

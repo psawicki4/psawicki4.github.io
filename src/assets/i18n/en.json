@@ -59,7 +59,7 @@
   "LIST": {
     "header": "Infinite virtual list",
     "component-desc": "A list implementation that combines two solutions: \"infinity\", i.e. constantly adding more elements to the list data source, and \"virtuality\", i.e. dynamically adding and removing list elements from the document structure. This allows even the largest lists to load quickly and remain responsive.",
-    "hello": "Welcome to the infinite hotel.<br> Please select a room:",
+    "hello": "Welcome to the infinite hotel. Please select a room:",
     "room-number": "Room no.",
     "room-nr": "Room no.",
     "reservation": "reservation",

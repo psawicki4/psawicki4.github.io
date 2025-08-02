@@ -59,7 +59,7 @@
   "LIST": {
     "header": "Nieskończona wirtualna lista",
     "component-desc": "Implementacja listy, która łączy w sobie dwa rozwiązania: \"Nieskończoność\", czyli ciągłe dokładanie kolejnych elementów do źródła danych listy oraz \"wirtualność\", czyli dynamiczne dodawanie i usuwanie elementów listy z struktury dokumentu. Dzięki temu nawet największe listy szybko się ładują i pozostają responsywne.",
-    "hello": "Witamy w nieskończonym hotelu.<br> Prosimy wybrać pokój:",
+    "hello": "Witamy w nieskończonym hotelu. Prosimy wybrać pokój:",
     "room-number": "Pokój numer",
     "room-nr": "Pokój nr",
     "reservation": "rezerwacja",

@@ -41,8 +41,8 @@ export class GridComponent {
   outletRef = viewChild('outlet', { read: ViewContainerRef });
   contentRef = viewChild.required('content', { read: TemplateRef<any> });
   theme = themeQuartz.withPart(colorSchemeDarkBlue);
-  paginationPageSize = 12;
-  paginationPageSizeSelector: number[] | boolean = [12, 25, 50];
+  paginationPageSize = 10;
+  paginationPageSizeSelector: number[] | boolean = [10, 25, 50];
   localeText: typeof AG_GRID_LOCALE_PL | typeof AG_GRID_LOCALE_EN = AG_GRID_LOCALE_PL;
   gridApi!: GridApi;
   initialState: GridState = {};

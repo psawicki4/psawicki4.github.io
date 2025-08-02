@@ -7,8 +7,7 @@
 }
 
 .footer {
-  margin-top: auto;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
   text-align: center;
   font-size: 8px;
 }
@@ -21,6 +20,7 @@ mat-sidenav {
   background-color: transparent;
 }
 
-.mat-toolbar-row, .mat-toolbar-single-row {
+.mat-toolbar-row,
+.mat-toolbar-single-row {
   padding: 1rem 2rem 0;
 }
