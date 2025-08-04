@@ -25,11 +25,11 @@
         <p>{{ 'LIST.room-nr' | translate }} {{ store.selectedRoom().roomNumber }}</p>
         <span class="flex flex-row gap-4">
           @if (!store.rooms().data[store.selectedRoom().roomNumber - 1].booked) {
-          <button mat-button (click)="cancel()">{{ 'LIST.cancel' | translate }}</button>
-          <button mat-button (click)="book()">{{ 'LIST.reserve' | translate }}</button>
+          <button matButton (click)="cancel()">{{ 'LIST.cancel' | translate }}</button>
+          <button matButton (click)="book()">{{ 'LIST.reserve' | translate }}</button>
           } @else {
-          <button mat-button (click)="cancel()">{{ 'LIST.cancel' | translate }}</button>
-          <button mat-button (click)="deleteReservation()">{{ 'LIST.delete-reservation' | translate }}</button>
+          <button matButton (click)="cancel()">{{ 'LIST.cancel' | translate }}</button>
+          <button matButton (click)="deleteReservation()">{{ 'LIST.delete-reservation' | translate }}</button>
           }
         </span>
         }
