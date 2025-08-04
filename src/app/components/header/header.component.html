@@ -1,17 +1,17 @@
 @if (isMobile()) {
 <mat-toolbar color="primary">
   <span class="flex flex-row justify-between gap-8 w-full pt-2">
-    <button mat-icon-button (click)="onClick()" aria-label="menu">
+    <button matIconButton (click)="onClick()" aria-label="menu">
       <mat-icon>menu</mat-icon>
     </button>
-    <button mat-stroked-button (click)="openContactDialog()">{{ 'contact' | translate }}</button>
+    <button matButton="outlined" (click)="openContactDialog()">{{ 'contact' | translate }}</button>
     <psa-lang-switch></psa-lang-switch>
   </span>
 </mat-toolbar>
 } @else {
 <mat-toolbar color="primary">
   <span class="flex flex-row justify-end gap-8 w-full px-4 pt-2">
-    <button mat-stroked-button (click)="openContactDialog()">{{ 'contact' | translate }}</button>
+    <button matButton="outlined" (click)="openContactDialog()">{{ 'contact' | translate }}</button>
     <psa-lang-switch></psa-lang-switch>
   </span>
 </mat-toolbar>

@@ -1,34 +1,13 @@
-@use '../../node_modules/@angular/material/index' as mat;
+@use '@angular/material' as mat;
 @use "variables" as var;
 
-@include mat.core();
-
-$custom-theme: mat.define-theme((
-  color: (
-    theme-type: dark,
-    primary: mat.$cyan-palette,
-  ),
-  typography: (
-    brand-family: "Open Sans",
-    plain-family: "Open Sans",
-  )
-));
-
 html {
-  @include mat.core-theme($custom-theme);
-  @include mat.button-theme($custom-theme);
-  @include mat.list-theme($custom-theme);
-  @include mat.sidenav-theme($custom-theme);
-  @include mat.dialog-theme($custom-theme);
-  @include mat.radio-theme($custom-theme);
-  @include mat.snack-bar-theme($custom-theme);
-  @include mat.input-theme($custom-theme);
-  @include mat.form-field-theme($custom-theme);
-  @include mat.datepicker-theme($custom-theme);
-  @include mat.checkbox-theme($custom-theme);
-  @include mat.autocomplete-theme($custom-theme);
-  @include mat.slider-theme($custom-theme);
-  @include mat.chips-theme($custom-theme);
+  color-scheme: dark;
+  @include mat.theme((color: mat.$cyan-palette,
+      typography: (brand-family: "Open Sans",
+        plain-family: "Open Sans",
+      ),
+      density: 0));
   --mat-dialog-supporting-text-color: var.$text-color;
   --mat-dialog-supporting-text-size: 1rem;
   --mat-dialog-with-actions-content-padding: 0 2rem;
@@ -46,5 +25,3 @@ html {
     --mat-snack-bar-button-color: #ffffff;
   }
 }
-
-

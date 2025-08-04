@@ -9,8 +9,8 @@
     } @else {
     <p>{{ 'GRID.component-desc' | translate }}</p>
     <span class="self-end flex flex-row gap-4">
-      <button mat-button (click)="resetState()">{{ 'GRID.reset-state' | translate }}</button>
-      <button mat-button (click)="export()">{{ 'GRID.csv-export' | translate }}</button>
+      <button matButton (click)="resetState()">{{ 'GRID.reset-state' | translate }}</button>
+      <button matButton (click)="export()">{{ 'GRID.csv-export' | translate }}</button>
     </span>
     <ng-container #outlet>
     </ng-container>
