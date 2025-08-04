@@ -74,7 +74,7 @@ export class Model3DComponent implements OnDestroy {
     this.threeRenderer.setAnimationLoop(() => this.animate());
   }
 
-  loadModel(name: string = 'butterfly') {
+  loadModel(name: string = 'stylized_ww1_plane') {
     if (this.model) {
       this.scene.remove(this.model);
     }
