@@ -85,9 +85,13 @@
   },
   "MODEL_3D": {
     "header": "Model 3D",
-    "component-desc": "Implementacja modelu 3D z użyciem biblioteki Three.js. Możliwość obracania modelu oraz zmiany jego oświetlenia.",
-    "bird": "Ptaszek",
+    "component-desc": "Interaktywna przeglądarka modeli 3D zbudowana z użyciem biblioteki Three.js. Funkcje obejmują ładowanie różnych modeli GLB, automatyczną rotację modelu, regulowaną intensywność oświetlenia, sterowanie kamerą myszką (orbit controls) oraz obsługę animacji modeli.",
+    "butterfly": "Motyl",
+    "butterfly__credits": "\"BUTTERFLY\" (https://skfb.ly/oGZZW) by Rukh3D is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
     "plane": "Samolot",
-    "turtle": "Żółw"
+    "plane__credits": "\"Stylized WW1 Plane\" (https://skfb.ly/6ZFnM) by AntijnvanderGun is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
+    "turtle": "Żółw",
+    "turtle__credits": "\"Model 72B - Juvenile Green Sea Turtle\" (https://skfb.ly/6UPIR) by DigitalLife3D is licensed under Creative Commons Attribution-NonCommercial (http://creativecommons.org/licenses/by-nc/4.0/).",
+    "rotation": "Rotacja"
   }
 }

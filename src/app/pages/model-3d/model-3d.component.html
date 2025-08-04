@@ -1,10 +1,24 @@
 <psa-card class="h-full">
   <h1 class="text-2xl mb-4">{{ 'MODEL_3D.header' | translate }}</h1>
   <p class="mb-4">{{ 'MODEL_3D.component-desc' | translate }}</p>
-  <div class="flex flex-row gap-8">
-    <button mat-button (click)="loadModel('bird_orange')">{{ 'MODEL_3D.bird' | translate }}</button>
-    <button mat-button (click)="loadModel('sea_turtle')">{{ 'MODEL_3D.turtle' | translate }}</button>
-    <button mat-button (click)="loadModel('stylized_ww1_plane')">{{ 'MODEL_3D.plane' | translate }}</button>
+  <div class="flex flex-col md:flex-row gap-32 justify-center items-center">
+    <div class="flex flex-row gap-4 items-center">
+      <button matButton="outlined" (click)="loadModel('butterfly')">{{ 'MODEL_3D.butterfly' | translate }}</button>
+      <button matButton="outlined" (click)="loadModel('stylized_ww1_plane')">{{ 'MODEL_3D.plane' |
+        translate}}</button>
+      <button matButton="outlined" (click)="loadModel('sea_turtle')">{{ 'MODEL_3D.turtle' | translate }}</button>
+    </div>
+    <div class="flex flex-row gap-8 items-center">
+      <mat-slide-toggle checked="true" labelPosition="before" (change)="toggleRotation($event)">{{ 'MODEL_3D.rotation' |
+        translate }}</mat-slide-toggle>
+      <div class="flex flex-col w-72">
+        <p>Oświetlenie</p>
+        <mat-slider min="0" max="10" step="0.1">
+          <input matSliderThumb value="5" (input)="changeLightIntensity($event)">
+        </mat-slider>
+      </div>
+    </div>
   </div>
   <div #canvas class="canvas"></div>
+  <p class="text-center text-xs">{{credits}}</p>
 </psa-card>

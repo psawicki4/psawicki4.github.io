@@ -85,6 +85,10 @@
   },
   "MODEL_3D": {
     "header": "3D Model",
-    "component-desc": "3D model implementation using the Three.js library. Ability to rotate the model and change its lighting."
+    "component-desc": "Interactive 3D model viewer built with Three.js library. Features include loading different GLB models, automatic model rotation, adjustable lighting intensity, mouse-controlled camera orbit controls, and support for model animations.",
+    "butterfly": "Butterfly",
+    "plane": "Plane",
+    "turtle": "Turtle",
+    "rotation": "Rotation"
   }
 }
