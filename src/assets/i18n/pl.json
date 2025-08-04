@@ -82,5 +82,12 @@
     "csv-export": "Eksport do pliku CSV",
     "reset-state": "Reset stanu",
     "landscape": "Przełącz na tryb poziomy"
+  },
+  "MODEL_3D": {
+    "header": "Model 3D",
+    "component-desc": "Implementacja modelu 3D z użyciem biblioteki Three.js. Możliwość obracania modelu oraz zmiany jego oświetlenia.",
+    "bird": "Ptaszek",
+    "plane": "Samolot",
+    "turtle": "Żółw"
   }
 }

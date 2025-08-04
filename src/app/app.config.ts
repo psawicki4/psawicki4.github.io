@@ -1,5 +1,5 @@
 import { provideHttpClient } from "@angular/common/http";
-import {ApplicationConfig, provideZonelessChangeDetection} from '@angular/core';
+import {ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection} from '@angular/core';
 import { provideLuxonDateAdapter } from "@angular/material-luxon-adapter";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
@@ -13,6 +13,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimationsAsync(),
     provideZonelessChangeDetection(),
+    provideBrowserGlobalErrorListeners(),
     provideHttpClient(),
     provideTranslateService({
       loader: provideTranslateHttpLoader({prefix:"./assets/i18n/", suffix:".json"}),

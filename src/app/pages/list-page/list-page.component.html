@@ -1,10 +1,9 @@
 <psa-card>
   <h1 class="text-2xl mb-4">{{ 'LIST.header' | translate }}</h1>
   <div class="flex flex-col gap-4 items-center">
-    <p>{{ 'LIST.component-desc' | translate }}</p>
-    <div class="divider"></div>
+    <p class="mb-4">{{ 'LIST.component-desc' | translate }}</p>
     <p class="text-lg">{{ 'LIST.hello' | translate }}</p>
-    <div class="flex flex-col sm:flex-row gap-16">
+    <div class="flex flex-col md:flex-row gap-16">
       <div class="psa-list">
         <psa-list [data]="store.rooms().data" [itemHeight]="88" (fetchMore)="fetchMoreRooms()"
           (selected)="selectRoom($event)">

@@ -82,5 +82,9 @@
     "csv-export": "Export to CSV",
     "reset-state": "Reset state",
     "landscape": "Switch to landscape mode"
+  },
+  "MODEL_3D": {
+    "header": "3D Model",
+    "component-desc": "3D model implementation using the Three.js library. Ability to rotate the model and change its lighting."
   }
 }

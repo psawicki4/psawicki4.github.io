@@ -1,3 +1,10 @@
-<div class="three-container">
-    <div #threeCanvas class="three-canvas"></div>
-</div>
+<psa-card class="h-full">
+  <h1 class="text-2xl mb-4">{{ 'MODEL_3D.header' | translate }}</h1>
+  <p class="mb-4">{{ 'MODEL_3D.component-desc' | translate }}</p>
+  <div class="flex flex-row gap-8">
+    <button mat-button (click)="loadModel('bird_orange')">{{ 'MODEL_3D.bird' | translate }}</button>
+    <button mat-button (click)="loadModel('sea_turtle')">{{ 'MODEL_3D.turtle' | translate }}</button>
+    <button mat-button (click)="loadModel('stylized_ww1_plane')">{{ 'MODEL_3D.plane' | translate }}</button>
+  </div>
+  <div #canvas class="canvas"></div>
+</psa-card>

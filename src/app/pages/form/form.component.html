@@ -1,12 +1,12 @@
 <psa-card>
   <h1 class="text-2xl mb-4">{{ 'FORM.header' | translate }}</h1>
   @if (isMobile) {
-    <p class="mb-8">{{ 'FORM.component-desc-mobile' | translate }}</p>
+  <p class="mb-8">{{ 'FORM.component-desc-mobile' | translate }}</p>
   } @else {
-    <p class="mb-8">{{ 'FORM.component-desc-desktop' | translate }}</p>
+  <p class="mb-8">{{ 'FORM.component-desc-desktop' | translate }}</p>
   }
-  <div class="w-full flex flex-col sm:flex-row gap-8">
-    <div class="flex flex-col items-center sm:w-1/2">
+  <div class="w-full flex flex-col md:flex-row gap-8">
+    <div class="flex flex-col items-center md:w-1/2">
       <form [formGroup]="form" class="flex flex-col gap-4 items-center">
         <p>{{ 'FORM.dog-or-cat' | translate }}</p>
         <mat-radio-group formControlName="petType">
@@ -14,124 +14,114 @@
           <mat-radio-button value="cat" class="ml-8">{{ 'FORM.cat' | translate }}</mat-radio-button>
         </mat-radio-group>
         @if (cat) {
-          <ng-container formGroupName="cat">
-            <mat-form-field class="w-80">
-              <mat-label>{{ 'FORM.name' | translate }}</mat-label>
-              <input matInput formControlName="name">
-              @if (name?.hasError('required')) {
-                <mat-error>{{ 'FORM.required-field' | translate }}</mat-error>
-              }
-            </mat-form-field>
-            <div class="relative">
-              <mat-form-field class="w-80">
-                <mat-label>{{ 'FORM.birthday' | translate }}</mat-label>
-                <input matInput [matDatepicker]="picker" [max]="maxDate" placeholder="YYYY-MM-DD"
-                       formControlName="birthday">
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker startView="multi-year"></mat-datepicker>
-                @if (cat.get('birthday')?.hasError('matDatepickerParse')) {
-                  <mat-error>{{ 'FORM.invalid-date-format' | translate }}</mat-error>
-                }
-              </mat-form-field>
-              @if (cat.hasError('invalidAge')) {
-                <mat-error class="absolute -bottom-1 text-xs">{{ 'FORM.invalid-age' | translate }}</mat-error>
-              }
-            </div>
-            <mat-form-field class="w-80 mb-4">
-              <mat-label>{{ 'FORM.age' | translate }}</mat-label>
-              <input matInput type="number" class="number" psaOnlyDigits formControlName="age">
-              <mat-hint>{{ 'FORM.age-hint' | translate }}</mat-hint>
-              @if (age?.hasError('required')) {
-                <mat-error>{{ 'FORM.required-field' | translate }}</mat-error>
-              } @else if (age?.hasError('min') || age?.hasError('max')) {
-                <mat-error>{{ 'FORM.age-error-real' | translate }}</mat-error>
-              }
-            </mat-form-field>
-            <mat-form-field class="w-80">
-              <mat-label>{{ 'FORM.description' | translate }}</mat-label>
-              <textarea matInput cdkTextareaAutosize maxlength="200" formControlName="description"></textarea>
-              <mat-hint align="end">{{ descriptionVal?.length }}/200</mat-hint>
-            </mat-form-field>
-            <mat-checkbox labelPosition="before" class="self-end"
-                          formControlName="sterilized">{{ 'FORM.sterilized' | translate }}
-            </mat-checkbox>
-            <mat-checkbox labelPosition="before" class="self-end"
-                          formControlName="purebred">{{ 'FORM.purebred' | translate }}
-            </mat-checkbox>
-            @if (cat.get('purebred')?.value === true) {
-              <mat-form-field class="w-80">
-                <mat-label>{{ 'FORM.breed' | translate }}</mat-label>
-                <input #bred
-                       type="text"
-                       matInput
-                       formControlName="bred"
-                       [matAutocomplete]="auto"
-                       (input)="filterBred()"
-                       (focus)="filterBred()"/>
-                <mat-autocomplete requireSelection #auto="matAutocomplete">
-                  @for (option of filteredOptions; track option) {
-                    <mat-option [value]="option">{{ option }}</mat-option>
-                  }
-                </mat-autocomplete>
-                @if (cat.get('bred')?.hasError('required')) {
-                  <mat-error>{{ 'FORM.required-field' | translate }}</mat-error>
-                }
-              </mat-form-field>
+        <ng-container formGroupName="cat">
+          <mat-form-field class="w-80">
+            <mat-label>{{ 'FORM.name' | translate }}</mat-label>
+            <input matInput formControlName="name">
+            @if (name?.hasError('required')) {
+            <mat-error>{{ 'FORM.required-field' | translate }}</mat-error>
             }
+          </mat-form-field>
+          <div class="relative">
             <mat-form-field class="w-80">
-              <mat-label>{{ 'FORM.favourite-toys' | translate }}</mat-label>
-              <mat-chip-grid #chipGrid formControlName="toys">
-                @for (toy of toys(); track toy) {
-                  <mat-chip-row (removed)="removeToy(toy)">
-                    {{ toy }}
-                    <button matChipRemove>
-                      <mat-icon fontIcon="cancel"></mat-icon>
-                    </button>
-                  </mat-chip-row>
-                }
-              </mat-chip-grid>
-              <input
-                placeholder="{{ 'FORM.new-toy' | translate }}"
-                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                [matChipInputFor]="chipGrid"
-                (matChipInputTokenEnd)="addToy($event)"
-                [matChipInputAddOnBlur]="true"
-              />
-              @if (isMobile) {
-                <mat-hint>{{ 'FORM.toys-hint-mobile' | translate }}</mat-hint>
-              } @else {
-                <mat-hint>{{ 'FORM.toys-hint' | translate }}</mat-hint>
+              <mat-label>{{ 'FORM.birthday' | translate }}</mat-label>
+              <input matInput [matDatepicker]="picker" [max]="maxDate" placeholder="YYYY-MM-DD"
+                formControlName="birthday">
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker startView="multi-year"></mat-datepicker>
+              @if (cat.get('birthday')?.hasError('matDatepickerParse')) {
+              <mat-error>{{ 'FORM.invalid-date-format' | translate }}</mat-error>
               }
             </mat-form-field>
-            <div class="flex flex-col gap-4 w-80 relative">
-              <mat-label>{{ 'FORM.beauty' | translate }}</mat-label>
-              <mat-slider min="0" max="10" step="1" discrete>
-                <input matSliderThumb formControlName="beauty">
-              </mat-slider>
-              @if (beauty?.hasError('min')) {
-                <mat-error class="absolute -bottom-2 text-xs">{{ 'FORM.beauty-error' | translate }}</mat-error>
+            @if (cat.hasError('invalidAge')) {
+            <mat-error class="absolute -bottom-1 text-xs">{{ 'FORM.invalid-age' | translate }}</mat-error>
+            }
+          </div>
+          <mat-form-field class="w-80 mb-4">
+            <mat-label>{{ 'FORM.age' | translate }}</mat-label>
+            <input matInput type="number" class="number" psaOnlyDigits formControlName="age">
+            <mat-hint>{{ 'FORM.age-hint' | translate }}</mat-hint>
+            @if (age?.hasError('required')) {
+            <mat-error>{{ 'FORM.required-field' | translate }}</mat-error>
+            } @else if (age?.hasError('min') || age?.hasError('max')) {
+            <mat-error>{{ 'FORM.age-error-real' | translate }}</mat-error>
+            }
+          </mat-form-field>
+          <mat-form-field class="w-80">
+            <mat-label>{{ 'FORM.description' | translate }}</mat-label>
+            <textarea matInput cdkTextareaAutosize maxlength="200" formControlName="description"></textarea>
+            <mat-hint align="end">{{ descriptionVal?.length }}/200</mat-hint>
+          </mat-form-field>
+          <mat-checkbox labelPosition="before" class="self-end" formControlName="sterilized">{{ 'FORM.sterilized' |
+            translate }}
+          </mat-checkbox>
+          <mat-checkbox labelPosition="before" class="self-end" formControlName="purebred">{{ 'FORM.purebred' |
+            translate }}
+          </mat-checkbox>
+          @if (cat.get('purebred')?.value === true) {
+          <mat-form-field class="w-80">
+            <mat-label>{{ 'FORM.breed' | translate }}</mat-label>
+            <input #bred type="text" matInput formControlName="bred" [matAutocomplete]="auto" (input)="filterBred()"
+              (focus)="filterBred()" />
+            <mat-autocomplete requireSelection #auto="matAutocomplete">
+              @for (option of filteredOptions; track option) {
+              <mat-option [value]="option">{{ option }}</mat-option>
               }
-            </div>
-            <div class="flex flex-col gap-4 w-80">
-              <mat-label>{{ 'FORM.malice' | translate }}</mat-label>
-              <mat-slider min="0" max="10" step="1" discrete>
-                <input matSliderThumb formControlName="malice">
-              </mat-slider>
-            </div>
-            <span class="w-full flex flex-row justify-end gap-4">
-              <button mat-button type="button" (click)="reset()">{{ 'FORM.reset' | translate }}</button>
-              <button mat-button type="button" (click)="check()">{{ 'FORM.check' | translate }}</button>
-            </span>
-          </ng-container>
+            </mat-autocomplete>
+            @if (cat.get('bred')?.hasError('required')) {
+            <mat-error>{{ 'FORM.required-field' | translate }}</mat-error>
+            }
+          </mat-form-field>
+          }
+          <mat-form-field class="w-80">
+            <mat-label>{{ 'FORM.favourite-toys' | translate }}</mat-label>
+            <mat-chip-grid #chipGrid formControlName="toys">
+              @for (toy of toys(); track toy) {
+              <mat-chip-row (removed)="removeToy(toy)">
+                {{ toy }}
+                <button matChipRemove>
+                  <mat-icon fontIcon="cancel"></mat-icon>
+                </button>
+              </mat-chip-row>
+              }
+            </mat-chip-grid>
+            <input placeholder="{{ 'FORM.new-toy' | translate }}" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              [matChipInputFor]="chipGrid" (matChipInputTokenEnd)="addToy($event)" [matChipInputAddOnBlur]="true" />
+            @if (isMobile) {
+            <mat-hint>{{ 'FORM.toys-hint-mobile' | translate }}</mat-hint>
+            } @else {
+            <mat-hint>{{ 'FORM.toys-hint' | translate }}</mat-hint>
+            }
+          </mat-form-field>
+          <div class="flex flex-col gap-4 w-80 relative">
+            <mat-label>{{ 'FORM.beauty' | translate }}</mat-label>
+            <mat-slider min="0" max="10" step="1" discrete>
+              <input matSliderThumb formControlName="beauty">
+            </mat-slider>
+            @if (beauty?.hasError('min')) {
+            <mat-error class="absolute -bottom-2 text-xs">{{ 'FORM.beauty-error' | translate }}</mat-error>
+            }
+          </div>
+          <div class="flex flex-col gap-4 w-80">
+            <mat-label>{{ 'FORM.malice' | translate }}</mat-label>
+            <mat-slider min="0" max="10" step="1" discrete>
+              <input matSliderThumb formControlName="malice">
+            </mat-slider>
+          </div>
+          <span class="w-full flex flex-row justify-end gap-4">
+            <button mat-button type="button" (click)="reset()">{{ 'FORM.reset' | translate }}</button>
+            <button mat-button type="button" (click)="check()">{{ 'FORM.check' | translate }}</button>
+          </span>
+        </ng-container>
 
         }
       </form>
     </div>
     @if (!isMobile) {
-      <div class="divider"></div>
+    <div class="divider"></div>
     }
-    <div class="flex flex-col gap-8 sm:ml-8 sm:w-1/2">
-      <p class="text-center sm:text-left">{{ 'FORM.form-model' | translate }}</p>
+    <div class="flex flex-col gap-8 sm:ml-8 md:w-1/2">
+      <p class="text-center md:text-left">{{ 'FORM.form-model' | translate }}</p>
       <pre class="whitespace-pre-wrap">
       {{ form.getRawValue() | json }}
     </pre>
