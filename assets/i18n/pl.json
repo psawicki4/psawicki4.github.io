@@ -13,7 +13,8 @@
     "form": "Formularz",
     "list": "Lista",
     "animations": "Animacje",
-    "grid": "Tabela"
+    "grid": "Tabela",
+    "model-3d": "Model 3D"
   },
   "CONTACT": {
     "contact": "Kontakt",
@@ -81,5 +82,16 @@
     "csv-export": "Eksport do pliku CSV",
     "reset-state": "Reset stanu",
     "landscape": "Przełącz na tryb poziomy"
+  },
+  "MODEL_3D": {
+    "header": "Model 3D",
+    "component-desc": "Interaktywna przeglądarka modeli 3D zbudowana z użyciem biblioteki Three.js. Funkcje obejmują ładowanie różnych modeli GLB, automatyczną rotację modelu, regulowaną intensywność oświetlenia, sterowanie kamerą myszką (orbit controls) oraz obsługę animacji modeli.",
+    "butterfly": "Motyl",
+    "butterfly__credits": "\"BUTTERFLY\" (https://skfb.ly/oGZZW) by Rukh3D is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
+    "plane": "Samolot",
+    "plane__credits": "\"Stylized WW1 Plane\" (https://skfb.ly/6ZFnM) by AntijnvanderGun is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
+    "turtle": "Żółw",
+    "turtle__credits": "\"Model 72B - Juvenile Green Sea Turtle\" (https://skfb.ly/6UPIR) by DigitalLife3D is licensed under Creative Commons Attribution-NonCommercial (http://creativecommons.org/licenses/by-nc/4.0/).",
+    "rotation": "Rotacja"
   }
 }

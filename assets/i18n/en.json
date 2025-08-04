@@ -13,7 +13,8 @@
     "form": "Form",
     "list": "List",
     "animations": "Animations",
-    "grid": "Grid"
+    "grid": "Grid",
+    "model-3d": "3D Model"
   },
   "CONTACT": {
     "contact": "Contact",
@@ -81,5 +82,13 @@
     "csv-export": "Export to CSV",
     "reset-state": "Reset state",
     "landscape": "Switch to landscape mode"
+  },
+  "MODEL_3D": {
+    "header": "3D Model",
+    "component-desc": "Interactive 3D model viewer built with Three.js library. Features include loading different GLB models, automatic model rotation, adjustable lighting intensity, mouse-controlled camera orbit controls, and support for model animations.",
+    "butterfly": "Butterfly",
+    "plane": "Plane",
+    "turtle": "Turtle",
+    "rotation": "Rotation"
   }
 }
