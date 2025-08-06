@@ -12,13 +12,14 @@
       <mat-slide-toggle checked="true" labelPosition="before" (change)="toggleRotation($event)">{{ 'MODEL_3D.rotation' |
         translate }}</mat-slide-toggle>
       <div class="flex flex-col w-72">
-        <p>Oświetlenie</p>
+        <p>{{ 'MODEL_3D.lighting' | translate }}</p>
         <mat-slider min="0" max="10" step="0.1">
           <input matSliderThumb value="5" (input)="changeLightIntensity($event)">
         </mat-slider>
       </div>
     </div>
   </div>
-  <div #canvas class="canvas"></div>
-  <p class="text-center text-xs italic">{{credits}}</p>
+  <div #canvas class="canvas relative">
+    <p class="absolute bottom-0 w-full text-center text-xs italic">{{credits}}</p>
+  </div>
 </psa-card>

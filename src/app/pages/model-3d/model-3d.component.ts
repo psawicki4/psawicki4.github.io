@@ -39,6 +39,7 @@ export class Model3DComponent implements OnDestroy {
   mixer?: THREE.AnimationMixer; // Mixer do zarządzania animacjami
   clock = new THREE.Clock(); // Zegar do śledzenia czasu
   loader = new GLTFLoader();
+  loading = false;
   rotationSpeed = 0.01;
   credits: string = '';
 
@@ -75,6 +76,10 @@ export class Model3DComponent implements OnDestroy {
   }
 
   loadModel(name: string = 'stylized_ww1_plane') {
+    if (this.loading) {
+      return;
+    }
+    this.loading = true;
     if (this.model) {
       this.scene.remove(this.model);
     }
@@ -91,21 +96,18 @@ export class Model3DComponent implements OnDestroy {
       case "sea_turtle":
         this.credits = this.translate.instant('MODEL_3D.turtle__credits');
         break;
-      default:
-        this.credits = '';
-        scalar = 1;
     }
     this.loader.load(`assets/models/${name}.glb`, (gltf) => {
       this.model = gltf.scene;
       this.model.scale.setScalar(scalar);
 
       // Włącz cienie dla wszystkich obiektów w modelu
-      this.model.traverse((child) => {
-        if (child instanceof THREE.Mesh) {
-          child.castShadow = true;
-          child.receiveShadow = true;
-        }
-      });
+      // this.model.traverse((child) => {
+      //   if (child instanceof THREE.Mesh) {
+      //     child.castShadow = true;
+      //     child.receiveShadow = true;
+      //   }
+      // });
 
       this.scene.add(this.model);
 
@@ -113,6 +115,7 @@ export class Model3DComponent implements OnDestroy {
         this.mixer = new THREE.AnimationMixer(this.model);
         this.mixer.clipAction(gltf.animations[0]).play();
       }
+      this.loading = false;
     });
   }
 
