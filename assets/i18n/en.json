@@ -86,8 +86,8 @@
   "MODEL_3D": {
     "header": "3D Model",
     "component-desc": "Interactive 3D model viewer built with Three.js library. Features include loading different GLB models, automatic model rotation, adjustable lighting intensity, mouse-controlled camera orbit controls, and support for model animations.",
-    "butterfly": "Butterfly",
-    "butterfly__credits": "\"BUTTERFLY\" (https://skfb.ly/oGZZW) by Rukh3D is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
+    "hover_bike": "Sci-fi",
+    "hover_bike__credits": "\"Hover bike - \"The Rocket\"\" (https://skfb.ly/6RvML) by TuppsM is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
     "plane": "Plane",
     "plane__credits": "\"Stylized WW1 Plane\" (https://skfb.ly/6ZFnM) by AntijnvanderGun is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
     "turtle": "Turtle",
