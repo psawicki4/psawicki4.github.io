@@ -3,16 +3,18 @@
   <p class="mb-4">{{ 'MODEL_3D.component-desc' | translate }}</p>
   <div class="flex flex-col md:flex-row gap-8 md:gap-32 justify-center items-center">
     <div class="flex flex-row gap-4 items-center">
-      <button matButton="outlined" (click)="loadModel('hover_bike')">{{ 'MODEL_3D.hover_bike' | translate }}</button>
-      <button matButton="outlined" (click)="loadModel('stylized_ww1_plane')">{{ 'MODEL_3D.plane' |
+      <button matButton="outlined" class="text-nowrap" (click)="loadModel('hover_bike')">{{ 'MODEL_3D.hover_bike' |
+        translate }}</button>
+      <button matButton="outlined" class="text-nowrap" (click)="loadModel('stylized_ww1_plane')">{{ 'MODEL_3D.plane' |
         translate}}</button>
-      <button matButton="outlined" (click)="loadModel('sea_turtle')">{{ 'MODEL_3D.turtle' | translate }}</button>
+      <button matButton="outlined" class="text-nowrap" (click)="loadModel('sea_turtle')">{{ 'MODEL_3D.turtle' |
+        translate }}</button>
     </div>
-    <div class="flex flex-col md:flex-row gap-8 items-center">
+    <div class="flex flex-col md:flex-row md:gap-8 gap-4 items-center">
       <mat-slide-toggle checked="true" labelPosition="before" (change)="toggleRotation($event)">{{ 'MODEL_3D.rotation' |
         translate }}</mat-slide-toggle>
       <div class="flex flex-col w-72">
-        <p>{{ 'MODEL_3D.lighting' | translate }}</p>
+        <p class="text-sm">{{ 'MODEL_3D.lighting' | translate }}</p>
         <mat-slider min="0" max="10" step="0.1">
           <input matSliderThumb value="5" (input)="changeLightIntensity($event)">
         </mat-slider>
