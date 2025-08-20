@@ -40,6 +40,7 @@ export class Model3DComponent implements OnDestroy {
   loader = new GLTFLoader();
   loading = false;
   rotationSpeed = 0.01;
+  modelAnimationEnabled = true;
   credits: string = '';
 
   constructor() {
@@ -101,6 +102,7 @@ export class Model3DComponent implements OnDestroy {
       if (gltf.animations?.length) {
         this.mixer = new THREE.AnimationMixer(this.model);
         this.mixer.clipAction(gltf.animations[0]).play();
+        this.mixer.timeScale = this.modelAnimationEnabled ? 1 : 0;
       }
       this.loading = false;
     });
@@ -113,8 +115,8 @@ export class Model3DComponent implements OnDestroy {
   }
 
   animate() {
+    const delta = this.clock.getDelta();
     if (this.mixer) {
-      const delta = this.clock.getDelta();
       this.mixer.update(delta);
     }
     if (this.model) {
@@ -130,5 +132,12 @@ export class Model3DComponent implements OnDestroy {
   changeLightIntensity(e: Event) {
     const value = (e.target as HTMLInputElement).valueAsNumber;
     this.directionalLight.intensity = value;
+  }
+
+  toggleModelAnimation(e: MatSlideToggleChange) {
+    this.modelAnimationEnabled = e.checked;
+    if (this.mixer) {
+      this.mixer.timeScale = e.checked ? 1 : 0;
+    }
   }
 }
