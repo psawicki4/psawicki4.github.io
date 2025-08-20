@@ -35,6 +35,11 @@ export class Model3DComponent implements OnDestroy {
   });
   controls = new OrbitControls(this.camera, this.threeRenderer.domElement);
   model?: THREE.Group;
+  modelScalars = new Map<string, number>([
+    ['hover_bike', 0.0045],
+    ['stylized_ww1_plane', 2],
+    ['sea_turtle', 1]
+    ]);
   mixer?: THREE.AnimationMixer;
   clock = new THREE.Clock();
   loader = new GLTFLoader();
@@ -79,22 +84,11 @@ export class Model3DComponent implements OnDestroy {
     if (this.model) {
       this.scene.remove(this.model);
     }
-    let scalar = 1;
-    switch (name) {
-      case 'hover_bike':
-        this.credits = this.translate.instant('MODEL_3D.hover_bike__credits');
-        scalar = 0.0045;
-        break;
-      case 'stylized_ww1_plane':
-        this.credits = this.translate.instant('MODEL_3D.plane__credits');
-        scalar = 2;
-        break;
-      case "sea_turtle":
-        this.credits = this.translate.instant('MODEL_3D.turtle__credits');
-        break;
-    }
+    this.credits = this.translate.instant(`MODEL_3D.${name}__credits`);
     this.loader.load(`assets/models/${name}.glb`, (gltf) => {
       this.model = gltf.scene;
+      
+      const scalar = this.modelScalars.get(name) || 1;
       this.model.scale.setScalar(scalar);
 
       this.scene.add(this.model);

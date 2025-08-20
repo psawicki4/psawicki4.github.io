@@ -88,7 +88,7 @@
   },
   "MODEL_3D": {
     "header": "Model 3D",
-    "component-desc": "Interaktywna przeglądarka modeli 3D zbudowana z użyciem biblioteki Three.js. Funkcje obejmują ładowanie różnych modeli GLB, automatyczną rotację modelu, regulowaną intensywność oświetlenia, sterowanie kamerą myszką (orbit controls) oraz obsługę animacji modeli.",
+    "component-desc": "Interaktywna przeglądarka modeli 3D zbudowana z użyciem biblioteki Three.js. Funkcje obejmują ładowanie różnych modeli GLB, automatyczną rotację modelu, regulowaną intensywność oświetlenia, sterowanie kamerą (orbit controls) oraz obsługę animacji modeli.",
     "hover_bike": "Sci-fi",
     "hover_bike__credits": "\"Hover bike - \"The Rocket\"\" (https://skfb.ly/6RvML) by TuppsM is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
     "plane": "Samolot",

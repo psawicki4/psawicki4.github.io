@@ -88,7 +88,7 @@
   },
   "MODEL_3D": {
     "header": "3D Model",
-    "component-desc": "Interactive 3D model viewer built with Three.js library. Features include loading different GLB models, automatic model rotation, adjustable lighting intensity, mouse-controlled camera orbit controls, and support for model animations.",
+    "component-desc": "Interactive 3D model viewer built with Three.js library. Features include loading different GLB models, automatic model rotation, adjustable lighting intensity, controlling the camera (orbit controls), and support for model animations.",
     "hover_bike": "Sci-fi",
     "hover_bike__credits": "\"Hover bike - \"The Rocket\"\" (https://skfb.ly/6RvML) by TuppsM is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
     "plane": "Plane",
