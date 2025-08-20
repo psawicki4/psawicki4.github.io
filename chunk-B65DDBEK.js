@@ -1,1 +1,0 @@
-import{ba as e,wa as r}from"./chunk-H4RCJ3ML.js";var l=(()=>{let t=class t{constructor(){this.lang=r("pl")}};t.\u0275fac=function(n){return new(n||t)},t.\u0275prov=e({token:t,factory:t.\u0275fac,providedIn:"root"});let o=t;return o})();export{l as a};
