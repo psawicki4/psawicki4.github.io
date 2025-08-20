@@ -9,19 +9,19 @@ import { Room } from "./room.type";
 import { RoomsStore } from "./rooms.store";
 
 @Component({
-    selector: 'psa-list-page',
-    imports: [
-        CardComponent,
-        ListComponent,
-        ListItemTemplateDirective,
-        TranslatePipe,
-        NgClass,
-        MatButton
-    ],
-    providers: [RoomsStore],
-    templateUrl: './list-page.component.html',
-    styleUrl: './list-page.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'psa-list-page',
+  imports: [
+    CardComponent,
+    ListComponent,
+    ListItemTemplateDirective,
+    TranslatePipe,
+    NgClass,
+    MatButton
+  ],
+  providers: [RoomsStore],
+  templateUrl: './list-page.component.html',
+  styleUrl: './list-page.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListPageComponent implements OnInit {
 
@@ -30,7 +30,7 @@ export class ListPageComponent implements OnInit {
   allRooms = Array.from({ length: 10000 }, (value, index): Room => ({
     roomNumber: index + 1,
     booked: false
-  }));
+  })).filter(i => i.roomNumber !== 404);
 
   ngOnInit(): void {
     this.getFirstRooms();

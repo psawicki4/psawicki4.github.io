@@ -5,7 +5,7 @@
     <p class="text-lg">{{ 'LIST.hello' | translate }}</p>
     <div class="flex flex-col md:flex-row gap-16">
       <div class="psa-list">
-        <psa-list [data]="store.rooms().data" [itemHeight]="88" (fetchMore)="fetchMoreRooms()"
+        <psa-list [data]="store.rooms().data" [itemHeight]="72" (fetchMore)="fetchMoreRooms()"
           (selected)="selectRoom($event)">
           <ng-template listItemTemplate let-dataItem>
             <span class="flex flex-row justify-between items-center">
