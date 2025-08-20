@@ -9,3 +9,9 @@
   background-color: color.adjust(var.$background-9, $alpha: -0.8);
   backdrop-filter: blur(10px);
 }
+
+@media only screen and (max-width: 767px) {
+  :host {
+    padding: 24px;
+  }
+}
