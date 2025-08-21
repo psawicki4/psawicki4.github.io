@@ -4,7 +4,7 @@
     "hello": "Hello,",
     "my-name-is": "my name is",
     "my-webpage": "and this is my website in the form of a technology demo.",
-    "repository": "The entire application code is available at:",
+    "repository": "The full application code is available at:",
     "tools": "To build this site, I used:",
     "including": "including Signals, Standalone and Zone-less",
     "grid": "Grid",
@@ -21,7 +21,7 @@
   },
   "CONTACT": {
     "contact": "Contact",
-    "content": "Feel free to write to me at email:",
+    "content": "You can reach me at:",
     "close": "Close"
   },
   "FORM": {
