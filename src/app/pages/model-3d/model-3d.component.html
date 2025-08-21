@@ -3,11 +3,12 @@
   <p class="mb-4">{{ 'MODEL_3D.component-desc' | translate }}</p>
   <div class="flex flex-col md:flex-row gap-8 md:gap-32 justify-center items-center">
     <div class="flex flex-row gap-4 items-center">
-      <button matButton="outlined" class="text-nowrap" (click)="loadModel('stylized_ww1_plane')">{{ 'MODEL_3D.plane' |
+      <button matButton="outlined" class="text-nowrap" (click)="loadModel('stylized_ww1_plane')">{{
+        'MODEL_3D.stylized_ww1_plane' |
         translate}}</button>
       <button matButton="outlined" class="text-nowrap" (click)="loadModel('hover_bike')">{{ 'MODEL_3D.hover_bike' |
         translate }}</button>
-      <button matButton="outlined" class="text-nowrap" (click)="loadModel('sea_turtle')">{{ 'MODEL_3D.turtle' |
+      <button matButton="outlined" class="text-nowrap" (click)="loadModel('sea_turtle')">{{ 'MODEL_3D.sea_turtle' |
         translate }}</button>
     </div>
     <div class="flex flex-col md:flex-row md:gap-8 gap-4 items-center">
@@ -24,6 +25,6 @@
     </div>
   </div>
   <div #canvas class="canvas relative">
-    <p class="absolute bottom-0 w-full text-center text-xs italic">{{credits}}</p>
+    <p class="absolute bottom-0 w-full text-center text-xs italic">{{credits()}}</p>
   </div>
 </psa-card>
