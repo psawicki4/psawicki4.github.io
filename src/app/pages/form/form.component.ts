@@ -21,45 +21,46 @@ import { Subject, takeUntil } from "rxjs";
 import { CardComponent } from "../../components/card/card.component";
 import { IsMobileService } from "../../services/is-mobile.service";
 import { ageBirthdayValidator } from "./age-birthday-validator";
-import { DemoForm } from "./form.type";
+import { CatOption, DemoForm } from "./form.type";
 import { OnlyDigitsDirective } from "./only-digits.directive";
+import { LangService } from "../../services/lang.service";
 
 @Component({
-    selector: 'psa-form',
-    imports: [
-        CardComponent,
-        ReactiveFormsModule,
-        MatRadioGroup,
-        MatRadioButton,
-        MatFormField,
-        MatInput,
-        MatLabel,
-        MatHint,
-        MatError,
-        JsonPipe,
-        MatDatepickerInput,
-        MatDatepickerToggle,
-        MatDatepicker,
-        MatSuffix,
-        MatCheckbox,
-        MatButton,
-        MatAutocomplete,
-        MatOption,
-        MatAutocompleteTrigger,
-        CdkTextareaAutosize,
-        OnlyDigitsDirective,
-        MatSlider,
-        MatSliderThumb,
-        MatChipGrid,
-        MatChipRow,
-        MatIcon,
-        MatChipInput,
-        MatChipRemove,
-        TranslatePipe,
-    ],
-    templateUrl: './form.component.html',
-    styleUrl: './form.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'psa-form',
+  imports: [
+    CardComponent,
+    ReactiveFormsModule,
+    MatRadioGroup,
+    MatRadioButton,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    MatHint,
+    MatError,
+    JsonPipe,
+    MatDatepickerInput,
+    MatDatepickerToggle,
+    MatDatepicker,
+    MatSuffix,
+    MatCheckbox,
+    MatButton,
+    MatAutocomplete,
+    MatOption,
+    MatAutocompleteTrigger,
+    CdkTextareaAutosize,
+    OnlyDigitsDirective,
+    MatSlider,
+    MatSliderThumb,
+    MatChipGrid,
+    MatChipRow,
+    MatIcon,
+    MatChipInput,
+    MatChipRemove,
+    TranslatePipe,
+  ],
+  templateUrl: './form.component.html',
+  styleUrl: './form.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormComponent {
 
@@ -67,18 +68,22 @@ export class FormComponent {
   snackBar = inject(MatSnackBar);
   translate = inject(TranslateService);
   isMobileService = inject(IsMobileService);
+  langService = inject(LangService);
   destroy$ = new Subject<void>();
   maxDate = new Date();
-  //todo: przetłumaczyć jakoś
-  options: string[] = ['Kot sfinks', ' Kot syberyjski', 'Kot norweski leśny', 'Kot bengalski', 'Kot syjamski', 'Ragdoll',
-    'Kot rosyjski niebieski', 'Kot perski', 'Maine Coon', 'Kot brytyjski', 'inny'];
-  filteredOptions: string[];
+  options: CatOption[] = [{ namePl: 'Kot Sfinks', nameEN: 'Sphynx Cat', id: 'kot_sfinks' }, { namePl: 'Kot Syberyjski', nameEN: 'Siberian Cat', id: 'kot_syberyjski' },
+  { namePl: 'Kot Norweski Leśny', nameEN: 'Norwegian Forest Cat', id: 'kot_norweski_lesny' }, { namePl: 'Kot Bengalski', nameEN: 'Bengal Cat', id: 'kot_bengalski' },
+  { namePl: 'Kot Syjamski', nameEN: 'Siamese Cat', id: 'kot_syjamski' }, { namePl: 'Ragdoll', nameEN: 'Ragdoll Cat', id: 'ragdoll' },
+  { namePl: 'Kot Rosyjski Niebieski', nameEN: 'Russian Blue Cat', id: 'kot_rosyjski_niebieski' }, { namePl: 'Kot Perski', nameEN: 'Persian Cat', id: 'kot_perski' },
+  { namePl: 'Maine Coon', nameEN: 'Maine Coon Cat', id: 'maine_coon' }, { namePl: 'Kot Brytyjski', nameEN: 'British Shorthair Cat', id: 'kot_brytyjski' },
+  { namePl: 'Inny', nameEN: 'Other', id: 'inny' }];
+  filteredOptions: CatOption[] = [];
   toys = signal<string[]>([]);
   separatorKeysCodes = [ENTER, COMMA];
   bredInput = viewChild<ElementRef>('bred');
 
   form = new FormGroup<DemoForm>({
-    petType: new FormControl('', {nonNullable: true})
+    petType: new FormControl('', { nonNullable: true })
   });
 
   constructor() {
@@ -98,16 +103,16 @@ export class FormComponent {
 
   private addCatForm() {
     this.form.addControl('cat', this.fb.group({
-        name: ['', Validators.required],
-        age: [null, [Validators.required, Validators.min(0), Validators.max(99)]],
-        birthday: [null],
-        description: ['', Validators.maxLength(200)],
-        sterilized: [false, Validators.required],
-        purebred: [false, Validators.required],
-        toys: [[]],
-        beauty: [5, Validators.min(5)],
-        malice: [0],
-      }, {validators: [ageBirthdayValidator()]}
+      name: ['', Validators.required],
+      age: [null, [Validators.required, Validators.min(0), Validators.max(99)]],
+      birthday: [null],
+      description: ['', Validators.maxLength(200)],
+      sterilized: [false, Validators.required],
+      purebred: [false, Validators.required],
+      toys: [[]],
+      beauty: [5, Validators.min(5)],
+      malice: [0],
+    }, { validators: [ageBirthdayValidator()] }
     ));
     this.cat?.get('purebred')?.events.pipe(takeUntil(this.destroy$)).subscribe(e => {
       if (e instanceof ValueChangeEvent && e.value === true) {
@@ -140,9 +145,14 @@ export class FormComponent {
 
   filterBred() {
     const filterValue = this.bredInput()?.nativeElement.value.toLowerCase();
-    this.filteredOptions = this.options.filter(o => o.toLowerCase().includes(filterValue));
+    console.log(filterValue);
+    this.filteredOptions = this.options.filter(o => o.namePl.toLocaleLowerCase().includes(filterValue) || o.nameEN.toLocaleLowerCase().includes(filterValue));
   }
 
+  displayFn(id: string): string {
+    const catOption = this.options.find(o => o.id === id);
+    return catOption ? (this.langService.lang() === 'pl' ? catOption.namePl : catOption.nameEN) : '';
+  }
 
   removeToy(toy: string) {
     this.toys.update(toys => {
@@ -153,12 +163,14 @@ export class FormComponent {
       toys.splice(index, 1);
       return [...toys];
     });
+    this.cat?.get('toys')?.setValue(this.toys());
   }
 
   addToy(event: MatChipInputEvent): void {
     const value = (event.value ?? '').trim();
     if (value) {
       this.toys.update(toys => [...toys, value]);
+      this.cat?.get('toys')?.setValue(this.toys());
     }
     event.chipInput!.clear();
   }
@@ -171,17 +183,17 @@ export class FormComponent {
   check() {
     this.form.markAllAsTouched();
     if (this.form.valid) {
-      this.snackBar.open(this.translate.instant('FORM.valid-form', {value: this.name?.value}),
+      this.snackBar.open(this.translate.instant('FORM.valid-form', { value: this.name?.value }),
         this.translate.instant('FORM.ok'), {
-          duration: 5000,
-          panelClass: 'success-snackbar'
-        });
+        duration: 5000,
+        panelClass: 'success-snackbar'
+      });
     } else {
-      this.snackBar.open(this.translate.instant('FORM.invalid-form', {value: this.name?.value}),
+      this.snackBar.open(this.translate.instant('FORM.invalid-form', { value: this.name?.value }),
         this.translate.instant('FORM.ok'), {
-          duration: 5000,
-          panelClass: 'error-snackbar'
-        });
+        duration: 5000,
+        panelClass: 'error-snackbar'
+      });
     }
   }
 

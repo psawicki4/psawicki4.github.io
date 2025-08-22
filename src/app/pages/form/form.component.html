@@ -50,7 +50,7 @@
           <mat-form-field class="w-80">
             <mat-label>{{ 'FORM.description' | translate }}</mat-label>
             <textarea matInput cdkTextareaAutosize maxlength="200" formControlName="description"></textarea>
-            <mat-hint align="end">{{ descriptionVal?.length }}/200</mat-hint>
+            <mat-hint [align]="'end'">{{ descriptionVal?.length }}/200</mat-hint>
           </mat-form-field>
           <mat-checkbox labelPosition="before" class="self-end" formControlName="sterilized">{{ 'FORM.sterilized' |
             translate }}
@@ -63,9 +63,10 @@
             <mat-label>{{ 'FORM.breed' | translate }}</mat-label>
             <input #bred type="text" matInput formControlName="bred" [matAutocomplete]="auto" (input)="filterBred()"
               (focus)="filterBred()" />
-            <mat-autocomplete requireSelection #auto="matAutocomplete">
+            <mat-autocomplete requireSelection #auto="matAutocomplete" [displayWith]="displayFn.bind(this)">
               @for (option of filteredOptions; track option) {
-              <mat-option [value]="option">{{ option }}</mat-option>
+              <mat-option [value]="option.id">{{ langService.lang() === 'pl' ? option.namePl : option.nameEN
+                }}</mat-option>
               }
             </mat-autocomplete>
             @if (cat.get('bred')?.hasError('required')) {

@@ -6,6 +6,7 @@ input.number::-webkit-inner-spin-button {
 }
 
 input.number {
+  appearance: textfield;
   -moz-appearance: textfield;
 }
 

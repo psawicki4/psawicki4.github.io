@@ -10,7 +10,7 @@ export class OnlyDigitsDirective {
   onKeyPress(event: KeyboardEvent) {
     const newKey = event.key;
 
-    if (newKey == '-' || newKey == '+' || newKey == 'e' || newKey == '.' || newKey == ',') {
+    if (isNaN(parseInt(newKey))) {
       event.preventDefault();
     }
   }

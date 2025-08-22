@@ -4,3 +4,9 @@ export type DemoForm = {
   petType: FormControl<string>,
   cat?: FormGroup
 }
+
+export type CatOption = {
+  namePl: string,
+  nameEN: string,
+  id: string
+};
