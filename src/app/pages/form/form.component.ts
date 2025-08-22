@@ -151,7 +151,10 @@ export class FormComponent {
 
   displayFn(id: string): string {
     const catOption = this.options.find(o => o.id === id);
-    return catOption ? (this.langService.lang() === 'pl' ? catOption.namePl : catOption.nameEN) : '';
+    if (!catOption) {
+      return '';
+    }
+    return this.langService.lang() === 'pl' ? catOption.namePl : catOption.nameEN;
   }
 
   removeToy(toy: string) {
