@@ -24,6 +24,7 @@ import { ageBirthdayValidator } from "./age-birthday-validator";
 import { CatOption, DemoForm } from "./form.type";
 import { OnlyDigitsDirective } from "./only-digits.directive";
 import { LangService } from "../../services/lang.service";
+import { MatDialog, MatDialogModule } from "@angular/material/dialog";
 
 @Component({
   selector: 'psa-form',
@@ -69,6 +70,7 @@ export class FormComponent {
   translate = inject(TranslateService);
   isMobileService = inject(IsMobileService);
   langService = inject(LangService);
+  dialog = inject(MatDialog);
   destroy$ = new Subject<void>();
   maxDate = new Date();
   options: CatOption[] = [{ namePl: 'Kot Sfinks', nameEN: 'Sphynx Cat', id: 'kot_sfinks' }, { namePl: 'Kot Syberyjski', nameEN: 'Siberian Cat', id: 'kot_syberyjski' },
@@ -91,9 +93,10 @@ export class FormComponent {
     this.destroy$.pipe(takeUntilDestroyed());
     this.form.get('petType')?.events.pipe(takeUntilDestroyed()).subscribe(e => {
       if (e instanceof ValueChangeEvent && e.value === 'dog') {
-        this.snackBar.open(this.translate.instant('FORM.choose-cat'), this.translate.instant('FORM.choose-cat__btn'), {
-          duration: 5000
-        });
+        // this.snackBar.open(this.translate.instant('FORM.choose-cat'), this.translate.instant('FORM.choose-cat__btn'), {
+        //   duration: 5000
+        // });
+        this.dialog.open(DogDialog);
         this.removeCatForm();
       } else if (e instanceof ValueChangeEvent && e.value === 'cat') {
         this.addCatForm();
@@ -225,3 +228,11 @@ export class FormComponent {
   }
 
 }
+
+@Component({
+  selector: 'dog-dialog',
+  templateUrl: 'dog-dialog.html',
+  imports: [MatDialogModule, MatButton, TranslatePipe],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class DogDialog { }

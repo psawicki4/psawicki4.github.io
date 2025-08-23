@@ -28,7 +28,7 @@
     "header": "Demo formularza",
     "component-desc-desktop": "Dynamiczny formularz zbudowany z różnorodnych komponentów Angular Material. Po prawej stronie znajduje się podgląd na żywo modelu formularza.",
     "component-desc-mobile": "Dynamiczny formularz zbudowany z różnorodnych komponentów Angular Material. Na dole strony znajduje się podgląd na żywo modelu formularza.",
-    "dog-or-cat": "Pies czy kot?",
+    "dog-or-cat": "Kot czy pies?",
     "dog": "pies",
     "cat": "kot",
     "name": "Imię",

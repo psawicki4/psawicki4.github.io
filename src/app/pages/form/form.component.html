@@ -10,8 +10,8 @@
       <form [formGroup]="form" class="flex flex-col gap-4 items-center">
         <p>{{ 'FORM.dog-or-cat' | translate }}</p>
         <mat-radio-group formControlName="petType">
-          <mat-radio-button value="dog">{{ 'FORM.dog' | translate }}</mat-radio-button>
-          <mat-radio-button value="cat" class="ml-8">{{ 'FORM.cat' | translate }}</mat-radio-button>
+          <mat-radio-button value="cat">{{ 'FORM.cat' | translate }}</mat-radio-button>
+          <mat-radio-button class="ml-8" value="dog">{{ 'FORM.dog' | translate }}</mat-radio-button>
         </mat-radio-group>
         @if (cat) {
         <ng-container formGroupName="cat">

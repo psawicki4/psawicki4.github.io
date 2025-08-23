@@ -8,22 +8,23 @@ html {
         plain-family: "Open Sans",
       ),
       density: 0));
-  --mat-dialog-supporting-text-color: var.$text-color;
-  --mat-dialog-supporting-text-size: 1rem;
-  --mat-dialog-with-actions-content-padding: 0 2rem;
-  --mat-dialog-headline-padding: 0.5rem 2rem 1rem;
-  --mat-toolbar-container-background-color: none;
-  --mat-toolbar-title-text-size: 16px;
+
+  @include mat.dialog-overrides((container-color: var.$background-7,
+      supporting-text-size: 1rem,
+      with-actions-content-padding: 0 24px 1px));
+
+  @include mat.toolbar-overrides((container-background-color: none));
+
+  @include mat.snack-bar-overrides((supporting-text-color: #ffffff,
+      button-color: #ffffff));
 
   .success-snackbar {
-    --mat-snackbar-supporting-text-color: #ffffff;
-    --mat-snackbar-container-color: #198754;
-    --mat-snack-bar-button-color: #ffffff;
+    @include mat.snack-bar-overrides((container-color: #198754,
+      ));
   }
 
   .error-snackbar {
-    --mat-snackbar-supporting-text-color: #ffffff;
-    --mat-snackbar-container-color: #dc3545;
-    --mat-snack-bar-button-color: #ffffff;
+    @include mat.snack-bar-overrides((container-color: #dc3545,
+      ));
   }
 }
