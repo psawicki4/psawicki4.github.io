@@ -40,7 +40,7 @@ export class Model3DComponent implements OnDestroy {
     ['hover_bike', 0.0045],
     ['stylized_ww1_plane', 2],
     ['sea_turtle', 1]
-    ]);
+  ]);
   mixer?: THREE.AnimationMixer;
   clock = new THREE.Clock();
   loader = new GLTFLoader();
@@ -74,7 +74,9 @@ export class Model3DComponent implements OnDestroy {
     this.directionalLight.position.set(5, 5, 5);
 
     this.loadModel();
-    this.camera.position.z = 5;
+    this.camera.position.set(2, 2, 4);
+    this.camera.lookAt(0, 0, 0);
+    //this.camera.position.set(0, 0, 5);
     this.threeRenderer.setAnimationLoop(() => this.animate());
   }
 
@@ -89,7 +91,7 @@ export class Model3DComponent implements OnDestroy {
     this.credits.set(this.translate.instant(`MODEL_3D.${name}__credits`));
     this.loader.load(`assets/models/${name}.glb`, (gltf) => {
       this.model = gltf.scene;
-      
+
       const scalar = this.modelScalars.get(name) || 1;
       this.model.scale.setScalar(scalar);
 
