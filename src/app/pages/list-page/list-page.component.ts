@@ -39,7 +39,7 @@ export class ListPageComponent implements OnInit {
   getFirstRooms() {
     this.skip = 0;
     const firstRooms = this.allRooms.slice(this.skip, this.skip + 50);
-    this.store.setRooms({ total: 10000, data: firstRooms });
+    this.store.setRooms({ total: 9999, data: firstRooms });
   }
 
   fetchMoreRooms() {
@@ -63,14 +63,21 @@ export class ListPageComponent implements OnInit {
 
   book() {
     const updatedRooms = { ...this.store.rooms() };
-    updatedRooms.data[this.store.selectedRoom().roomNumber - 1].booked = true;
+    console.log(this.store.selectedRoom().roomNumber);
+    const index = updatedRooms.data.findIndex(r => r.roomNumber === this.store.selectedRoom().roomNumber);
+    if (index !== -1) {
+      updatedRooms.data[index].booked = true;
+    }
     this.store.setRooms(updatedRooms);
     this.cancel();
   }
 
   deleteReservation() {
     const updatedRooms = { ...this.store.rooms() };
-    updatedRooms.data[this.store.selectedRoom().roomNumber - 1].booked = false;
+    const index = updatedRooms.data.findIndex(r => r.roomNumber === this.store.selectedRoom().roomNumber);
+    if (index !== -1) {
+      updatedRooms.data[index].booked = false;
+    }
     this.store.setRooms(updatedRooms);
     this.cancel();
   }
