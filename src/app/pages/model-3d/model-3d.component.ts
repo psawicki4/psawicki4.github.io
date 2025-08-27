@@ -62,7 +62,7 @@ export class Model3DComponent implements OnDestroy {
     this.mixer?.stopAllAction();
   }
 
-  private initThree(container: HTMLDivElement) {
+  initThree(container: HTMLDivElement) {
     container.appendChild(this.threeRenderer.domElement);
 
     const width = container.clientWidth;
