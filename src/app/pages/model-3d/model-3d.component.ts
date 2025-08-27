@@ -76,7 +76,6 @@ export class Model3DComponent implements OnDestroy {
     this.loadModel();
     this.camera.position.set(2, 2, 4);
     this.camera.lookAt(0, 0, 0);
-    //this.camera.position.set(0, 0, 5);
     this.threeRenderer.setAnimationLoop(() => this.animate());
   }
 

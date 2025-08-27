@@ -93,9 +93,6 @@ export class FormComponent {
     this.destroy$.pipe(takeUntilDestroyed());
     this.form.get('petType')?.events.pipe(takeUntilDestroyed()).subscribe(e => {
       if (e instanceof ValueChangeEvent && e.value === 'dog') {
-        // this.snackBar.open(this.translate.instant('FORM.choose-cat'), this.translate.instant('FORM.choose-cat__btn'), {
-        //   duration: 5000
-        // });
         this.dialog.open(DogDialog);
         this.removeCatForm();
       } else if (e instanceof ValueChangeEvent && e.value === 'cat') {
