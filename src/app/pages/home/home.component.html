@@ -1,4 +1,4 @@
-<psa-card>
+<psa-card class="h-full">
   <div class="flex flex-col md:flex-row h-full">
     <div class="md:flex-none">
       <h1 class="text-xl">{{ 'HOME.hello' | translate }}</h1>
@@ -20,7 +20,13 @@
         <li><b>{{ 'HOME.date-time' | translate }}:&ensp;</b>dayjs, luxon (adapter Material)</li>
       </ul>
     </div>
-    <div #canvas class="flex-1">
+    @if (!isMobile) {
+    <div #canvas class="flex-1 relative">
+      <p class="absolute bottom-0 w-full text-center text-xs italic"><a class="link"
+          href="https://skfb.ly/LZLq">"Stylized hand
+          painted scene"</a> by Sander Vander Meiren is licensed under <a class="link"
+          href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution.</a></p>
     </div>
+    }
   </div>
 </psa-card>

@@ -25,10 +25,6 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 
   scene = new THREE.Scene();
   camera = new THREE.PerspectiveCamera(50, 1, 0.1, 1000);
-  ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-  directionalLight = new THREE.DirectionalLight(0xffffff, 4);
-  fillLight = new THREE.DirectionalLight(0xffffff, 1);
-  backLight = new THREE.DirectionalLight(0xffffff, 1);
   threeRenderer = new THREE.WebGLRenderer({
     antialias: true,
     alpha: true
@@ -52,40 +48,57 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     container.appendChild(this.threeRenderer.domElement);
     this.threeRenderer.shadowMap.enabled = true;
     this.threeRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    this.threeRenderer.outputColorSpace = THREE.SRGBColorSpace;
     this.threeRenderer.toneMapping = THREE.ACESFilmicToneMapping;
-    this.threeRenderer.toneMappingExposure = 1.0;
+    this.threeRenderer.toneMappingExposure = 1.2;
 
     const width = container.clientWidth;
     const height = container.clientHeight;
     this.updateSize(width, height);
 
-    this.directionalLight.position.set(5, 5, 5);
-    this.directionalLight.castShadow = true;
-    this.directionalLight.shadow.mapSize.width = 1024;
-    this.directionalLight.shadow.mapSize.height = 1024;
-
-    this.fillLight.position.set(-5, 3, -5);
-    this.fillLight.castShadow = false
-
-    this.backLight.position.set(0, -5, -5);
-    this.backLight.castShadow = false;
-
-    this.scene.add(this.ambientLight);
-    this.scene.add(this.directionalLight);
-    this.scene.add(this.fillLight);
-    this.scene.add(this.backLight);
-
+    this.initLights();
     this.loadModel();
+
     this.camera.position.set(2, 2, 4);
     this.camera.lookAt(0, 0, 0);
     this.threeRenderer.setAnimationLoop(() => this.animate());
   }
 
+  initLights() {
+    let ambientLight = new THREE.AmbientLight(0xfff4e6, 0.25);
+    let directionalLight = new THREE.DirectionalLight(0xfff0dd, 2);
+    let fillLight = new THREE.DirectionalLight(0xdde9ff, 0.5);
+    let backLight = new THREE.DirectionalLight(0xffffff, 0.5);
+
+    directionalLight.position.set(5, 6, 5);
+    directionalLight.castShadow = true;
+    directionalLight.shadow.mapSize.width = 2048;
+    directionalLight.shadow.mapSize.height = 2048;
+    directionalLight.shadow.bias = -0.0005;
+    directionalLight.shadow.camera.near = 0.5;
+    directionalLight.shadow.camera.far = 50;
+
+    fillLight.position.set(-4, 3, -4);
+    backLight.position.set(0, 3, -5);
+
+    // Tighten the orthographic shadow camera frustum
+    const shadowCam = directionalLight.shadow.camera as THREE.OrthographicCamera;
+    shadowCam.left = -2;
+    shadowCam.right = 2;
+    shadowCam.top = 2;
+    shadowCam.bottom = -2;
+    shadowCam.updateProjectionMatrix();
+
+    this.scene.add(ambientLight);
+    this.scene.add(directionalLight);
+    this.scene.add(fillLight);
+    this.scene.add(backLight);
+  }
+
   loadModel() {
-    this.loader.load(`assets/models/peachy_balloon.glb`, (gltf) => {
+    this.loader.load(`assets/models/stylized_hand_painted_scene.glb`, (gltf) => {
       this.model = gltf.scene;
-      this.model.scale.setScalar(0.0008);
+      this.model.scale.setScalar(0.017);
+      this.model.position.y = -0.4;
       this.model.traverse((child) => {
         if (child instanceof THREE.Mesh) {
           child.castShadow = true;
