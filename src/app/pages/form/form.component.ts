@@ -130,11 +130,6 @@ export class FormComponent {
     })
   }
 
-  private removeCatForm() {
-    this.destroy$.next();
-    this.form.removeControl('cat');
-  }
-
   private addBred() {
     this.cat?.addControl('bred', new FormControl('', [Validators.required]));
   }
@@ -181,6 +176,12 @@ export class FormComponent {
   reset() {
     this.removeCatForm();
     this.form.reset();
+  }
+
+  private removeCatForm() {
+    this.destroy$.next();
+    this.toys.set([]);
+    this.form.removeControl('cat');
   }
 
   check() {
