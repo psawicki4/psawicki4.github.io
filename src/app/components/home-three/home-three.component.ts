@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnDestroy, OnInit, viewChild } from '@angular/core';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 @Component({
@@ -10,7 +11,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
   styleUrl: './home-three.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeThreeComponent implements OnInit, OnDestroy {
+export class HomeThreeComponent implements AfterViewInit, OnDestroy {
 
   canvas = viewChild<ElementRef>('canvas');
 
@@ -26,7 +27,7 @@ export class HomeThreeComponent implements OnInit, OnDestroy {
   clock = new THREE.Clock();
   loader = new GLTFLoader();
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.initThree(this.canvas()?.nativeElement);
   }
 
@@ -86,7 +87,8 @@ export class HomeThreeComponent implements OnInit, OnDestroy {
   }
 
   loadModel() {
-    this.loader.load(`assets/models/stylized_hand_painted_scene.glb`, (gltf) => {
+    this.loader.setMeshoptDecoder(MeshoptDecoder);
+    this.loader.load(`assets/models/stylized_hand_painted_scene_opt.glb`, (gltf) => {
       this.model = gltf.scene;
       this.model.scale.setScalar(0.015);
       this.model.position.y = -0.3;
