@@ -7,6 +7,7 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { MatButton } from '@angular/material/button';
 import { MatSlideToggle, MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { MatSliderModule } from "@angular/material/slider";
+import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 
 @Component({
   selector: 'psa-model-3d',
@@ -87,7 +88,7 @@ export class Model3DComponent implements OnDestroy {
     if (this.model) {
       this.scene.remove(this.model);
     }
-    this.credits.set(this.translate.instant(`MODEL_3D.${name}__credits`));
+    this.loader.setMeshoptDecoder(MeshoptDecoder);
     this.loader.load(`assets/models/${name}.glb`, (gltf) => {
       this.model = gltf.scene;
 
@@ -101,6 +102,7 @@ export class Model3DComponent implements OnDestroy {
         this.mixer.clipAction(gltf.animations[0]).play();
         this.mixer.timeScale = this.modelAnimationEnabled ? 1 : 0;
       }
+      this.credits.set(this.translate.instant(`MODEL_3D.${name}__credits`));
       this.loading = false;
     });
   }
