@@ -77,6 +77,12 @@ export class Model3DComponent implements OnDestroy {
     this.loadModel();
     this.camera.position.set(2, 2, 4);
     this.camera.lookAt(0, 0, 0);
+
+    this.controls.enableDamping = true;
+    this.controls.dampingFactor = 0.05;
+    this.controls.minDistance = 1.5;
+    this.controls.maxDistance = 10;
+
     this.threeRenderer.setAnimationLoop(() => this.animate());
   }
 
@@ -121,6 +127,7 @@ export class Model3DComponent implements OnDestroy {
     if (this.model) {
       this.model.rotation.y += this.rotationSpeed;
     }
+    this.controls.update();
     this.threeRenderer.render(this.scene, this.camera);
   }
 

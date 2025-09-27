@@ -2,3 +2,11 @@
 .link {
     text-decoration: underline;
   }
+
+  .grab {
+    cursor: grab;
+  }
+
+  .grab:active {
+    cursor: grabbing;
+  }

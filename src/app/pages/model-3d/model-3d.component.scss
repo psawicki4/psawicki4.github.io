@@ -10,3 +10,11 @@
         aspect-ratio: 1 / 1;
     }
 }
+
+.grab {
+    cursor: grab;
+  }
+
+  .grab:active {
+    cursor: grabbing;
+  }

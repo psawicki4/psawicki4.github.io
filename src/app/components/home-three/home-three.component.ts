@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnDestroy, OnInit, viewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnDestroy, viewChild } from '@angular/core';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
@@ -38,67 +38,29 @@ export class HomeThreeComponent implements AfterViewInit, OnDestroy {
 
   initThree(container: HTMLDivElement) {
     container.appendChild(this.threeRenderer.domElement);
-    this.threeRenderer.shadowMap.enabled = true;
-    this.threeRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    this.threeRenderer.toneMapping = THREE.ACESFilmicToneMapping;
-    this.threeRenderer.toneMappingExposure = 1.2;
 
     const width = container.clientWidth;
     const height = container.clientHeight;
     this.updateSize(width, height);
-
-    this.initLights();
     this.loadModel();
 
-    this.camera.position.set(2, 2, 4);
+    this.camera.position.set(1, 1, 4);
     this.camera.lookAt(0, 0, 0);
+
+    this.controls.enableDamping = true;
+    this.controls.dampingFactor = 0.05;
+    this.controls.minDistance = 1.5;
+    this.controls.maxDistance = 10;
+
     this.threeRenderer.setAnimationLoop(() => this.animate());
-  }
-
-  initLights() {
-    let ambientLight = new THREE.AmbientLight(0xfff4e6, 0.25);
-    let directionalLight = new THREE.DirectionalLight(0xfff0dd, 2);
-    let fillLight = new THREE.DirectionalLight(0xdde9ff, 0.5);
-    let backLight = new THREE.DirectionalLight(0xffffff, 0.5);
-
-    directionalLight.position.set(5, 6, 5);
-    directionalLight.castShadow = true;
-    directionalLight.shadow.mapSize.width = 2048;
-    directionalLight.shadow.mapSize.height = 2048;
-    directionalLight.shadow.bias = -0.0005;
-    directionalLight.shadow.camera.near = 0.5;
-    directionalLight.shadow.camera.far = 50;
-
-    fillLight.position.set(-4, 3, -4);
-    backLight.position.set(0, 3, -5);
-
-    // Tighten the orthographic shadow camera frustum
-    const shadowCam = directionalLight.shadow.camera as THREE.OrthographicCamera;
-    shadowCam.left = -2;
-    shadowCam.right = 2;
-    shadowCam.top = 2;
-    shadowCam.bottom = -2;
-    shadowCam.updateProjectionMatrix();
-
-    this.scene.add(ambientLight);
-    this.scene.add(directionalLight);
-    this.scene.add(fillLight);
-    this.scene.add(backLight);
   }
 
   loadModel() {
     this.loader.setMeshoptDecoder(MeshoptDecoder);
-    this.loader.load(`assets/models/stylized_hand_painted_scene_opt.glb`, (gltf) => {
+    this.loader.load(`assets/models/stylized_rock.glb`, (gltf) => {
       this.model = gltf.scene;
-      this.model.scale.setScalar(0.015);
-      this.model.position.y = -0.3;
-      this.model.traverse((child) => {
-        if (child instanceof THREE.Mesh) {
-          child.castShadow = true;
-          child.receiveShadow = true;
-        }
-      });
-
+      this.model.scale.setScalar(0.3);
+      this.model.position.y = -1.3;
       this.scene.add(this.model);
 
       if (gltf.animations?.length) {
@@ -120,8 +82,9 @@ export class HomeThreeComponent implements AfterViewInit, OnDestroy {
       this.mixer.update(delta);
     }
     if (this.model) {
-      this.model.rotation.y += 0.001;
+      this.model.rotation.y += 0.005;
     }
+    this.controls.update(); // Update controls for smooth damping
     this.threeRenderer.render(this.scene, this.camera);
   }
 
