@@ -17,7 +17,7 @@ import { MatSlider, MatSliderThumb } from "@angular/material/slider";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { TranslatePipe, TranslateService } from "@ngx-translate/core";
 import dayjs from "dayjs";
-import { Subject, takeUntil } from "rxjs";
+import { Subject, take, takeUntil } from "rxjs";
 import { CardComponent } from "../../components/card/card.component";
 import { IsMobileService } from "../../services/is-mobile.service";
 import { ageBirthdayValidator } from "./age-birthday-validator";
@@ -93,8 +93,11 @@ export class FormComponent {
     this.destroy$.pipe(takeUntilDestroyed());
     this.form.get('petType')?.events.pipe(takeUntilDestroyed()).subscribe(e => {
       if (e instanceof ValueChangeEvent && e.value === 'dog') {
-        this.dialog.open(DogDialog);
         this.removeCatForm();
+        this.dialog.open(DogDialog);
+        this.dialog.afterAllClosed.pipe(take(1)).subscribe(() => {
+          this.selectCat();
+        });
       } else if (e instanceof ValueChangeEvent && e.value === 'cat') {
         this.addCatForm();
       }
@@ -123,11 +126,15 @@ export class FormComponent {
     })
     this.cat?.get('birthday')?.events.pipe(takeUntil(this.destroy$)).subscribe(e => {
       if (e instanceof ValueChangeEvent && e.value) {
-        if (this.age && !this.age.value) {
+        if (this.age) {
           this.age.setValue(dayjs().diff(e.value, 'year'));
         }
       }
     })
+  }
+
+  selectCat() {
+    this.form.get('petType')?.setValue('cat');
   }
 
   private addBred() {
