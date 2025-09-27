@@ -1,0 +1,1 @@
+import{ba as o,wa as s}from"./chunk-HLQZO464.js";var h=(()=>{let t=class t{constructor(){this.mql=window.matchMedia("(max-width: 767px)"),this.isMobile=s(this.mql.matches),this.mql.onchange=e=>this.isMobile.set(e.matches)}};t.\u0275fac=function(a){return new(a||t)},t.\u0275prov=o({token:t,factory:t.\u0275fac,providedIn:"root"});let i=t;return i})();export{h as a};
