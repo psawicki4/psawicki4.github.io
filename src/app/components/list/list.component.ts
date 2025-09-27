@@ -8,25 +8,25 @@ import {
   output,
   viewChild
 } from '@angular/core';
-import { filter, map, pairwise, Subscription, throttleTime } from "rxjs";
+import { auditTime, filter, map, pairwise, Subscription, throttleTime } from "rxjs";
 import { CdkFixedSizeVirtualScroll, CdkVirtualForOf, CdkVirtualScrollViewport } from "@angular/cdk/scrolling";
 import { NgClass, NgTemplateOutlet } from "@angular/common";
 import { ListItemTemplateDirective } from "./list-item-template.directive";
 import { MatRipple } from "@angular/material/core";
 
 @Component({
-    selector: 'psa-list',
-    imports: [
-      CdkVirtualScrollViewport,
-      CdkFixedSizeVirtualScroll,
-      CdkVirtualForOf,
-      NgClass,
-      NgTemplateOutlet,
-      MatRipple
-    ],
-    templateUrl: './list.component.html',
-    styleUrl: './list.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'psa-list',
+  imports: [
+    CdkVirtualScrollViewport,
+    CdkFixedSizeVirtualScroll,
+    CdkVirtualForOf,
+    NgClass,
+    NgTemplateOutlet,
+    MatRipple
+  ],
+  templateUrl: './list.component.html',
+  styleUrl: './list.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListComponent implements AfterViewInit, OnDestroy {
 
@@ -45,11 +45,11 @@ export class ListComponent implements AfterViewInit, OnDestroy {
       map(() => this.viewport().measureScrollOffset('bottom')),
       pairwise(),
       filter(([y1, y2]) => (y2 < y1 && y2 < this.itemHeight() * 2)),
-      throttleTime(50)
+      // throttleTime causing scroll jams on fast scroll
+      auditTime(50),
     ).subscribe(() => {
       this.fetchMore.emit();
-    }
-    );
+    });
   }
 
   selectItem(item: any) {
