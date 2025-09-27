@@ -4,7 +4,7 @@
 html {
   color-scheme: dark;
   @include mat.theme((color: mat.$cyan-palette,
-      typography:"Open Sans",
+      typography: var.$font-family,
       density: 0));
 
   @include mat.dialog-overrides((container-color: var.$background-7,

@@ -1,5 +1,5 @@
 .name {
-  font-family: "Oooh Baby", cursive;
+  font-family: "Oooh Baby", "Oooh Baby fallback", cursive;
   font-weight: 400;
   font-style: normal;
   font-size: 48px;
@@ -8,4 +8,12 @@
 
 .mat-mdc-button.link {
   padding-bottom: 4px;
+}
+
+@font-face {
+  font-family: "Oooh Baby fallback";
+  src: local("Arial");
+  ascent-override: 90%;
+  descent-override: 32.5%;
+  line-gap-override: 0%;
 }
