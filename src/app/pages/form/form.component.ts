@@ -1,7 +1,7 @@
 import { COMMA, ENTER } from "@angular/cdk/keycodes";
 import { CdkTextareaAutosize } from "@angular/cdk/text-field";
 import { JsonPipe } from "@angular/common";
-import { ChangeDetectionStrategy, Component, ElementRef, inject, signal, viewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, ElementRef, inject, signal, viewChild } from '@angular/core';
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators, ValueChangeEvent } from "@angular/forms";
 import { MatAutocomplete, MatAutocompleteTrigger, MatOption } from "@angular/material/autocomplete";
@@ -25,6 +25,8 @@ import { CatOption, DemoForm } from "./form.type";
 import { OnlyDigitsDirective } from "./only-digits.directive";
 import { LangService } from "../../services/lang.service";
 import { MatDialog, MatDialogModule } from "@angular/material/dialog";
+import { provideLuxonDateAdapter } from "@angular/material-luxon-adapter";
+import { DateAdapter } from "@angular/material/core";
 
 @Component({
   selector: 'psa-form',
@@ -59,6 +61,19 @@ import { MatDialog, MatDialogModule } from "@angular/material/dialog";
     MatChipRemove,
     TranslatePipe,
   ],
+  providers: [
+    provideLuxonDateAdapter({
+      parse: {
+        dateInput: 'yyyy-MM-dd',
+      },
+      display: {
+        dateInput: 'yyyy-MM-dd',
+        monthYearLabel: 'MMM yyyy',
+        dateA11yLabel: 'LL',
+        monthYearA11yLabel: 'MMMM-yyyy',
+      },
+    })
+  ],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -70,6 +85,7 @@ export class FormComponent {
   translate = inject(TranslateService);
   isMobileService = inject(IsMobileService);
   langService = inject(LangService);
+  dateAdapter = inject(DateAdapter);
   dialog = inject(MatDialog);
   destroy$ = new Subject<void>();
   maxDate = new Date();
@@ -101,6 +117,10 @@ export class FormComponent {
       } else if (e instanceof ValueChangeEvent && e.value === 'cat') {
         this.addCatForm();
       }
+    });
+    this.dateAdapter.getFirstDayOfWeek = () => 1;
+    effect(() => {
+      this.setLocale(this.langService.lang());
     });
   }
 
@@ -147,7 +167,6 @@ export class FormComponent {
 
   filterBred() {
     const filterValue = this.bredInput()?.nativeElement.value.toLowerCase();
-    console.log(filterValue);
     this.filteredOptions = this.options.filter(o => o.namePl.toLocaleLowerCase().includes(filterValue) || o.nameEN.toLocaleLowerCase().includes(filterValue));
   }
 
@@ -206,6 +225,10 @@ export class FormComponent {
         panelClass: 'error-snackbar'
       });
     }
+  }
+
+  private setLocale(lang: string) {
+    this.dateAdapter.setLocale(lang);
   }
 
   get cat() {
