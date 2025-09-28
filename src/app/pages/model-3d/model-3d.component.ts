@@ -74,7 +74,6 @@ export class Model3DComponent implements OnDestroy {
     this.scene.add(this.directionalLight);
     this.directionalLight.position.set(5, 5, 5);
 
-    this.loadModel();
     this.camera.position.set(2, 2, 4);
     this.camera.lookAt(0, 0, 0);
 
@@ -82,6 +81,11 @@ export class Model3DComponent implements OnDestroy {
     this.controls.dampingFactor = 0.05;
     this.controls.minDistance = 1.5;
     this.controls.maxDistance = 10;
+
+    // Load model after initial render to avoid blocking the first frame
+    setTimeout(() => {
+      this.loadModel();
+    }, 0);
 
     this.threeRenderer.setAnimationLoop(() => this.animate());
   }
@@ -110,6 +114,7 @@ export class Model3DComponent implements OnDestroy {
       }
       this.credits.set(this.translate.instant(`MODEL_3D.${name}__credits`));
       this.loading = false;
+      this.threeRenderer.render(this.scene, this.camera);
     });
   }
 
@@ -121,13 +126,16 @@ export class Model3DComponent implements OnDestroy {
 
   animate() {
     const delta = this.clock.getDelta();
-    if (this.mixer) {
+    if (this.mixer && this.mixer.getRoot()) {
       this.mixer.update(delta);
     }
     if (this.model) {
       this.model.rotation.y += this.rotationSpeed;
     }
-    this.controls.update();
+    if (this.controls.enabled) {
+      this.controls.update();
+    }
+
     this.threeRenderer.render(this.scene, this.camera);
   }
 

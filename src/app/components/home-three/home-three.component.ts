@@ -42,7 +42,6 @@ export class HomeThreeComponent implements AfterViewInit, OnDestroy {
     const width = container.clientWidth;
     const height = container.clientHeight;
     this.updateSize(width, height);
-    this.loadModel();
 
     this.camera.position.set(1, 1, 4);
     this.camera.lookAt(0, 0, 0);
@@ -51,6 +50,11 @@ export class HomeThreeComponent implements AfterViewInit, OnDestroy {
     this.controls.dampingFactor = 0.05;
     this.controls.minDistance = 1.5;
     this.controls.maxDistance = 10;
+
+    // Load model after initial render to avoid blocking the first frame
+    setTimeout(() => {
+      this.loadModel();
+    }, 0);
 
     this.threeRenderer.setAnimationLoop(() => this.animate());
   }
@@ -67,6 +71,8 @@ export class HomeThreeComponent implements AfterViewInit, OnDestroy {
         this.mixer = new THREE.AnimationMixer(this.model);
         this.mixer.clipAction(gltf.animations[0]).play();
       }
+
+      this.threeRenderer.render(this.scene, this.camera);
     });
   }
 
@@ -78,13 +84,16 @@ export class HomeThreeComponent implements AfterViewInit, OnDestroy {
 
   animate() {
     const delta = this.clock.getDelta();
-    if (this.mixer) {
+    if (this.mixer && this.mixer.getRoot()) {
       this.mixer.update(delta);
     }
     if (this.model) {
       this.model.rotation.y += 0.005;
     }
-    this.controls.update(); // Update controls for smooth damping
+    if (this.controls.enabled) {
+      this.controls.update();
+    }
+
     this.threeRenderer.render(this.scene, this.camera);
   }
 
