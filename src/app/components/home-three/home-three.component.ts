@@ -84,7 +84,7 @@ export class HomeThreeComponent implements AfterViewInit, OnDestroy {
 
   animate() {
     const delta = this.clock.getDelta();
-    if (this.mixer && this.mixer.getRoot()) {
+    if (this.mixer?.getRoot()) {
       this.mixer.update(delta);
     }
     if (this.model) {

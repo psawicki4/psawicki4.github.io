@@ -5,7 +5,7 @@ import { Injectable, signal } from '@angular/core';
 })
 export class IsMobileService {
 
-  mql = window.matchMedia('(max-width: 767px)');
+  mql = globalThis.matchMedia('(max-width: 767px)');
   isMobile = signal(this.mql.matches);
 
   constructor() {

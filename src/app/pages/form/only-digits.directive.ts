@@ -10,7 +10,7 @@ export class OnlyDigitsDirective {
   onKeyPress(event: KeyboardEvent) {
     const newKey = event.key;
 
-    if (isNaN(parseInt(newKey))) {
+    if (Number.isNaN(Number.parseInt(newKey))) {
       event.preventDefault();
     }
   }
