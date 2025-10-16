@@ -19,7 +19,7 @@ export class ReverseMailDirective {
   @HostListener('click')
   navigate() {
     const reversedText = this.revertText(this.el.nativeElement.innerText);
-    window.location.href = 'mailto:' + reversedText;
+    globalThis.location.href = 'mailto:' + reversedText;
   }
 
   private revertText(text: string) {

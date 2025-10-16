@@ -46,7 +46,7 @@ export class GridComponent {
   localeText: typeof AG_GRID_LOCALE_PL | typeof AG_GRID_LOCALE_EN = AG_GRID_LOCALE_PL;
   gridApi!: GridApi;
   initialState: GridState = {};
-  portrait = window.matchMedia('(orientation: portrait)').matches;
+  portrait = globalThis.matchMedia('(orientation: portrait)').matches;
   loading = true;
   colDefs: ColDef[] = [
     {
@@ -97,7 +97,7 @@ export class GridComponent {
 
   constructor() {
     this.getCountries();
-    window.matchMedia('(orientation: portrait)').addEventListener('change', e => {
+    globalThis.matchMedia('(orientation: portrait)').addEventListener('change', e => {
       this.portrait = e.matches;
       this.cd.markForCheck();
     });
