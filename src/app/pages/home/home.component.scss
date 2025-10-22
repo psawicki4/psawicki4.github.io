@@ -13,11 +13,12 @@
 @font-face {
   font-family: "Oooh Baby Subset";
   src: url("/assets/fonts/OoohBaby-Regular-subset.woff2") format("woff2");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Oooh Baby fallback";
-  src: local("Arial");
+  src: local("Arial Narrow");
   ascent-override: 90%;
   descent-override: 32.5%;
   line-gap-override: 0%;
