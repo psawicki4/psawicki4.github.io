@@ -6,7 +6,7 @@
   <mat-sidenav-content>
     <div class="h-dvh flex flex-col gap-4">
       <psa-header [isMobile]="isMobile" (open)="sidenav.open()"></psa-header>
-      <div class="w-full">
+      <div class="w-full" role="main">
         <router-outlet></router-outlet>
       </div>
       <ng-container [ngTemplateOutlet]="footer"></ng-container>
@@ -20,7 +20,7 @@
   <div class="flex flex-row h-full gap-8 mx-8">
     <psa-menu></psa-menu>
     <div class="divider"></div>
-    <div class="w-full">
+    <div class="w-full" role="main">
       <router-outlet></router-outlet>
     </div>
   </div>
