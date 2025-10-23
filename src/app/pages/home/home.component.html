@@ -20,8 +20,8 @@
         <li><b>{{ 'HOME.date-time' | translate }}:&ensp;</b>dayjs, luxon (adapter Material)</li>
       </ul>
     </div>
-    @if (!isMobile) {
-    @defer {
+    @defer (when !isMobile) {
+    @defer (on idle) {
     <div class="flex-1">
       <psa-home-three></psa-home-three>
     </div>
