@@ -2,7 +2,7 @@
   <div class="flex flex-col md:flex-row h-full">
     <div class="md:flex-none">
       <h1 class="text-xl">{{ 'HOME.hello' | translate }}</h1>
-      <p class="text-base/8 mb-8">{{ 'HOME.my-name-is' | translate }}&ensp;<span
+      <p class="text-base mb-8">{{ 'HOME.my-name-is' | translate }}&ensp;<span
           class="name">Piotr&nbsp;Sawicki</span><br>
         {{ 'HOME.my-webpage' | translate }}</p>
 
@@ -12,12 +12,12 @@
       <p>{{ 'HOME.tools' | translate }}</p>
       <ul class="ml-4 my-2 leading-8">
         <li><b>Framework:&ensp;</b>Angular 20 ({{ 'HOME.including' | translate }})</li>
-        <li><b>UI:&ensp;</b>Angular Material, Tailwind CSS 4, Sass</li>
+        <li><b>UI:&ensp;</b>Angular Material, Tailwind CSS 4</li>
         <li><b>{{ 'HOME.state' | translate }}:&ensp;</b>NgRx Signals</li>
-        <li><b>I18n:&ensp;</b>@ngx-translate</li>
+        <li><b>I18n:&ensp;</b>ngx-translate</li>
         <li><b>3D:&ensp;</b>three.js</li>
         <li><b>{{ 'HOME.grid' | translate }}:&ensp;</b>AG Grid</li>
-        <li><b>{{ 'HOME.date-time' | translate }}:&ensp;</b>dayjs, luxon (adapter Material)</li>
+        <li><b>{{ 'HOME.date-time' | translate }}:&ensp;</b>Day.js, Luxon (adapter Material)</li>
       </ul>
     </div>
     @defer (when !isMobile) {
