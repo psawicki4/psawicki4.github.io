@@ -1,5 +1,5 @@
 import { AG_GRID_LOCALE_EN, AG_GRID_LOCALE_PL } from '@ag-grid-community/locale';
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, effect, inject, TemplateRef, viewChild, ViewContainerRef } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { TranslatePipe, TranslateService } from "@ngx-translate/core";
@@ -20,10 +20,9 @@ ModuleRegistry.registerModules([AllCommunityModule])
     CardComponent,
     TranslatePipe,
     AgGridAngular,
-    CommonModule,
     MatButton,
     MatIcon
-  ],
+],
   providers: [
     CountriesStore
   ],
