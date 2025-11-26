@@ -1,9 +1,9 @@
 import { provideHttpClient } from "@angular/common/http";
-import {ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection} from '@angular/core';
+import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection, isDevMode } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { provideTranslateService } from "@ngx-translate/core";
-import {provideTranslateHttpLoader} from '@ngx-translate/http-loader';
 import { routes } from './app.routes';
+import { TranslocoHttpLoader } from './transloco-loader';
+import { provideTransloco } from '@jsverse/transloco';
 
 
 export const appConfig: ApplicationConfig = {
@@ -12,9 +12,14 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideBrowserGlobalErrorListeners(),
     provideHttpClient(),
-    provideTranslateService({
-      loader: provideTranslateHttpLoader({prefix:"./assets/i18n/", suffix:".json"}),
-      fallbackLang: 'pl'
+    provideTransloco({
+      config: {
+        availableLangs: ['pl', 'en'],
+        defaultLang: 'pl',
+        reRenderOnLangChange: true,
+        prodMode: !isDevMode(),
+      },
+      loader: TranslocoHttpLoader
     })
   ]
 };

@@ -1,5 +1,7 @@
-<h2 mat-dialog-title>Hmm</h2>
-<mat-dialog-content>{{"FORM.choose-cat" | translate}}</mat-dialog-content>
-<mat-dialog-actions>
-    <button matButton mat-dialog-close cdkFocusInitial>{{"FORM.choose-cat__btn" | translate}}</button>
-</mat-dialog-actions>
+<ng-container *transloco="let t; prefix: 'FORM'">
+  <h2 mat-dialog-title>Hmm</h2>
+  <mat-dialog-content>{{ t('choose-cat') }}</mat-dialog-content>
+  <mat-dialog-actions>
+    <button matButton mat-dialog-close cdkFocusInitial>{{ t('choose-cat__btn') }}</button>
+  </mat-dialog-actions>
+</ng-container>

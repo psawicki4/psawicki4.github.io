@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatAnchor } from "@angular/material/button";
-import { TranslatePipe } from "@ngx-translate/core";
+import { TranslocoDirective } from "@jsverse/transloco";
 import { CardComponent } from "../../components/card/card.component";
 import { IsMobileService } from '../../services/is-mobile.service';
 import { HomeThreeComponent } from "../../components/home-three/home-three.component";
@@ -10,9 +10,9 @@ import { HomeThreeComponent } from "../../components/home-three/home-three.compo
   imports: [
     CardComponent,
     MatAnchor,
-    TranslatePipe,
+    TranslocoDirective,
     HomeThreeComponent
-],
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

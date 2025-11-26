@@ -15,7 +15,7 @@ import { MatInput } from "@angular/material/input";
 import { MatRadioButton, MatRadioGroup } from "@angular/material/radio";
 import { MatSlider, MatSliderThumb } from "@angular/material/slider";
 import { MatSnackBar } from "@angular/material/snack-bar";
-import { TranslatePipe, TranslateService } from "@ngx-translate/core";
+import { TranslocoDirective, TranslocoService } from "@jsverse/transloco";
 import dayjs from "dayjs";
 import { Subject, take, takeUntil } from "rxjs";
 import { CardComponent } from "../../components/card/card.component";
@@ -59,7 +59,7 @@ import { DateAdapter } from "@angular/material/core";
     MatIcon,
     MatChipInput,
     MatChipRemove,
-    TranslatePipe,
+    TranslocoDirective,
   ],
   providers: [
     provideLuxonDateAdapter({
@@ -82,7 +82,7 @@ export class FormComponent {
 
   fb = inject(FormBuilder);
   snackBar = inject(MatSnackBar);
-  translate = inject(TranslateService);
+  transloco = inject(TranslocoService);
   isMobileService = inject(IsMobileService);
   langService = inject(LangService);
   dateAdapter = inject(DateAdapter);
@@ -213,14 +213,14 @@ export class FormComponent {
   check() {
     this.form.markAllAsTouched();
     if (this.form.valid) {
-      this.snackBar.open(this.translate.instant('FORM.valid-form', { value: this.name?.value }),
-        this.translate.instant('FORM.ok'), {
+      this.snackBar.open(this.transloco.translate('FORM.valid-form', { value: this.name?.value }),
+        this.transloco.translate('FORM.ok'), {
         duration: 5000,
         panelClass: 'success-snackbar'
       });
     } else {
-      this.snackBar.open(this.translate.instant('FORM.invalid-form', { value: this.name?.value }),
-        this.translate.instant('FORM.ok'), {
+      this.snackBar.open(this.transloco.translate('FORM.invalid-form', { value: this.name?.value }),
+        this.transloco.translate('FORM.ok'), {
         duration: 5000,
         panelClass: 'error-snackbar'
       });
@@ -260,7 +260,7 @@ export class FormComponent {
 @Component({
   selector: 'dog-dialog',
   templateUrl: 'dog-dialog.html',
-  imports: [MatDialogModule, MatButton, TranslatePipe],
+  imports: [MatDialogModule, MatButton, TranslocoDirective],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DogDialog { }

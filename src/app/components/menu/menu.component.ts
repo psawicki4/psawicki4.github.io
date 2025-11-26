@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, output } from '@angular/core';
 import { MatListItem, MatNavList } from "@angular/material/list";
 import { RouterLink, RouterLinkActive } from "@angular/router";
-import { TranslatePipe } from "@ngx-translate/core";
+import { TranslocoDirective } from "@jsverse/transloco";
 
 @Component({
     selector: 'psa-menu',
@@ -10,7 +10,7 @@ import { TranslatePipe } from "@ngx-translate/core";
         MatListItem,
         RouterLink,
         RouterLinkActive,
-        TranslatePipe
+        TranslocoDirective
     ],
     templateUrl: './menu.component.html',
     styleUrl: './menu.component.scss',

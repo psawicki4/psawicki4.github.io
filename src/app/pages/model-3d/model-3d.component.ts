@@ -1,9 +1,9 @@
-import { ChangeDetectionStrategy, Component, ElementRef, OnDestroy, viewChild, effect, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnDestroy, viewChild, effect, inject, signal, AfterViewInit } from '@angular/core';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { CardComponent } from "../../components/card/card.component";
-import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 import { MatButton } from '@angular/material/button';
 import { MatSlideToggle, MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { MatSliderModule } from "@angular/material/slider";
@@ -13,7 +13,7 @@ import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.j
   selector: 'psa-model-3d',
   imports: [
     CardComponent,
-    TranslatePipe,
+    TranslocoDirective,
     MatButton,
     MatSlideToggle,
     MatSliderModule
@@ -22,9 +22,9 @@ import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.j
   styleUrl: './model-3d.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Model3DComponent implements OnDestroy {
+export class Model3DComponent implements AfterViewInit, OnDestroy {
 
-  translate = inject(TranslateService);
+  transloco = inject(TranslocoService);
   canvas = viewChild<ElementRef>('canvas');
 
   scene = new THREE.Scene();
@@ -51,11 +51,8 @@ export class Model3DComponent implements OnDestroy {
   modelAnimationEnabled = true;
   credits = signal('');
 
-  constructor() {
-    effect(() => {
-      this.initThree(this.canvas()?.nativeElement);
-    });
-
+  ngAfterViewInit(): void {
+    this.initThree(this.canvas()?.nativeElement);
   }
 
   ngOnDestroy() {
@@ -112,7 +109,7 @@ export class Model3DComponent implements OnDestroy {
         this.mixer.clipAction(gltf.animations[0]).play();
         this.mixer.timeScale = this.modelAnimationEnabled ? 1 : 0;
       }
-      this.credits.set(this.translate.instant(`MODEL_3D.${name}__credits`));
+      this.credits.set(this.transloco.translate(`MODEL_3D.${name}__credits`));
       this.loading = false;
       this.threeRenderer.render(this.scene, this.camera);
     });

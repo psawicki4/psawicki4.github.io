@@ -1,7 +1,7 @@
 import { NgClass } from "@angular/common";
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { MatButton } from "@angular/material/button";
-import { TranslatePipe } from "@ngx-translate/core";
+import { TranslocoDirective } from "@jsverse/transloco";
 import { CardComponent } from "../../components/card/card.component";
 import { ListItemTemplateDirective } from "../../components/list/list-item-template.directive";
 import { ListComponent } from "../../components/list/list.component";
@@ -14,7 +14,7 @@ import { RoomsStore } from "./rooms.store";
     CardComponent,
     ListComponent,
     ListItemTemplateDirective,
-    TranslatePipe,
+    TranslocoDirective,
     NgClass,
     MatButton
   ],

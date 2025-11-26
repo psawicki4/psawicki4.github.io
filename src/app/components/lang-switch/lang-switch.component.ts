@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
 import {MatButton} from "@angular/material/button";
-import {TranslateService} from "@ngx-translate/core";
+import {TranslocoService} from "@jsverse/transloco";
 import {LangService} from "../../services/lang.service";
 
 @Component({
@@ -14,7 +14,7 @@ import {LangService} from "../../services/lang.service";
 })
 export class LangSwitchComponent implements OnInit {
 
-  translate = inject(TranslateService);
+  transloco = inject(TranslocoService);
   langService = inject(LangService);
 
   ngOnInit(): void {
@@ -22,17 +22,17 @@ export class LangSwitchComponent implements OnInit {
   }
 
   setLanguage() {
-    let langCode = localStorage.getItem('langCode') ?? this.translate.getBrowserLang()?.slice(0,2);
+    let langCode = localStorage.getItem('langCode') ?? globalThis.navigator?.language?.slice(0, 2);
     if (langCode !== 'pl' && langCode !== 'en') {
       langCode = 'pl';
     }
-    this.translate.setFallbackLang(langCode);
-    this.translate.use(langCode);
+    this.transloco.setDefaultLang(langCode);
+    this.transloco.setActiveLang(langCode);
     this.langService.lang.set(langCode);
   }
 
   changeLanguage(langCode: string) {
-    this.translate.use(langCode);
+    this.transloco.setActiveLang(langCode);
     localStorage.setItem('langCode', langCode);
     this.langService.lang.set(langCode);
   }

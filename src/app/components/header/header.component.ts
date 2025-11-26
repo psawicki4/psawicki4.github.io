@@ -3,7 +3,7 @@ import { MatButton, MatIconButton } from "@angular/material/button";
 import { MatDialog } from "@angular/material/dialog";
 import { MatIcon } from "@angular/material/icon";
 import { MatToolbar } from "@angular/material/toolbar";
-import { TranslatePipe } from "@ngx-translate/core";
+import { TranslocoDirective } from "@jsverse/transloco";
 import { ContactDialogComponent } from "../contact-dialog/contact-dialog.component";
 import { LangSwitchComponent } from "../lang-switch/lang-switch.component";
 
@@ -15,7 +15,7 @@ import { LangSwitchComponent } from "../lang-switch/lang-switch.component";
     MatIcon,
     MatIconButton,
     MatToolbar,
-    TranslatePipe
+    TranslocoDirective
   ],
   templateUrl: './header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush

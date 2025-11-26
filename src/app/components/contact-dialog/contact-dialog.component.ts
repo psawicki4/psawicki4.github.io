@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatAnchor, MatButton } from "@angular/material/button";
 import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from "@angular/material/dialog";
-import { TranslatePipe } from "@ngx-translate/core";
+import { TranslocoDirective } from "@jsverse/transloco";
 import { ReverseMailDirective } from "./reverse-mail.directive";
 
 @Component({
@@ -9,7 +9,7 @@ import { ReverseMailDirective } from "./reverse-mail.directive";
     imports: [
         MatDialogContent,
         MatDialogTitle,
-        TranslatePipe,
+        TranslocoDirective,
         MatDialogActions,
         MatButton,
         MatDialogClose,

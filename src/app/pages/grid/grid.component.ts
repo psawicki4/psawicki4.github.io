@@ -2,7 +2,7 @@ import { AG_GRID_LOCALE_EN, AG_GRID_LOCALE_PL } from '@ag-grid-community/locale'
 
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, effect, inject, TemplateRef, viewChild, ViewContainerRef } from '@angular/core';
 import { MatButton } from '@angular/material/button';
-import { TranslatePipe, TranslateService } from "@ngx-translate/core";
+import { TranslocoDirective, TranslocoService } from "@jsverse/transloco";
 import { AgGridAngular } from "ag-grid-angular";
 import { AllCommunityModule, ColDef, colorSchemeDarkBlue, GridApi, GridReadyEvent, GridState, ModuleRegistry, StateUpdatedEvent, themeQuartz } from 'ag-grid-community';
 import { CardComponent } from "../../components/card/card.component";
@@ -18,7 +18,7 @@ ModuleRegistry.registerModules([AllCommunityModule])
   selector: 'psa-grid',
   imports: [
     CardComponent,
-    TranslatePipe,
+    TranslocoDirective,
     AgGridAngular,
     MatButton,
     MatIcon
@@ -33,7 +33,7 @@ ModuleRegistry.registerModules([AllCommunityModule])
 export class GridComponent {
 
   gridService = inject(GridService);
-  translate = inject(TranslateService);
+  transloco = inject(TranslocoService);
   lang = inject(LangService);
   store = inject(CountriesStore);
   cd = inject(ChangeDetectorRef);
@@ -118,7 +118,7 @@ export class GridComponent {
   }
 
   headerTranslation(translateKey: string) {
-    return () => this.translate.instant(translateKey);
+    return () => this.transloco.translate(translateKey);
   }
 
   export() {

@@ -4,7 +4,7 @@ import { ListPageComponent } from './list-page.component';
 import { RoomsStore } from './rooms.store';
 import { Room } from './room.type';
 import { vi, expect } from 'vitest';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslocoTestingModule } from '@jsverse/transloco/testing';
 
 class MockRoomsStore {
   rooms = signal<{ total: number, data: Room[] }>({ total: 0, data: [] });
@@ -21,7 +21,7 @@ describe('ListPageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ListPageComponent, TranslateModule.forRoot()],
+      imports: [ListPageComponent, TranslocoTestingModule.forRoot()],
       providers: [
         provideZonelessChangeDetection(),
         { provide: RoomsStore, useClass: MockRoomsStore }

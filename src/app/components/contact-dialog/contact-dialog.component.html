@@ -1,20 +1,22 @@
-<h2 mat-dialog-title class="pb-8">{{ 'CONTACT.contact' | translate }}</h2>
-<mat-dialog-content>
-  <div class="flex flex-col gap-10">
-    <p>{{ 'CONTACT.content' | translate }}</p>
-    <span class="email text-2xl" reverseMail>ved.ikciwasp<b>asdgasd</b>&#64;tkatnok<b>ggsasc</b></span>
-    <div class="pb-1 w-fit">
-      <span class="flex flex-row items-center justify-between">
-        <p>LinkedIn: </p>
-        <a matButton href="https://www.linkedin.com/in/psawickidev/" target="_blank">Link</a>
-      </span>
-      <span class="flex flex-row items-center justify-between">
-        <p>GitHub: </p>
-        <a matButton href="https://github.com/psawicki4" target="_blank">Link</a>
-      </span>
+<ng-container *transloco="let t; prefix: 'CONTACT'">
+  <h2 mat-dialog-title class="pb-8">{{ t('contact') }}</h2>
+  <mat-dialog-content>
+    <div class="flex flex-col gap-10">
+      <p>{{ t('content') }}</p>
+      <span class="email text-2xl" reverseMail>ved.ikciwasp<b>asdgasd</b>&#64;tkatnok<b>ggsasc</b></span>
+      <div class="pb-1 w-fit">
+        <span class="flex flex-row items-center justify-between">
+          <p>LinkedIn: </p>
+          <a matButton href="https://www.linkedin.com/in/psawickidev/" target="_blank">Link</a>
+        </span>
+        <span class="flex flex-row items-center justify-between">
+          <p>GitHub: </p>
+          <a matButton href="https://github.com/psawicki4" target="_blank">Link</a>
+        </span>
+      </div>
     </div>
-  </div>
-</mat-dialog-content>
-<mat-dialog-actions>
-  <button matButton mat-dialog-close>{{ 'CONTACT.close' | translate }}</button>
-</mat-dialog-actions>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button matButton mat-dialog-close>{{ t('close') }}</button>
+  </mat-dialog-actions>
+</ng-container>
