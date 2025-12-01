@@ -1,0 +1,1 @@
+import{$ as e,wa as o}from"./chunk-F5ZW5HI3.js";var n=(()=>{class t{constructor(){this.mql=globalThis.matchMedia("(max-width: 767px)"),this.isMobile=o(this.mql.matches),this.mql.onchange=i=>this.isMobile.set(i.matches)}static{this.\u0275fac=function(s){return new(s||t)}}static{this.\u0275prov=e({token:t,factory:t.\u0275fac,providedIn:"root"})}}return t})();export{n as a};
