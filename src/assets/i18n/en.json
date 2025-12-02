@@ -6,7 +6,7 @@
     "my-webpage": "and this is my website in the form of a technology demo.",
     "repository": "The full application code is available at:",
     "tools": "To build this site, I used:",
-    "including": "including Signals, Standalone and Zone-less",
+    "including": "including Signals, Standalone, SSR and Zone-less",
     "grid": "Grid",
     "date-time": "Date/Time",
     "state": "State"

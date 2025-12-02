@@ -101,10 +101,10 @@ export class GridComponent {
         this.portrait = e.matches;
         this.cd.markForCheck();
       });
+      this.initialState = JSON.parse(localStorage.getItem('gridState') ?? '{}');
     });
     effect(() => {
       this.localeText = this.lang.lang() === 'pl' ? AG_GRID_LOCALE_PL : AG_GRID_LOCALE_EN;
-      this.initialState = JSON.parse(localStorage.getItem('gridState') ?? '{}');
       this.outletRef()?.clear();
       this.outletRef()?.createEmbeddedView(this.contentRef());
     });
