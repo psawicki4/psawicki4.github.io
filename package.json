@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build-dev": "ng build --source-map",
+    "build": "ng build --source-map",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "deploy": "ng deploy --cname=psawicki.dev",
