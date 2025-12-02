@@ -4,6 +4,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { TranslocoHttpLoader } from './transloco-loader';
 import { provideTransloco } from '@jsverse/transloco';
+import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 
 
 export const appConfig: ApplicationConfig = {
@@ -20,6 +21,6 @@ export const appConfig: ApplicationConfig = {
         prodMode: !isDevMode(),
       },
       loader: TranslocoHttpLoader
-    })
+    }), provideClientHydration(withEventReplay())
   ]
 };

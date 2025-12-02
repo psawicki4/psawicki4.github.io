@@ -1,6 +1,6 @@
 import { AG_GRID_LOCALE_EN, AG_GRID_LOCALE_PL } from '@ag-grid-community/locale';
 
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, effect, inject, TemplateRef, viewChild, ViewContainerRef } from '@angular/core';
+import { afterNextRender, ChangeDetectionStrategy, ChangeDetectorRef, Component, effect, inject, TemplateRef, viewChild, ViewContainerRef } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { TranslocoDirective, TranslocoService } from "@jsverse/transloco";
 import { AgGridAngular } from "ag-grid-angular";
@@ -22,7 +22,7 @@ ModuleRegistry.registerModules([AllCommunityModule])
     AgGridAngular,
     MatButton,
     MatIcon
-],
+  ],
   providers: [
     CountriesStore
   ],
@@ -45,7 +45,7 @@ export class GridComponent {
   localeText: typeof AG_GRID_LOCALE_PL | typeof AG_GRID_LOCALE_EN = AG_GRID_LOCALE_PL;
   gridApi!: GridApi;
   initialState: GridState = {};
-  portrait = globalThis.matchMedia('(orientation: portrait)').matches;
+  portrait: boolean | undefined;
   loading = true;
   colDefs: ColDef[] = [
     {
@@ -96,9 +96,11 @@ export class GridComponent {
 
   constructor() {
     this.getCountries();
-    globalThis.matchMedia('(orientation: portrait)').addEventListener('change', e => {
-      this.portrait = e.matches;
-      this.cd.markForCheck();
+    afterNextRender(() => {
+      globalThis.matchMedia('(orientation: portrait)').addEventListener('change', e => {
+        this.portrait = e.matches;
+        this.cd.markForCheck();
+      });
     });
     effect(() => {
       this.localeText = this.lang.lang() === 'pl' ? AG_GRID_LOCALE_PL : AG_GRID_LOCALE_EN;

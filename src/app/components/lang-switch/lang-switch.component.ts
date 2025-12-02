@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
+import {afterNextRender, ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
 import {MatButton} from "@angular/material/button";
 import {TranslocoService} from "@jsverse/transloco";
 import {LangService} from "../../services/lang.service";
@@ -12,13 +12,15 @@ import {LangService} from "../../services/lang.service";
     styleUrl: './lang-switch.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LangSwitchComponent implements OnInit {
+export class LangSwitchComponent {
 
   transloco = inject(TranslocoService);
   langService = inject(LangService);
 
-  ngOnInit(): void {
-    this.setLanguage();
+  constructor() {
+    afterNextRender(() => {
+      this.setLanguage();
+    });
   }
 
   setLanguage() {
