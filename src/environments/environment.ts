@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    baseUrl: 'http://localhost:4200',
+    baseUrl: 'https://personal-website-phi-kohl.vercel.app',
 };
