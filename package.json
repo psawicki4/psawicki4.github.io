@@ -7,7 +7,6 @@
     "build": "ng build --source-map",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng deploy --cname=psawicki.dev",
     "merge": "node src/app/services/merge-to-en.js",
     "cy:open": "cypress open",
     "serve:ssr:personal-website": "node dist/personal-website/server/server.mjs"
@@ -52,7 +51,6 @@
     "@types/express": "^5.0.1",
     "@types/jasmine": "~5.1.13",
     "@types/node": "^20.17.19",
-    "angular-cli-ghpages": "2.0.3",
     "autoprefixer": "^10.4.22",
     "cypress": "^15.7.0",
     "jasmine-core": "~5.12.1",
