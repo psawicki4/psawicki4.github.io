@@ -50,10 +50,7 @@ export class HomeThreeComponent implements AfterViewInit, OnDestroy {
     this.controls.minDistance = 1.5;
     this.controls.maxDistance = 10;
 
-    // Load model after initial render to avoid blocking the first frame
-    setTimeout(() => {
-      this.loadModel();
-    }, 0);
+    this.loadModel();
 
     this.threeRenderer.setAnimationLoop(() => this.animate());
   }

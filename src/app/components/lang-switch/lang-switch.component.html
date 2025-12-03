@@ -1,8 +1,5 @@
 <span class="flex flex-row items-center">
-        <button matButton [class]="lang === 'pl' ? 'lang-button__active' : 'lang-button'"
-                (click)="changeLanguage('pl')">PL</button>
+        <button matButton class="lang-button" (click)="changeLanguage('pl')">PL</button>
         <p class="mb-1">|</p>
-        <button matButton [class]="lang === 'en' ? 'lang-button__active' : 'lang-button'"
-                (click)="changeLanguage('en')">EN
-        </button>
+        <button matButton class="lang-button" (click)="changeLanguage('en')">EN</button>
 </span>

@@ -1,11 +1,15 @@
 @if (isMobile) {
 <mat-sidenav-container>
   <mat-sidenav #sidenav>
+    @defer (hydrate on idle) {
     <psa-menu (navigate)="sidenav.close()"></psa-menu>
+    }
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="h-dvh flex flex-col gap-4">
+      @defer (hydrate on idle) {
       <psa-header [isMobile]="isMobile" (open)="sidenav.open()"></psa-header>
+      }
       <div class="w-full" role="main">
         <router-outlet></router-outlet>
       </div>
@@ -16,9 +20,13 @@
 
 } @else {
 <div class="h-dvh flex flex-col gap-4">
+  @defer (hydrate on idle) {
   <psa-header [isMobile]="isMobile"></psa-header>
+  }
   <div class="flex flex-row h-full gap-8 mx-8">
+    @defer (hydrate on idle) {
     <psa-menu></psa-menu>
+    }
     <div class="divider"></div>
     <div class="w-full" role="main">
       <router-outlet></router-outlet>

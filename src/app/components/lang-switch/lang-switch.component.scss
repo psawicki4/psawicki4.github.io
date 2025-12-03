@@ -1,7 +1,3 @@
 .lang-button {
   min-width: 0;
-  &__active {
-    @extend .lang-button;
-    text-decoration: underline;
-  }
 }
