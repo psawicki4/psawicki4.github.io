@@ -1,4 +1,4 @@
-import { provideHttpClient } from "@angular/common/http";
+import { provideHttpClient, withFetch } from "@angular/common/http";
 import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection, isDevMode } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
@@ -12,7 +12,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideZonelessChangeDetection(),
     provideBrowserGlobalErrorListeners(),
-    provideHttpClient(),
+    provideHttpClient(withFetch()),
     provideTransloco({
       config: {
         availableLangs: ['pl', 'en'],
