@@ -1,15 +1,16 @@
 {
   "name": "personal-website",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --source-map",
+    "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "merge": "node src/app/services/merge-to-en.js",
     "cy:open": "cypress open",
-    "serve:ssr:personal-website": "node dist/personal-website/server/server.mjs"
+    "server": "node dist/personal-website/server/server.mjs"
   },
   "private": true,
   "dependencies": {

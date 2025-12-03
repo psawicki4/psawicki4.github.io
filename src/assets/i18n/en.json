@@ -9,7 +9,8 @@
     "including": "including Signals, Standalone, SSR and Zone-less",
     "grid": "Grid",
     "date-time": "Date/Time",
-    "state": "State"
+    "state": "State",
+    "tests": "Tests"
   },
   "MENU": {
     "home": "Home",

@@ -43,9 +43,8 @@ export class HomeThreeComponent implements AfterViewInit, OnDestroy {
     const height = container.clientHeight;
     this.updateSize(width, height);
 
-    this.camera.position.set(1, 1, 4);
-    this.camera.lookAt(0, 0, 0);
-
+    this.camera.position.set(3, 1.6, 2);
+    this.controls.target.set(0, 1.6, 0);
     this.controls.enableDamping = true;
     this.controls.dampingFactor = 0.05;
     this.controls.minDistance = 1.5;
@@ -63,8 +62,8 @@ export class HomeThreeComponent implements AfterViewInit, OnDestroy {
     this.loader.setMeshoptDecoder(MeshoptDecoder);
     this.loader.load(`assets/models/stylized_rock.glb`, (gltf) => {
       this.model = gltf.scene;
-      this.model.scale.setScalar(0.3);
-      this.model.position.y = -1.3;
+      this.model.scale.setScalar(0.35);
+      this.model.position.y = 0;
       this.scene.add(this.model);
 
       if (gltf.animations?.length) {

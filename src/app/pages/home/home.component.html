@@ -18,14 +18,13 @@
           <li><b>3D:&ensp;</b>three.js</li>
           <li><b>{{ t('grid') }}:&ensp;</b>AG Grid</li>
           <li><b>{{ t('date-time') }}:&ensp;</b>Day.js, Luxon (adapter Material)</li>
+          <li><b>{{ t('tests') }}:&ensp;</b>Cypress, Vitest</li>
         </ul>
       </div>
-      @defer (when !isMobile) {
-      @defer (on idle) {
+      @defer {
       <div class="flex-1">
         <psa-home-three></psa-home-three>
       </div>
-      }
       }
     </div>
   </psa-card>

@@ -14,9 +14,10 @@ The live website is available at [psawicki.dev](https://psawicki.dev).
 
 ### Tech stack
 - **Framework**: Angular 21
-- **UI**: Angular Material, Tailwind CSS 4, Sass
+- **UI**: Angular Material, Tailwind CSS 4
 - **State**: NgRx Signals
 - **I18n**: Transloco
 - **3D**: three.js
 - **Data grid**: AG Grid
-- **Date/Time**: dayjs, luxon (Material adapter)
+- **Date/Time**: Day.js, Luxon (Material adapter)
+- **Tests**: Cypress, Vitest

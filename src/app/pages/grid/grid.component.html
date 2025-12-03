@@ -14,8 +14,10 @@
           <button matButton (click)="resetState()">{{ t('reset-state') }}</button>
           <button matButton (click)="export()">{{ t('csv-export') }}</button>
         </span>
+        @defer (on immediate) {
         <ng-container #outlet>
         </ng-container>
+        }
       </div>
       }
     </div>

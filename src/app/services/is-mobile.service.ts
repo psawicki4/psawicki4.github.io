@@ -10,6 +10,7 @@ export class IsMobileService {
   constructor() {
     afterNextRender(() => {
       const mql = globalThis.matchMedia('(max-width: 767px)');
+      this.isMobile.set(mql.matches);
       mql.onchange = (e) => this.isMobile.set(e.matches);
     });
   }
