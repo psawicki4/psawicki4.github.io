@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, OnDestroy, viewChild, effect, inject, signal, AfterViewInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnDestroy, viewChild, effect, inject, signal, AfterViewInit, afterNextRender, DOCUMENT } from '@angular/core';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
@@ -22,7 +22,7 @@ import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.j
   styleUrl: './model-3d.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Model3DComponent implements AfterViewInit, OnDestroy {
+export class Model3DComponent implements OnDestroy {
 
   transloco = inject(TranslocoService);
   canvas = viewChild<ElementRef>('canvas');
@@ -31,11 +31,8 @@ export class Model3DComponent implements AfterViewInit, OnDestroy {
   camera = new THREE.PerspectiveCamera(50, 1, 0.1, 1000);
   ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
   directionalLight = new THREE.DirectionalLight(0xffffff, 5);
-  threeRenderer = new THREE.WebGLRenderer({
-    antialias: true,
-    alpha: true
-  });
-  controls = new OrbitControls(this.camera, this.threeRenderer.domElement);
+  threeRenderer?: THREE.WebGLRenderer;
+  controls?: OrbitControls;
   model?: THREE.Group;
   modelScalars = new Map<string, number>([
     ['hover_bike', 0.0045],
@@ -51,16 +48,26 @@ export class Model3DComponent implements AfterViewInit, OnDestroy {
   modelAnimationEnabled = true;
   credits = signal('');
 
-  ngAfterViewInit(): void {
-    this.initThree(this.canvas()?.nativeElement);
+  constructor() {
+    afterNextRender(() => {
+      this.threeRenderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true
+      });
+      this.controls = new OrbitControls(this.camera, this.threeRenderer.domElement);
+      this.initThree(this.canvas()?.nativeElement);
+    });
   }
 
   ngOnDestroy() {
-    this.threeRenderer.dispose();
+    this.threeRenderer?.dispose();
     this.mixer?.stopAllAction();
   }
 
   initThree(container: HTMLDivElement) {
+    if (!this.threeRenderer) {
+      return;
+    }
     container.appendChild(this.threeRenderer.domElement);
 
     const width = container.clientWidth;
@@ -74,6 +81,9 @@ export class Model3DComponent implements AfterViewInit, OnDestroy {
     this.camera.position.set(2, 2, 4);
     this.camera.lookAt(0, 0, 0);
 
+    if (!this.controls) {
+      return;
+    }
     this.controls.enableDamping = true;
     this.controls.dampingFactor = 0.05;
     this.controls.minDistance = 1.5;
@@ -111,14 +121,15 @@ export class Model3DComponent implements AfterViewInit, OnDestroy {
       }
       this.credits.set(this.transloco.translate(`MODEL_3D.${name}__credits`));
       this.loading = false;
-      this.threeRenderer.render(this.scene, this.camera);
+      
+      this.threeRenderer?.render(this.scene, this.camera);
     });
   }
 
   updateSize(width: number, height: number) {
     this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();
-    this.threeRenderer.setSize(width, height);
+    this.threeRenderer?.setSize(width, height);
   }
 
   animate() {
@@ -129,11 +140,11 @@ export class Model3DComponent implements AfterViewInit, OnDestroy {
     if (this.model) {
       this.model.rotation.y += this.rotationSpeed;
     }
-    if (this.controls.enabled) {
+    if (this.controls?.enabled) {
       this.controls.update();
     }
 
-    this.threeRenderer.render(this.scene, this.camera);
+    this.threeRenderer?.render(this.scene, this.camera);
   }
 
   toggleRotation(e: MatSlideToggleChange) {

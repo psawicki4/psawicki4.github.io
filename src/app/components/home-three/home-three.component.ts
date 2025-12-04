@@ -59,7 +59,7 @@ export class HomeThreeComponent implements AfterViewInit, OnDestroy {
     this.loader.setMeshoptDecoder(MeshoptDecoder);
     this.loader.load(`assets/models/stylized_rock.glb`, (gltf) => {
       this.model = gltf.scene;
-      this.model.scale.setScalar(0.35);
+      this.model.scale.setScalar(0.34);
       this.model.position.y = 0;
       this.scene.add(this.model);
 
