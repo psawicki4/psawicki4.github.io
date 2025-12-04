@@ -89,10 +89,7 @@ export class Model3DComponent implements OnDestroy {
     this.controls.minDistance = 1.5;
     this.controls.maxDistance = 10;
 
-    // Load model after initial render to avoid blocking the first frame
-    setTimeout(() => {
-      this.loadModel();
-    }, 0);
+    this.loadModel();
 
     this.threeRenderer.setAnimationLoop(() => this.animate());
   }
@@ -121,7 +118,7 @@ export class Model3DComponent implements OnDestroy {
       }
       this.credits.set(this.transloco.translate(`MODEL_3D.${name}__credits`));
       this.loading = false;
-      
+
       this.threeRenderer?.render(this.scene, this.camera);
     });
   }
