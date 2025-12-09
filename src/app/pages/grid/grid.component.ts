@@ -1,5 +1,5 @@
 import { AG_GRID_LOCALE_EN, AG_GRID_LOCALE_PL } from '@ag-grid-community/locale';
-import { afterNextRender, ChangeDetectionStrategy, ChangeDetectorRef, Component, effect, inject, TemplateRef, viewChild, ViewContainerRef } from '@angular/core';
+import { afterNextRender, ChangeDetectionStrategy, Component, effect, inject, signal, TemplateRef, viewChild, ViewContainerRef } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { TranslocoDirective, TranslocoService } from "@jsverse/transloco";
@@ -35,7 +35,6 @@ export class GridComponent {
   transloco = inject(TranslocoService);
   lang = inject(LangService);
   store = inject(CountriesStore);
-  cd = inject(ChangeDetectorRef);
   outletRef = viewChild('outlet', { read: ViewContainerRef });
   contentRef = viewChild.required('content', { read: TemplateRef<any> });
   theme = themeQuartz.withPart(colorSchemeDarkBlue);
@@ -44,7 +43,7 @@ export class GridComponent {
   localeText: typeof AG_GRID_LOCALE_PL | typeof AG_GRID_LOCALE_EN = AG_GRID_LOCALE_PL;
   gridApi!: GridApi;
   initialState: GridState = {};
-  portrait: boolean | undefined;
+  portrait = signal(false);
   loading = true;
   colDefs: ColDef[] = [
     {
@@ -96,9 +95,10 @@ export class GridComponent {
   constructor() {
     this.getCountries();
     afterNextRender(() => {
-      globalThis.matchMedia('(orientation: portrait)').addEventListener('change', e => {
-        this.portrait = e.matches;
-        this.cd.markForCheck();
+      const mql = globalThis.matchMedia('(orientation: portrait)');
+      this.portrait.set(mql.matches);
+      mql.addEventListener('change', e => {
+        this.portrait.set(e.matches);
       });
       this.initialState = JSON.parse(localStorage.getItem('gridState') ?? '{}');
     });
