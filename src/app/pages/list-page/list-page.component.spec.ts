@@ -1,10 +1,11 @@
-import { TestBed } from '@angular/core/testing';
-import { provideZonelessChangeDetection, signal } from '@angular/core';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { provideZonelessChangeDetection, signal, Directive, TemplateRef, ViewContainerRef, Input } from '@angular/core';
+import { of } from 'rxjs';
+import { TranslocoService } from '@jsverse/transloco';
 import { ListPageComponent } from './list-page.component';
 import { RoomsStore } from './rooms.store';
 import { Room } from './room.type';
-import { vi, expect } from 'vitest';
-import { TranslocoTestingModule } from '@jsverse/transloco/testing';
+import { vi, expect, describe, beforeEach, it } from 'vitest';
 
 class MockRoomsStore {
   rooms = signal<{ total: number, data: Room[] }>({ total: 0, data: [] });
@@ -21,10 +22,19 @@ describe('ListPageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ListPageComponent, TranslocoTestingModule.forRoot()],
+      imports: [ListPageComponent],
       providers: [
         provideZonelessChangeDetection(),
-        { provide: RoomsStore, useClass: MockRoomsStore }
+        { provide: RoomsStore, useClass: MockRoomsStore },
+        {
+          provide: TranslocoService, useValue: {
+            setActiveLang: () => { },
+            getActiveLang: () => 'pl',
+            translate: (key: any) => key,
+            selectTranslate: (_k: any) => of((k: any) => k),
+            selectTranslateObject: (_k: any) => of({}),
+          }
+        }
       ]
     });
 
@@ -49,19 +59,19 @@ describe('ListPageComponent', () => {
 
   it('should set first rooms in store', () => {
     component.getFirstRooms();
-    expect(store.setRooms).toHaveBeenCalledWith({ total: 10000, data: component.allRooms.slice(0, 50) });
+    expect(store.setRooms).toHaveBeenCalledWith({ total: 9999, data: component.allRooms.slice(0, 50) });
   });
 
   it('should fetch more rooms', () => {
     component.skip = 0;
-    (store.rooms as any).set({ total: 10000, data: [] });
+    (store.rooms as any).set({ total: 9999, data: [] });
     component.fetchMoreRooms();
     expect(component.skip).toBe(50);
     expect(store.patchRooms).toHaveBeenCalledWith(component.allRooms.slice(50, 100));
   });
 
   it('should not fetch more rooms if all are loaded', () => {
-    (store.rooms as any).set({ total: 10000, data: new Array(10000) });
+    (store.rooms as any).set({ total: 9999, data: new Array(9999) });
     component.fetchMoreRooms();
     expect(store.patchRooms).not.toHaveBeenCalled();
   });
@@ -85,7 +95,7 @@ describe('ListPageComponent', () => {
   it('should book a room', () => {
     const roomToBook: Room = { roomNumber: 1, booked: false };
     (store.selectedRoom as any).set(roomToBook);
-    const initialRooms = { total: 10000, data: [{ ...roomToBook }] };
+    const initialRooms = { total: 9999, data: [{ ...roomToBook }] };
     (store.rooms as any).set(initialRooms);
     component.book();
     const updatedRooms = { ...initialRooms };
@@ -97,7 +107,7 @@ describe('ListPageComponent', () => {
   it('should delete a reservation', () => {
     const roomToUnbook: Room = { roomNumber: 1, booked: true };
     (store.selectedRoom as any).set(roomToUnbook);
-    const initialRooms = { total: 10000, data: [{ ...roomToUnbook }] };
+    const initialRooms = { total: 9999, data: [{ ...roomToUnbook }] };
     (store.rooms as any).set(initialRooms);
     component.deleteReservation();
     const updatedRooms = { ...initialRooms };
