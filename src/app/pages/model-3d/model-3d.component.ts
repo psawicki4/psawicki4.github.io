@@ -1,13 +1,13 @@
-import { ChangeDetectionStrategy, Component, ElementRef, OnDestroy, viewChild, effect, inject, signal, AfterViewInit, afterNextRender, DOCUMENT } from '@angular/core';
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { CardComponent } from "../../components/card/card.component";
-import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
+import { afterNextRender, ChangeDetectionStrategy, Component, ElementRef, inject, OnDestroy, signal, viewChild } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatSlideToggle, MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { MatSliderModule } from "@angular/material/slider";
+import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
+import { CardComponent } from "../../components/card/card.component";
 
 @Component({
   selector: 'psa-model-3d',

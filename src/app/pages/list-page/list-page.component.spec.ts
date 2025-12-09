@@ -1,11 +1,11 @@
-import { TestBed, ComponentFixture } from '@angular/core/testing';
-import { provideZonelessChangeDetection, signal, Directive, TemplateRef, ViewContainerRef, Input } from '@angular/core';
-import { of } from 'rxjs';
+import { provideZonelessChangeDetection, signal } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 import { TranslocoService } from '@jsverse/transloco';
+import { of } from 'rxjs';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ListPageComponent } from './list-page.component';
-import { RoomsStore } from './rooms.store';
 import { Room } from './room.type';
-import { vi, expect, describe, beforeEach, it } from 'vitest';
+import { RoomsStore } from './rooms.store';
 
 class MockRoomsStore {
   rooms = signal<{ total: number, data: Room[] }>({ total: 0, data: [] });

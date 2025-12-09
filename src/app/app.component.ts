@@ -1,9 +1,9 @@
-import { afterNextRender, Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { MenuComponent } from "./components/menu/menu.component";
-import { MatSidenav, MatSidenavContainer, MatSidenavContent } from "@angular/material/sidenav";
 import { NgTemplateOutlet } from "@angular/common";
+import { afterNextRender, Component, inject } from '@angular/core';
+import { MatSidenav, MatSidenavContainer, MatSidenavContent } from "@angular/material/sidenav";
+import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./components/header/header.component";
+import { MenuComponent } from "./components/menu/menu.component";
 import { IsMobileService } from "./services/is-mobile.service";
 import { LangService } from './services/lang.service';
 

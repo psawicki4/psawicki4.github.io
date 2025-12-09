@@ -1,16 +1,15 @@
 import { AG_GRID_LOCALE_EN, AG_GRID_LOCALE_PL } from '@ag-grid-community/locale';
-
 import { afterNextRender, ChangeDetectionStrategy, ChangeDetectorRef, Component, effect, inject, TemplateRef, viewChild, ViewContainerRef } from '@angular/core';
 import { MatButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
 import { TranslocoDirective, TranslocoService } from "@jsverse/transloco";
 import { AgGridAngular } from "ag-grid-angular";
 import { AllCommunityModule, ColDef, colorSchemeDarkBlue, GridApi, GridReadyEvent, GridState, ModuleRegistry, StateUpdatedEvent, themeQuartz } from 'ag-grid-community';
+import { finalize } from 'rxjs';
 import { CardComponent } from "../../components/card/card.component";
 import { LangService } from "../../services/lang.service";
 import { CountriesStore } from "./countries.store";
 import { GridService } from "./grid.service";
-import { MatIcon } from '@angular/material/icon';
-import { finalize } from 'rxjs';
 
 ModuleRegistry.registerModules([AllCommunityModule])
 

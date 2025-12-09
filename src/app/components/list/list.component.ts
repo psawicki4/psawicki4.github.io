@@ -1,3 +1,5 @@
+import { CdkFixedSizeVirtualScroll, CdkVirtualForOf, CdkVirtualScrollViewport } from "@angular/cdk/scrolling";
+import { NgClass, NgTemplateOutlet } from "@angular/common";
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -8,11 +10,9 @@ import {
   output,
   viewChild
 } from '@angular/core';
-import { auditTime, filter, map, pairwise, Subscription } from "rxjs";
-import { CdkFixedSizeVirtualScroll, CdkVirtualForOf, CdkVirtualScrollViewport } from "@angular/cdk/scrolling";
-import { NgClass, NgTemplateOutlet } from "@angular/common";
-import { ListItemTemplateDirective } from "./list-item-template.directive";
 import { MatRipple } from "@angular/material/core";
+import { auditTime, filter, map, pairwise, Subscription } from "rxjs";
+import { ListItemTemplateDirective } from "./list-item-template.directive";
 
 @Component({
   selector: 'psa-list',

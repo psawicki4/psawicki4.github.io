@@ -4,11 +4,14 @@ import { JsonPipe } from "@angular/common";
 import { ChangeDetectionStrategy, Component, effect, ElementRef, inject, signal, viewChild } from '@angular/core';
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators, ValueChangeEvent } from "@angular/forms";
+import { provideLuxonDateAdapter } from "@angular/material-luxon-adapter";
 import { MatAutocomplete, MatAutocompleteTrigger, MatOption } from "@angular/material/autocomplete";
 import { MatButton } from "@angular/material/button";
 import { MatCheckbox } from "@angular/material/checkbox";
 import { MatChipGrid, MatChipInput, MatChipInputEvent, MatChipRemove, MatChipRow } from "@angular/material/chips";
+import { DateAdapter } from "@angular/material/core";
 import { MatDatepicker, MatDatepickerInput, MatDatepickerToggle } from "@angular/material/datepicker";
+import { MatDialog, MatDialogModule } from "@angular/material/dialog";
 import { MatError, MatFormField, MatHint, MatLabel, MatSuffix } from "@angular/material/form-field";
 import { MatIcon } from "@angular/material/icon";
 import { MatInput } from "@angular/material/input";
@@ -20,13 +23,10 @@ import dayjs from "dayjs";
 import { Subject, take, takeUntil } from "rxjs";
 import { CardComponent } from "../../components/card/card.component";
 import { IsMobileService } from "../../services/is-mobile.service";
+import { LangService } from "../../services/lang.service";
 import { ageBirthdayValidator } from "./age-birthday-validator";
 import { CatOption, DemoForm } from "./form.type";
 import { OnlyDigitsDirective } from "./only-digits.directive";
-import { LangService } from "../../services/lang.service";
-import { MatDialog, MatDialogModule } from "@angular/material/dialog";
-import { provideLuxonDateAdapter } from "@angular/material-luxon-adapter";
-import { DateAdapter } from "@angular/material/core";
 
 @Component({
   selector: 'psa-form',
