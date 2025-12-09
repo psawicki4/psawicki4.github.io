@@ -1,17 +1,25 @@
-import { afterNextRender, Injectable, signal } from '@angular/core';
+import { inject, Injectable, REQUEST, signal, WritableSignal } from '@angular/core';
+import { UAParser } from 'ua-parser-js';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IsMobileService {
 
-  isMobile = signal(false);
+  isMobile: WritableSignal<boolean>;
+  request = inject(REQUEST);
 
   constructor() {
-    afterNextRender(() => {
+    const userAgent = this.request?.headers.get('user-agent') || '';
+    const uAParser = new UAParser(userAgent);
+    if (userAgent !== '') {
+      this.isMobile = signal(uAParser.getDevice().type === 'mobile' || uAParser.getDevice().type === 'tablet');
+    } else if (globalThis) {
       const mql = globalThis.matchMedia('(max-width: 767px)');
-      this.isMobile.set(mql.matches);
+      this.isMobile = signal(mql.matches);
       mql.onchange = (e) => this.isMobile.set(e.matches);
-    });
+    } else {
+      this.isMobile = signal(false);
+    }
   }
 }
