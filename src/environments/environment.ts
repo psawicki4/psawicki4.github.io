@@ -1,4 +1,5 @@
 export const environment = {
     production: true,
-    baseUrl: 'https://personal-website-phi-kohl.vercel.app',
+    baseUrl: 'https://www.psawicki.dev',
 };
+    
