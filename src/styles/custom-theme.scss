@@ -17,12 +17,12 @@ html {
       button-color: #ffffff));
 
   .success-snackbar {
-    @include mat.snack-bar-overrides((container-color: #198754,
+    @include mat.snack-bar-overrides((container-color: var.$success-color,
       ));
   }
 
   .error-snackbar {
-    @include mat.snack-bar-overrides((container-color: #dc3545,
+    @include mat.snack-bar-overrides((container-color: var.$error-container,
       ));
   }
 }

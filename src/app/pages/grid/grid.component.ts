@@ -4,7 +4,7 @@ import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { TranslocoDirective, TranslocoService } from "@jsverse/transloco";
 import { AgGridAngular } from "ag-grid-angular";
-import { AllCommunityModule, ColDef, colorSchemeDarkBlue, GridApi, GridReadyEvent, GridState, ModuleRegistry, StateUpdatedEvent, themeQuartz } from 'ag-grid-community';
+import { AllCommunityModule, ColDef, GridApi, GridReadyEvent, GridState, ModuleRegistry, StateUpdatedEvent, themeQuartz } from 'ag-grid-community';
 import { finalize } from 'rxjs';
 import { CardComponent } from "../../components/card/card.component";
 import { LangService } from "../../services/lang.service";
@@ -37,7 +37,12 @@ export class GridComponent {
   store = inject(CountriesStore);
   outletRef = viewChild('outlet', { read: ViewContainerRef });
   contentRef = viewChild.required('content', { read: TemplateRef<any> });
-  theme = themeQuartz.withPart(colorSchemeDarkBlue);
+  theme = themeQuartz.withParams({
+    backgroundColor: '#1a2121',
+    foregroundColor: '#e0e3e2',
+    accentColor: '#00dddd',
+    fontFamily: ['Open Sans', 'Open Sans fallback', 'sans-serif']
+  });
   paginationPageSize = 10;
   paginationPageSizeSelector: number[] | boolean = [10, 25, 50];
   localeText: typeof AG_GRID_LOCALE_PL | typeof AG_GRID_LOCALE_EN = AG_GRID_LOCALE_PL;
