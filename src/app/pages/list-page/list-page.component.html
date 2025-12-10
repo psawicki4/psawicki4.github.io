@@ -22,16 +22,18 @@
         <div class="flex flex-col gap-8 w-72">
           <p>{{ t('selected-room') }}</p>
           @if (store.selectedRoom().roomNumber > 0) {
-          <p>{{ t('room-nr') }} {{ store.selectedRoom().roomNumber }}</p>
-          <span class="flex flex-row gap-4">
-            @if (!store.selectedRoom().booked) {
-            <button matButton (click)="cancel()">{{ t('cancel') }}</button>
-            <button matButton (click)="book()">{{ t('reserve') }}</button>
-            } @else {
-            <button matButton (click)="cancel()">{{ t('cancel') }}</button>
-            <button matButton (click)="deleteReservation()">{{ t('delete-reservation') }}</button>
-            }
-          </span>
+          <psa-card>
+            <p class="mb-4">{{ t('room-nr') }} {{ store.selectedRoom().roomNumber }}</p>
+            <span class="flex flex-row gap-4">
+              @if (!store.selectedRoom().booked) {
+              <button matButton (click)="cancel()">{{ t('cancel') }}</button>
+              <button matButton (click)="book()">{{ t('reserve') }}</button>
+              } @else {
+              <button matButton (click)="cancel()">{{ t('cancel') }}</button>
+              <button matButton (click)="deleteReservation()">{{ t('delete-reservation') }}</button>
+              }
+            </span>
+          </psa-card>
           }
         </div>
         <div class="w-72">
