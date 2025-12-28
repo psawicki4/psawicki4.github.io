@@ -10,9 +10,9 @@
       @defer (hydrate on idle) {
       <psa-header [isMobile]="isMobile" (open)="sidenav.open()"></psa-header>
       }
-      <div class="w-full" role="main">
+      <main class="w-full" aria-label="Mobile main content">
         <router-outlet></router-outlet>
-      </div>
+      </main>
       <ng-container [ngTemplateOutlet]="footer"></ng-container>
     </div>
   </mat-sidenav-content>
@@ -28,9 +28,9 @@
     <psa-menu></psa-menu>
     }
     <div class="divider"></div>
-    <div class="w-full" role="main">
+    <main class="w-full" aria-label="Desktop main content">
       <router-outlet></router-outlet>
-    </div>
+    </main>
   </div>
   <ng-container [ngTemplateOutlet]="footer"></ng-container>
 </div>
