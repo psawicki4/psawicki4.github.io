@@ -10,6 +10,15 @@ An Angular-based personal website that serves as my portfolio and includes a set
 ![Cypress](https://img.shields.io/badge/Cypress-15-04C38E?logo=cypress&logoColor=white)
 ![Transloco](https://img.shields.io/badge/Transloco-8-05ccfa)
 
+**Quality Assurance (SonarQube):**
+
+![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=psawicki4_psawicki4.github.io&metric=alert_status)
+![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=psawicki4_psawicki4.github.io&metric=security_rating)
+![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=psawicki4_psawicki4.github.io&metric=reliability_rating)
+![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=psawicki4_psawicki4.github.io&metric=sqale_rating)
+![Bugs](https://sonarcloud.io/api/project_badges/measure?project=psawicki4_psawicki4.github.io&metric=bugs)
+![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=psawicki4_psawicki4.github.io&metric=code_smells)
+
 The live website is available at [psawicki.dev](https://psawicki.dev).
 
 ### Tech stack
