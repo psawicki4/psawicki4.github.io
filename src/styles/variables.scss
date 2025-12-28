@@ -1,20 +1,15 @@
 @use "sass:color";
 
 $background: #131313;
-$background-5: color.mix(#fff, $background, 5%);
 $background-7: color.mix(#fff, $background, 7%);
-$background-8: color.mix(#fff, $background, 8%);
 $background-9: color.mix(#fff, $background, 9%);
 $background-11: color.mix(#fff, $background, 11%);
-$background-12: color.mix(#fff, $background, 12%);
 $background-14: color.mix(#fff, $background, 14%);
-$background-15: color.mix(#fff, $background, 15%);
 $background-16: color.mix(#fff, $background, 16%);
 
 $text-color: #e0e3e2;
-$grey-color: #818181;
 $primary: #00dddd;
-$primary-container: #004f4f;
+$primary-dark: #004f4f;
 $success-color: #2e7d32;
 $error-color: #dc3545;
 $error-container: #93000a;
