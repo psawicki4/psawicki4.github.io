@@ -44,7 +44,7 @@ export class Model3DComponent implements OnDestroy {
   loader = new GLTFLoader();
 
   loading = false;
-  rotationSpeed = 0.004;
+  rotationSpeed = 0.5;
   modelAnimationEnabled = true;
   credits = signal('');
 
@@ -135,7 +135,8 @@ export class Model3DComponent implements OnDestroy {
       this.mixer.update(delta);
     }
     if (this.model) {
-      this.model.rotation.y += this.rotationSpeed;
+      //* delta to make rotation frame rate independent
+      this.model.rotation.y += this.rotationSpeed * delta;
     }
     if (this.controls?.enabled) {
       this.controls.update();
@@ -145,7 +146,7 @@ export class Model3DComponent implements OnDestroy {
   }
 
   toggleRotation(e: MatSlideToggleChange) {
-    this.rotationSpeed = e.checked ? 0.004 : 0;
+    this.rotationSpeed = e.checked ? 0.5 : 0;
   }
 
   changeLightIntensity(e: Event) {

@@ -84,7 +84,7 @@ export class HomeThreeComponent implements AfterViewInit, OnDestroy {
       this.mixer.update(delta);
     }
     if (this.model) {
-      this.model.rotation.y += 0.003;
+      this.model.rotation.y += 0.3 * delta;
     }
     if (this.controls.enabled) {
       this.controls.update();
