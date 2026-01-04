@@ -1,9 +1,8 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatAnchor } from "@angular/material/button";
 import { TranslocoDirective } from "@jsverse/transloco";
 import { CardComponent } from "../../components/card/card.component";
 import { HomeThreeComponent } from "../../components/home-three/home-three.component";
-import { IsMobileService } from '../../services/is-mobile.service';
 
 @Component({
   selector: 'psa-home',
@@ -18,10 +17,4 @@ import { IsMobileService } from '../../services/is-mobile.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent {
-
-  isMobileService = inject(IsMobileService);
-
-  get isMobile() {
-    return this.isMobileService.isMobile();
-  }
 }

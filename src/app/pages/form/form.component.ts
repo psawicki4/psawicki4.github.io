@@ -1,4 +1,4 @@
-import { COMMA, ENTER } from "@angular/cdk/keycodes";
+import { ENTER } from "@angular/cdk/keycodes";
 import { CdkTextareaAutosize } from "@angular/cdk/text-field";
 import { JsonPipe } from "@angular/common";
 import { ChangeDetectionStrategy, Component, effect, ElementRef, inject, signal, viewChild } from '@angular/core';
@@ -22,7 +22,6 @@ import { TranslocoDirective, TranslocoService } from "@jsverse/transloco";
 import dayjs from "dayjs";
 import { Subject, take, takeUntil } from "rxjs";
 import { CardComponent } from "../../components/card/card.component";
-import { IsMobileService } from "../../services/is-mobile.service";
 import { LangService } from "../../services/lang.service";
 import { ageBirthdayValidator } from "./age-birthday-validator";
 import { CatOption, DemoForm } from "./form.type";
@@ -59,7 +58,7 @@ import { OnlyDigitsDirective } from "./only-digits.directive";
     MatIcon,
     MatChipInput,
     MatChipRemove,
-    TranslocoDirective,
+    TranslocoDirective
   ],
   providers: [
     provideLuxonDateAdapter({
@@ -83,7 +82,6 @@ export class FormComponent {
   fb = inject(FormBuilder);
   snackBar = inject(MatSnackBar);
   transloco = inject(TranslocoService);
-  isMobileService = inject(IsMobileService);
   langService = inject(LangService);
   dateAdapter = inject(DateAdapter);
   dialog = inject(MatDialog);
@@ -97,7 +95,7 @@ export class FormComponent {
   { namePl: 'Inny', nameEN: 'Other', id: 'inny' }];
   filteredOptions: CatOption[] = [];
   toys = signal<string[]>([]);
-  separatorKeysCodes = [ENTER, COMMA];
+  separatorKeysCodes = [ENTER];
   bredInput = viewChild<ElementRef>('bred');
 
   form = new FormGroup<DemoForm>({
@@ -249,10 +247,6 @@ export class FormComponent {
 
   get descriptionVal() {
     return this.cat?.get('description')?.value;
-  }
-
-  get isMobile() {
-    return this.isMobileService.isMobile();
   }
 
 }

@@ -1,4 +1,3 @@
-@if (isMobile) {
 <mat-sidenav-container>
   <mat-sidenav #sidenav>
     @defer (hydrate on idle) {
@@ -8,37 +7,21 @@
   <mat-sidenav-content>
     <div class="h-dvh flex flex-col gap-4">
       @defer (hydrate on idle) {
-      <psa-header [isMobile]="isMobile" (open)="sidenav.open()"></psa-header>
+      <psa-header [isMobile]="true" (open)="sidenav.open()"></psa-header>
       }
-      <main class="w-full" aria-label="Mobile main content">
-        <router-outlet></router-outlet>
-      </main>
-      <ng-container [ngTemplateOutlet]="footer"></ng-container>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
-
-} @else {
-<div class="h-dvh flex flex-col gap-4">
-  @defer (hydrate on idle) {
-  <psa-header [isMobile]="isMobile"></psa-header>
-  }
-  <div class="flex flex-row h-full gap-8 mx-8">
-    @defer (hydrate on idle) {
-    <psa-menu></psa-menu>
-    }
-    <div class="divider"></div>
-    <main class="w-full" aria-label="Desktop main content">
-      <router-outlet></router-outlet>
-    </main>
-  </div>
-  <ng-container [ngTemplateOutlet]="footer"></ng-container>
-</div>
-}
-
-<ng-template #footer>
-  <div class="footer">
+      <div class="flex flex-row h-full gap-8 md:mx-8">
+        @defer (hydrate on idle) {
+        <psa-menu class="max-md:hidden"></psa-menu>
+        }
+        <div class="divider max-md:hidden"></div>
+        <main class="w-full" aria-label="Desktop main content">
+          <router-outlet></router-outlet>
+        </main>
+      </div>
+      <div class="footer">
     <p>&copy; {{ date.getFullYear() }} Piotr Sawicki</p>
     <a href="https://pl.freepik.com">Image by kjpargeter on Freepik</a>
   </div>
-</ng-template>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

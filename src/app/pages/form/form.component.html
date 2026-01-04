@@ -1,11 +1,8 @@
 <ng-container *transloco="let t; prefix: 'FORM'">
   <psa-card>
     <h1 class="text-2xl mb-4">{{ t('header') }}</h1>
-    @if (isMobile) {
-    <p class="mb-8">{{ t('component-desc-mobile') }}</p>
-    } @else {
-    <p class="mb-8">{{ t('component-desc-desktop') }}</p>
-    }
+    <p class="mb-8 md:hidden">{{ t('component-desc-mobile') }}</p>
+    <p class="mb-8 max-md:hidden">{{ t('component-desc-desktop') }}</p>
     <div class="w-full flex flex-col md:flex-row gap-8">
       <div class="flex flex-col items-center md:w-1/2">
         <form [formGroup]="form" class="flex flex-col gap-4 items-center">
@@ -88,11 +85,7 @@
               </mat-chip-grid>
               <input [placeholder]="t('new-toy')" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                 [matChipInputFor]="chipGrid" (matChipInputTokenEnd)="addToy($event)" [matChipInputAddOnBlur]="true" />
-              @if (isMobile) {
-              <mat-hint>{{ t('toys-hint-mobile') }}</mat-hint>
-              } @else {
               <mat-hint>{{ t('toys-hint') }}</mat-hint>
-              }
             </mat-form-field>
             <div class="flex flex-col gap-4 w-80 relative">
               <mat-label>{{ t('beauty') }}</mat-label>
@@ -118,14 +111,10 @@
           }
         </form>
       </div>
-      @if (!isMobile) {
-      <div class="divider"></div>
-      }
+      <div class="divider max-md:hidden"></div>
       <div class="flex flex-col gap-8 sm:ml-8 md:w-1/2">
         <p class="text-center md:text-left">{{ t('form-model') }}</p>
-        <pre class="wrap-anywhere whitespace-pre-wrap">
-        {{ form.getRawValue() | json }}
-      </pre>
+        <pre class="wrap-anywhere whitespace-pre-wrap">{{ form.getRawValue() | json }}</pre>
       </div>
     </div>
   </psa-card>
