@@ -7,21 +7,21 @@
   <mat-sidenav-content>
     <div class="h-dvh flex flex-col gap-4">
       @defer (hydrate on idle) {
-      <psa-header [isMobile]="true" (open)="sidenav.open()"></psa-header>
+      <psa-header (open)="sidenav.open()"></psa-header>
       }
       <div class="flex flex-row h-full gap-8 md:mx-8">
         @defer (hydrate on idle) {
         <psa-menu class="max-md:hidden"></psa-menu>
         }
         <div class="divider max-md:hidden"></div>
-        <main class="w-full" aria-label="Desktop main content">
+        <main class="w-full" aria-label="Main content">
           <router-outlet></router-outlet>
         </main>
       </div>
       <div class="footer">
-    <p>&copy; {{ date.getFullYear() }} Piotr Sawicki</p>
-    <a href="https://pl.freepik.com">Image by kjpargeter on Freepik</a>
-  </div>
+        <p>&copy; {{ date.getFullYear() }} Piotr Sawicki</p>
+        <a href="https://pl.freepik.com">Image by kjpargeter on Freepik</a>
+      </div>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

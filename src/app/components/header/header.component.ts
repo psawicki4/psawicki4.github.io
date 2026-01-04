@@ -22,7 +22,6 @@ import { LangSwitchComponent } from "../lang-switch/lang-switch.component";
 })
 export class HeaderComponent {
 
-  isMobile = input<boolean>(false);
   open = output();
   dialog = inject(MatDialog);
 

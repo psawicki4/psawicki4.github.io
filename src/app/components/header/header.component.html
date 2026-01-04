@@ -1,20 +1,13 @@
 <ng-container *transloco="let t">
-  @if (isMobile()) {
   <mat-toolbar color="primary">
-    <span class="flex flex-row justify-between gap-8 w-full pt-2">
-      <button matIconButton (click)="onClick()" aria-label="menu">
-        <mat-icon>menu</mat-icon>
-      </button>
+    <span class="flex flex-row justify-between md:justify-end gap-8 w-full pt-2 md:px-4">
+      <span class="md:hidden">
+        <button matIconButton (click)="onClick()" aria-label="menu">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </span>
       <button matButton="outlined" (click)="openContactDialog()">{{ t('contact') }}</button>
       <psa-lang-switch></psa-lang-switch>
     </span>
   </mat-toolbar>
-  } @else {
-  <mat-toolbar color="primary">
-    <span class="flex flex-row justify-end gap-8 w-full px-4 pt-2">
-      <button matButton="outlined" (click)="openContactDialog()">{{ t('contact') }}</button>
-      <psa-lang-switch></psa-lang-switch>
-    </span>
-  </mat-toolbar>
-  }
 </ng-container>
