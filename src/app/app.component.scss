@@ -1,14 +1,12 @@
 @use "variables" as var;
 
 .divider {
-  height: 100%;
   width: 1px;
   min-width: 1px;
   background-color: var.$primary-dark;
 }
 
 .footer {
-  margin-top: auto;
   padding-bottom: 4px;
   text-align: center;
   font-size: 8px;
