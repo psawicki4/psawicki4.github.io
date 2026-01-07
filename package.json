@@ -39,7 +39,6 @@
     "husky": "^9.1.7",
     "luxon": "^3.7.2",
     "ngx-colors": "^3.6.0",
-    "normalize.css": "^8.0.1",
     "rxjs": "~7.8.2",
     "three": "^0.181.2",
     "tslib": "^2.8.1",
