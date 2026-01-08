@@ -33,7 +33,7 @@ html {
 }
 
 body {
-  min-height: 100vh;
+  min-height: 100dvh;
   box-sizing: border-box;
   font-family: var.$font-family;
   color: var.$text-color;
@@ -56,6 +56,8 @@ body {
 @media only screen and (max-width: 640px) {
   .bg-fixed {
     background-image: url("assets/mobile.webp");
-    height: 100vh;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
   }
 }
