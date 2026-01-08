@@ -56,5 +56,6 @@ body {
 @media only screen and (max-width: 640px) {
   .bg-fixed {
     background-image: url("assets/mobile.webp");
+    height: 100lvh;
   }
 }
