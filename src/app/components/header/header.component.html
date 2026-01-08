@@ -1,13 +1,15 @@
 <ng-container *transloco="let t">
   <mat-toolbar color="primary">
-    <span class="flex flex-row justify-between md:justify-end gap-8 w-full pt-2 md:px-16">
-      <span class="md:hidden">
+    <span class="flex flex-row w-full md:justify-end md:gap-8 md:px-16">
+      <span class="flex-1 md:hidden">
         <button matIconButton (click)="onClick()" aria-label="menu">
           <mat-icon>menu</mat-icon>
         </button>
       </span>
       <button matButton="outlined" (click)="openContactDialog()">{{ t('contact') }}</button>
-      <psa-lang-switch></psa-lang-switch>
+      <span class="flex-1 md:flex-0">
+        <psa-lang-switch></psa-lang-switch>
+      </span>
     </span>
   </mat-toolbar>
 </ng-container>
