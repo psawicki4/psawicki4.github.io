@@ -15,8 +15,8 @@ export class LangService {
     if (langCode !== 'pl' && langCode !== 'en') {
       langCode = 'pl';
     }
-    this.transloco.setDefaultLang(langCode);
     this.transloco.setActiveLang(langCode);
+    this.transloco.setDefaultLang(langCode);
     this.lang.set(langCode);
   }
 }
