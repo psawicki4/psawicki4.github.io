@@ -60,8 +60,21 @@ export class Model3DComponent implements OnDestroy {
   }
 
   ngOnDestroy() {
+    this.scene.traverse((object: any) => {
+      if (object.isMesh) {
+        object.geometry.dispose();
+        if (object.material) {
+          if (Array.isArray(object.material)) {
+            object.material.forEach((material: any) => material.dispose());
+          } else {
+            object.material.dispose();
+          }
+        }
+      }
+    });
     this.threeRenderer?.dispose();
     this.mixer?.stopAllAction();
+    this.scene.clear();
   }
 
   initThree(container: HTMLDivElement) {
