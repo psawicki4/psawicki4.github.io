@@ -14,11 +14,11 @@
   },
   "MENU": {
     "home": "Start",
-    "form": "Formularz",
-    "list": "Lista",
+    "form": "Dynamiczny Formularz",
+    "list": "Wirtualna Lista",
     "animations": "Animacje",
-    "grid": "Tabela",
-    "model-3d": "Model 3D"
+    "grid": "Zaawansowana Tabela",
+    "model-3d": "Wizualizacja 3D"
   },
   "CONTACT": {
     "contact": "Kontakt",
