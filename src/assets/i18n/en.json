@@ -27,8 +27,8 @@
   },
   "FORM": {
     "header": "Form demo",
-    "component-desc-desktop": "A dynamic form built from various Angular Material components. On the right side there is a live preview of the form model.",
-    "component-desc-mobile": "A dynamic form built from various Angular Material components. At the bottom of the page there is a live preview of the form model.",
+    "component-desc-desktop": "An advanced dynamic form featuring complex cross-field validation, conditional logic, and reactive state synchronization. Observe the live data model on the right to see how the system processes data in real-time.",
+    "component-desc-mobile": "An advanced dynamic form featuring complex cross-field validation, conditional logic, and reactive state synchronization. Observe the live data model below to see how the system processes data in real-time.",
     "dog-or-cat": "Cat or dog?",
     "dog": "dog",
     "cat": "cat",
@@ -73,8 +73,8 @@
     "your-reservations": "Your reservations:"
   },
   "GRID": {
-    "header": "Table of countries",
-    "component-desc": "AG Grid table implementation with sorting, filtering and paging. Ability to resize and reorder columns. Automatic storage of grid state. Export option to CSV file.",
+    "header": "Enterprise Grid",
+    "component-desc": "A comprehensive Enterprise-grade data grid implementation powered by AG Grid. Features state management (filtering, sorting, column layouts), large dataset handling, automatic storage of grid state, and CSV report export.",
     "name": "Name",
     "capital": "Capital",
     "population": "Population",
@@ -87,7 +87,7 @@
     "landscape": "Switch to landscape mode"
   },
   "MODEL_3D": {
-    "header": "3D Model",
+    "header": "3D Visualization",
     "component-desc": "Interactive 3D model viewer built with Three.js library. Features include loading different GLB models, automatic model rotation, adjustable lighting intensity, controlling the camera (orbit controls), and support for model animations.",
     "hover_bike": "Sci-fi",
     "hover_bike__credits": "\"Hover bike - \"The Rocket\"\" (https://skfb.ly/6RvML) by TuppsM is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",

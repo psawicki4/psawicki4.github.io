@@ -27,8 +27,8 @@
   },
   "FORM": {
     "header": "Demo formularza",
-    "component-desc-desktop": "Dynamiczny formularz zbudowany z różnorodnych komponentów Angular Material. Po prawej stronie znajduje się podgląd na żywo modelu formularza.",
-    "component-desc-mobile": "Dynamiczny formularz zbudowany z różnorodnych komponentów Angular Material. Na dole strony znajduje się podgląd na żywo modelu formularza.",
+    "component-desc-desktop": "Zaawansowany formularz dynamiczny wykorzystujący złożoną walidację krzyżową, logikę warunkową i reaktywną synchronizację stanu. Śledź podgląd modelu po prawej stronie, aby zobaczyć, jak system przetwarza dane w czasie rzeczywistym.",
+    "component-desc-mobile": "Zaawansowany formularz dynamiczny wykorzystujący złożoną walidację krzyżową, logikę warunkową i reaktywną synchronizację stanu. Śledź podgląd modelu na dole strony, aby zobaczyć, jak system przetwarza dane w czasie rzeczywistym.",
     "dog-or-cat": "Kot czy pies?",
     "dog": "pies",
     "cat": "kot",
@@ -73,8 +73,8 @@
     "your-reservations": "Twoje rezerwacje:"
   },
   "GRID": {
-    "header": "Tabela krajów",
-    "component-desc": "Implementacja tabeli AG Grid z sortowaniem, filtrowaniem i stronicowaniem. Możliwość zmiany rozmiaru i kolejności kolumn. Automatyczne zapamiętywanie stanu grida. Opcja eksportu do pliku CSV.",
+    "header": "Zaawansowana Tabela",
+    "component-desc": "Kompleksowa implementacja tabeli danych klasy Enterprise oparta na AG Grid. Zawiera mechanizmy zarządzania stanem widoku (filtrowanie, sortowanie, układ i rozmiar kolumn), obsługę dużych zbiorów danych, automatyczne zapamiętywanie stanu grida oraz eksport raportów do CSV.",
     "name": "Nazwa",
     "capital": "Stolica",
     "population": "Populacja",
@@ -87,7 +87,7 @@
     "landscape": "Przełącz na tryb poziomy"
   },
   "MODEL_3D": {
-    "header": "Model 3D",
+    "header": "Wizualizacja 3D",
     "component-desc": "Interaktywna przeglądarka modeli 3D zbudowana z użyciem biblioteki Three.js. Funkcje obejmują ładowanie różnych modeli GLB, automatyczną rotację modelu, regulowaną intensywność oświetlenia, sterowanie kamerą (orbit controls) oraz obsługę animacji modeli.",
     "hover_bike": "Sci-fi",
     "hover_bike__credits": "\"Hover bike - \"The Rocket\"\" (https://skfb.ly/6RvML) by TuppsM is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).",
