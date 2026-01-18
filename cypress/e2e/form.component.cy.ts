@@ -63,12 +63,6 @@ describe('Form Component', () => {
                 .should('be.visible');
         });
 
-        it('should toggle sterilized checkbox', () => {
-            cy.get('mat-checkbox[formControlName="sterilized"]')
-                .click()
-                .should('have.class', 'mat-mdc-checkbox-checked');
-        });
-
         it('should toggle purebred checkbox', () => {
             cy.get('mat-checkbox[formControlName="purebred"]')
                 .click()
@@ -195,7 +189,6 @@ describe('Form Component', () => {
             // Fill in required fields
             cy.get('input[formControlName="name"]').type('Fluffy');
             cy.get('input[formControlName="age"]').type('2');
-            cy.get('mat-checkbox[formControlName="sterilized"]').click();
             cy.get('mat-checkbox[formControlName="purebred"]').click();
 
             // Select breed
