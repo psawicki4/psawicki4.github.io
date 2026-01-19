@@ -2,10 +2,9 @@ import { inject, Injectable, signal } from '@angular/core';
 import { TranslocoService } from '@jsverse/transloco';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LangService {
-
   lang = signal('pl');
 
   transloco = inject(TranslocoService);

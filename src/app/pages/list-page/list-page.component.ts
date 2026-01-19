@@ -1,36 +1,31 @@
-import { NgClass } from "@angular/common";
+import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
-import { MatButton } from "@angular/material/button";
-import { TranslocoDirective } from "@jsverse/transloco";
-import { CardComponent } from "../../components/card/card.component";
-import { ListItemTemplateDirective } from "../../components/list/list-item-template.directive";
-import { ListComponent } from "../../components/list/list.component";
-import { Room } from "./room.type";
-import { RoomsStore } from "./rooms.store";
+import { MatButton } from '@angular/material/button';
+import { TranslocoDirective } from '@jsverse/transloco';
+import { CardComponent } from '../../components/card/card.component';
+import { ListItemTemplateDirective } from '../../components/list/list-item-template.directive';
+import { ListComponent } from '../../components/list/list.component';
+import { Room } from './room.type';
+import { RoomsStore } from './rooms.store';
 
 @Component({
   selector: 'psa-list-page',
-  imports: [
-    CardComponent,
-    ListComponent,
-    ListItemTemplateDirective,
-    TranslocoDirective,
-    NgClass,
-    MatButton
-  ],
+  imports: [CardComponent, ListComponent, ListItemTemplateDirective, TranslocoDirective, NgClass, MatButton],
   providers: [RoomsStore],
   templateUrl: './list-page.component.html',
   styleUrl: './list-page.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListPageComponent implements OnInit {
-
   store = inject(RoomsStore);
   skip = 0;
-  allRooms = Array.from({ length: 10000 }, (value, index): Room => ({
-    roomNumber: index + 1,
-    booked: false
-  })).filter(i => i.roomNumber !== 404);
+  allRooms = Array.from(
+    { length: 10000 },
+    (value, index): Room => ({
+      roomNumber: index + 1,
+      booked: false,
+    })
+  ).filter((i) => i.roomNumber !== 404);
 
   ngOnInit(): void {
     this.getFirstRooms();
@@ -64,7 +59,7 @@ export class ListPageComponent implements OnInit {
   book() {
     const updatedRooms = { ...this.store.rooms() };
     console.log(this.store.selectedRoom().roomNumber);
-    const index = updatedRooms.data.findIndex(r => r.roomNumber === this.store.selectedRoom().roomNumber);
+    const index = updatedRooms.data.findIndex((r) => r.roomNumber === this.store.selectedRoom().roomNumber);
     if (index !== -1) {
       updatedRooms.data[index].booked = true;
     }
@@ -74,7 +69,7 @@ export class ListPageComponent implements OnInit {
 
   deleteReservation() {
     const updatedRooms = { ...this.store.rooms() };
-    const index = updatedRooms.data.findIndex(r => r.roomNumber === this.store.selectedRoom().roomNumber);
+    const index = updatedRooms.data.findIndex((r) => r.roomNumber === this.store.selectedRoom().roomNumber);
     if (index !== -1) {
       updatedRooms.data[index].booked = false;
     }

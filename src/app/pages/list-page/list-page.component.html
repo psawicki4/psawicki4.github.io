@@ -6,14 +6,19 @@
       <p class="text-lg">{{ t('hello') }}</p>
       <div class="flex flex-col md:flex-row gap-16">
         <div class="psa-list">
-          <psa-list [data]="store.rooms().data" [itemHeight]="72" (fetchMore)="fetchMoreRooms()"
-            (selected)="selectRoom($event)">
+          <psa-list
+            [data]="store.rooms().data"
+            [itemHeight]="72"
+            (fetchMore)="fetchMoreRooms()"
+            (selected)="selectRoom($event)"
+          >
             <ng-template listItemTemplate let-dataItem>
               <span class="flex flex-row justify-between items-center">
-                <p [ngClass]="dataItem.roomNumber === 666 ? 'hell' : ''">{{ t('room-number') }} {{
-                  dataItem.roomNumber }}</p>
+                <p [ngClass]="dataItem.roomNumber === 666 ? 'hell' : ''">
+                  {{ t('room-number') }} {{ dataItem.roomNumber }}
+                </p>
                 @if (dataItem.booked) {
-                <p class="booked">{{ t('reservation') }}</p>
+                  <p class="booked">{{ t('reservation') }}</p>
                 }
               </span>
             </ng-template>
@@ -22,24 +27,24 @@
         <div class="flex flex-col gap-8 w-72">
           <p>{{ t('selected-room') }}</p>
           @if (store.selectedRoom().roomNumber > 0) {
-          <psa-card>
-            <p class="mb-4">{{ t('room-nr') }} {{ store.selectedRoom().roomNumber }}</p>
-            <span class="flex flex-row gap-4">
-              @if (!store.selectedRoom().booked) {
-              <button matButton (click)="cancel()">{{ t('cancel') }}</button>
-              <button matButton (click)="book()">{{ t('reserve') }}</button>
-              } @else {
-              <button matButton (click)="cancel()">{{ t('cancel') }}</button>
-              <button matButton (click)="deleteReservation()">{{ t('delete-reservation') }}</button>
-              }
-            </span>
-          </psa-card>
+            <psa-card>
+              <p class="mb-4">{{ t('room-nr') }} {{ store.selectedRoom().roomNumber }}</p>
+              <span class="flex flex-row gap-4">
+                @if (!store.selectedRoom().booked) {
+                  <button matButton (click)="cancel()">{{ t('cancel') }}</button>
+                  <button matButton (click)="book()">{{ t('reserve') }}</button>
+                } @else {
+                  <button matButton (click)="cancel()">{{ t('cancel') }}</button>
+                  <button matButton (click)="deleteReservation()">{{ t('delete-reservation') }}</button>
+                }
+              </span>
+            </psa-card>
           }
         </div>
         <div class="w-72">
           <p class="mb-4">{{ t('your-reservations') }}</p>
           @for (room of store.bookedRooms(); track room.roomNumber) {
-          <p>{{ t('room-nr') }} {{ room.roomNumber }}</p>
+            <p>{{ t('room-nr') }} {{ room.roomNumber }}</p>
           }
         </div>
       </div>

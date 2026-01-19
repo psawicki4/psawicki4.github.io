@@ -1,19 +1,16 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { MatButton } from "@angular/material/button";
-import { TranslocoService } from "@jsverse/transloco";
-import { LangService } from "../../services/lang.service";
+import { MatButton } from '@angular/material/button';
+import { TranslocoService } from '@jsverse/transloco';
+import { LangService } from '../../services/lang.service';
 
 @Component({
   selector: 'psa-lang-switch',
-  imports: [
-    MatButton
-  ],
+  imports: [MatButton],
   templateUrl: './lang-switch.component.html',
   styleUrl: './lang-switch.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LangSwitchComponent {
-
   transloco = inject(TranslocoService);
   langService = inject(LangService);
 

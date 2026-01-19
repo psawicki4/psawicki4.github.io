@@ -1,20 +1,20 @@
 .canvas {
-    width: 100%;
-    height: calc(100% - 224px);
+  width: 100%;
+  height: calc(100% - 224px);
 }
 
 @media only screen and (max-width: 767px) {
-    .canvas {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 1 / 1;
-    }
+  .canvas {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
 }
 
 .grab {
-    cursor: grab;
-  }
+  cursor: grab;
+}
 
-  .grab:active {
-    cursor: grabbing;
-  }
+.grab:active {
+  cursor: grabbing;
+}

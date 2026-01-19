@@ -1,19 +1,19 @@
-import {patchState, signalStore, withMethods, withState} from "@ngrx/signals";
-import {Country} from "./country.type";
+import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
+import { Country } from './country.type';
 
 type CountriesState = {
-  countries: Country[],
-}
+  countries: Country[];
+};
 
 const initialState: CountriesState = {
-  countries: []
-}
+  countries: [],
+};
 
 export const CountriesStore = signalStore(
   withState(initialState),
-  withMethods(store => ({
+  withMethods((store) => ({
     setCountries(countries: Country[]) {
-      patchState(store, {countries: countries})
+      patchState(store, { countries: countries });
     },
   }))
-)
+);

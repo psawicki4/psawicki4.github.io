@@ -2,10 +2,9 @@ import { Directive, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[psaOnlyDigits]',
-  standalone: true
+  standalone: true,
 })
 export class OnlyDigitsDirective {
-
   @HostListener('keypress', ['$event'])
   onKeyPress(event: KeyboardEvent) {
     const newKey = event.key;

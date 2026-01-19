@@ -1,36 +1,46 @@
 import { AG_GRID_LOCALE_EN, AG_GRID_LOCALE_PL } from '@ag-grid-community/locale';
-import { afterNextRender, ChangeDetectionStrategy, Component, effect, inject, signal, TemplateRef, viewChild, ViewContainerRef } from '@angular/core';
+import {
+  afterNextRender,
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  inject,
+  signal,
+  TemplateRef,
+  viewChild,
+  ViewContainerRef,
+} from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
-import { TranslocoDirective, TranslocoService } from "@jsverse/transloco";
-import { AgGridAngular } from "ag-grid-angular";
-import { AllCommunityModule, ColDef, GridApi, GridReadyEvent, GridState, ModuleRegistry, StateUpdatedEvent, themeQuartz } from 'ag-grid-community';
+import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
+import { AgGridAngular } from 'ag-grid-angular';
+import {
+  AllCommunityModule,
+  ColDef,
+  GridApi,
+  GridReadyEvent,
+  GridState,
+  ModuleRegistry,
+  StateUpdatedEvent,
+  themeQuartz,
+} from 'ag-grid-community';
 import { finalize } from 'rxjs';
-import { CardComponent } from "../../components/card/card.component";
-import { LangService } from "../../services/lang.service";
-import { CountriesStore } from "./countries.store";
-import { GridService } from "./grid.service";
+import { CardComponent } from '../../components/card/card.component';
+import { LangService } from '../../services/lang.service';
+import { CountriesStore } from './countries.store';
+import { GridService } from './grid.service';
 
-ModuleRegistry.registerModules([AllCommunityModule])
+ModuleRegistry.registerModules([AllCommunityModule]);
 
 @Component({
   selector: 'psa-grid',
-  imports: [
-    CardComponent,
-    TranslocoDirective,
-    AgGridAngular,
-    MatButton,
-    MatIcon
-  ],
-  providers: [
-    CountriesStore
-  ],
+  imports: [CardComponent, TranslocoDirective, AgGridAngular, MatButton, MatIcon],
+  providers: [CountriesStore],
   templateUrl: './grid.component.html',
   styleUrl: './grid.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GridComponent {
-
   gridService = inject(GridService);
   transloco = inject(TranslocoService);
   lang = inject(LangService);
@@ -41,7 +51,7 @@ export class GridComponent {
     backgroundColor: '#242424',
     foregroundColor: '#e0e3e2',
     accentColor: '#00dddd',
-    fontFamily: ['Open Sans', 'Open Sans fallback', 'sans-serif']
+    fontFamily: ['Open Sans', 'Open Sans fallback', 'sans-serif'],
   });
   paginationPageSize = 10;
   paginationPageSizeSelector: number[] | boolean = [10, 25, 50];
@@ -53,47 +63,47 @@ export class GridComponent {
   colDefs: ColDef[] = [
     {
       headerValueGetter: this.headerTranslation('GRID.name'),
-      field: "name.common",
+      field: 'name.common',
       filter: true,
-      flex: 1
+      flex: 1,
     },
     {
       headerValueGetter: this.headerTranslation('GRID.capital'),
-      valueGetter: p => Object.values(p.data.capital).join(', '),
+      valueGetter: (p) => Object.values(p.data.capital).join(', '),
       filter: true,
-      flex: 1
+      flex: 1,
     },
     {
       headerValueGetter: this.headerTranslation('GRID.region'),
-      field: "region",
+      field: 'region',
       filter: true,
-      flex: 1
+      flex: 1,
     },
     {
       headerValueGetter: this.headerTranslation('GRID.population'),
-      field: "population",
-      valueFormatter: p => p.value.toLocaleString(),
+      field: 'population',
+      valueFormatter: (p) => p.value.toLocaleString(),
       filter: true,
-      flex: 1
+      flex: 1,
     },
     {
       headerValueGetter: this.headerTranslation('GRID.area'),
-      field: "area",
-      valueFormatter: p => p.value.toLocaleString() + ' km²',
+      field: 'area',
+      valueFormatter: (p) => p.value.toLocaleString() + ' km²',
       filter: true,
-      flex: 1
+      flex: 1,
     },
     {
       headerValueGetter: this.headerTranslation('GRID.languages'),
-      valueGetter: p => Object.values(p.data.languages).join(', '),
+      valueGetter: (p) => Object.values(p.data.languages).join(', '),
       filter: true,
-      flex: 1
+      flex: 1,
     },
     {
       headerValueGetter: this.headerTranslation('GRID.unMember'),
-      field: "unMember",
+      field: 'unMember',
       filter: true,
-      flex: 1
+      flex: 1,
     },
   ];
 
@@ -102,7 +112,7 @@ export class GridComponent {
     afterNextRender(() => {
       const mql = globalThis.matchMedia('(orientation: portrait)');
       this.portrait.set(mql.matches);
-      mql.addEventListener('change', e => {
+      mql.addEventListener('change', (e) => {
         this.portrait.set(e.matches);
       });
       this.initialState = JSON.parse(localStorage.getItem('gridState') ?? '{}');
@@ -116,11 +126,12 @@ export class GridComponent {
 
   getCountries() {
     this.loading = true;
-    this.gridService.getCountries()
-      .pipe(finalize(() => this.loading = false))
-      .subscribe(res => {
+    this.gridService
+      .getCountries()
+      .pipe(finalize(() => (this.loading = false)))
+      .subscribe((res) => {
         this.store.setCountries(res);
-      })
+      });
   }
 
   headerTranslation(translateKey: string) {

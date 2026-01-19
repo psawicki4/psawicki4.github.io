@@ -8,7 +8,7 @@ import { Room } from './room.type';
 import { RoomsStore } from './rooms.store';
 
 class MockRoomsStore {
-  rooms = signal<{ total: number, data: Room[] }>({ total: 0, data: [] });
+  rooms = signal<{ total: number; data: Room[] }>({ total: 0, data: [] });
   selectedRoom = signal<Room>({ roomNumber: 0, booked: false });
   setRooms!: () => void;
   patchRooms!: () => void;
@@ -27,15 +27,16 @@ describe('ListPageComponent', () => {
         provideZonelessChangeDetection(),
         { provide: RoomsStore, useClass: MockRoomsStore },
         {
-          provide: TranslocoService, useValue: {
-            setActiveLang: () => { },
+          provide: TranslocoService,
+          useValue: {
+            setActiveLang: () => {},
             getActiveLang: () => 'pl',
             translate: (key: any) => key,
             selectTranslate: (_k: any) => of((k: any) => k),
             selectTranslateObject: (_k: any) => of({}),
-          }
-        }
-      ]
+          },
+        },
+      ],
     });
 
     const fixture = TestBed.createComponent(ListPageComponent);

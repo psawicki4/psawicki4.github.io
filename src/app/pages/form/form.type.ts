@@ -1,12 +1,12 @@
-import {FormControl, FormGroup} from "@angular/forms";
+import { FormControl, FormGroup } from '@angular/forms';
 
 export type DemoForm = {
-  petType: FormControl<string>,
-  cat?: FormGroup
-}
+  petType: FormControl<string>;
+  cat?: FormGroup;
+};
 
 export type CatOption = {
-  namePl: string,
-  nameEN: string,
-  id: string
+  namePl: string;
+  nameEN: string;
+  id: string;
 };

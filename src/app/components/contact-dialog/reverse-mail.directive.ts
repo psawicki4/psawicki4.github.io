@@ -2,12 +2,10 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[reverseMail]',
-  standalone: true
+  standalone: true,
 })
 export class ReverseMailDirective {
-
-  constructor(private readonly el: ElementRef) {
-  }
+  constructor(private readonly el: ElementRef) {}
 
   @HostListener('copy', ['$event'])
   copyMail(e: ClipboardEvent) {
@@ -29,5 +27,4 @@ export class ReverseMailDirective {
     }
     return reversedText;
   }
-
 }

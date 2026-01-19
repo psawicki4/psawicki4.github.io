@@ -1,11 +1,15 @@
-import { provideHttpClient, withFetch } from "@angular/common/http";
-import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection, isDevMode } from '@angular/core';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import {
+  ApplicationConfig,
+  provideBrowserGlobalErrorListeners,
+  provideZonelessChangeDetection,
+  isDevMode,
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { TranslocoHttpLoader } from './transloco-loader';
 import { provideTransloco } from '@jsverse/transloco';
 import { provideClientHydration, withIncrementalHydration } from '@angular/platform-browser';
-
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,8 +24,8 @@ export const appConfig: ApplicationConfig = {
         reRenderOnLangChange: true,
         prodMode: !isDevMode(),
       },
-      loader: TranslocoHttpLoader
+      loader: TranslocoHttpLoader,
     }),
-    provideClientHydration(withIncrementalHydration())
-  ]
+    provideClientHydration(withIncrementalHydration()),
+  ],
 };

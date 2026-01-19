@@ -1,30 +1,52 @@
 @use '@angular/material' as mat;
-@use "variables" as var;
+@use 'variables' as var;
 
 html {
   color-scheme: dark;
-  @include mat.theme((color: mat.$cyan-palette,
+  @include mat.theme(
+    (
+      color: mat.$cyan-palette,
       typography: var.$font-family,
-      density: 0));
+      density: 0,
+    )
+  );
 
-  @include mat.dialog-overrides((container-color: var.$background-7,
+  @include mat.dialog-overrides(
+    (
+      container-color: var.$background-7,
       supporting-text-size: 1rem,
-      with-actions-content-padding: 0 24px 1px));
+      with-actions-content-padding: 0 24px 1px,
+    )
+  );
 
-  @include mat.toolbar-overrides((container-background-color: none,
+  @include mat.toolbar-overrides(
+    (
+      container-background-color: none,
       standard-height: 40px,
-      mobile-height: 40px));
+      mobile-height: 40px,
+    )
+  );
 
-  @include mat.snack-bar-overrides((supporting-text-color: #ffffff,
-      button-color: #ffffff));
+  @include mat.snack-bar-overrides(
+    (
+      supporting-text-color: #ffffff,
+      button-color: #ffffff,
+    )
+  );
 
   .success-snackbar {
-    @include mat.snack-bar-overrides((container-color: var.$success-color,
-      ));
+    @include mat.snack-bar-overrides(
+      (
+        container-color: var.$success-color,
+      )
+    );
   }
 
   .error-snackbar {
-    @include mat.snack-bar-overrides((container-color: var.$error-container,
-      ));
+    @include mat.snack-bar-overrides(
+      (
+        container-color: var.$error-container,
+      )
+    );
   }
 }

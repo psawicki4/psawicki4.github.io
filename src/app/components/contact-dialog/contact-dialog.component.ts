@@ -1,25 +1,23 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MatAnchor, MatButton } from "@angular/material/button";
-import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from "@angular/material/dialog";
-import { TranslocoDirective } from "@jsverse/transloco";
-import { ReverseMailDirective } from "./reverse-mail.directive";
+import { MatAnchor, MatButton } from '@angular/material/button';
+import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
+import { TranslocoDirective } from '@jsverse/transloco';
+import { ReverseMailDirective } from './reverse-mail.directive';
 
 @Component({
-    selector: 'psa-contact-dialog',
-    imports: [
-        MatDialogContent,
-        MatDialogTitle,
-        TranslocoDirective,
-        MatDialogActions,
-        MatButton,
-        MatDialogClose,
-        MatAnchor,
-        ReverseMailDirective
-    ],
-    templateUrl: './contact-dialog.component.html',
-    styleUrl: './contact-dialog.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'psa-contact-dialog',
+  imports: [
+    MatDialogContent,
+    MatDialogTitle,
+    TranslocoDirective,
+    MatDialogActions,
+    MatButton,
+    MatDialogClose,
+    MatAnchor,
+    ReverseMailDirective,
+  ],
+  templateUrl: './contact-dialog.component.html',
+  styleUrl: './contact-dialog.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ContactDialogComponent {
-
-}
+export class ContactDialogComponent {}

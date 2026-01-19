@@ -1,11 +1,9 @@
-import {Directive, inject, TemplateRef} from '@angular/core';
+import { Directive, inject, TemplateRef } from '@angular/core';
 
 @Directive({
   selector: '[listItemTemplate]',
-  standalone: true
+  standalone: true,
 })
 export class ListItemTemplateDirective {
-
-  templateRef: TemplateRef<{ $implicit: any }> = inject(TemplateRef<unknown>)
-
+  templateRef: TemplateRef<{ $implicit: any }> = inject(TemplateRef<unknown>);
 }

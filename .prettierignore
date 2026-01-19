@@ -1,0 +1,16 @@
+node_modules
+dist
+build
+coverage
+.angular
+*.json.bak
+.vscode
+.github
+.idea
+.husky
+.git
+.gitignore
+.env
+.env.local
+cypress/fixtures
+cypress/support

@@ -1,5 +1,5 @@
-import { CdkFixedSizeVirtualScroll, CdkVirtualForOf, CdkVirtualScrollViewport } from "@angular/cdk/scrolling";
-import { NgClass, NgTemplateOutlet } from "@angular/common";
+import { CdkFixedSizeVirtualScroll, CdkVirtualForOf, CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -8,28 +8,20 @@ import {
   input,
   OnDestroy,
   output,
-  viewChild
+  viewChild,
 } from '@angular/core';
-import { MatRipple } from "@angular/material/core";
-import { auditTime, filter, map, pairwise, Subscription } from "rxjs";
-import { ListItemTemplateDirective } from "./list-item-template.directive";
+import { MatRipple } from '@angular/material/core';
+import { auditTime, filter, map, pairwise, Subscription } from 'rxjs';
+import { ListItemTemplateDirective } from './list-item-template.directive';
 
 @Component({
   selector: 'psa-list',
-  imports: [
-    CdkVirtualScrollViewport,
-    CdkFixedSizeVirtualScroll,
-    CdkVirtualForOf,
-    NgClass,
-    NgTemplateOutlet,
-    MatRipple
-  ],
+  imports: [CdkVirtualScrollViewport, CdkFixedSizeVirtualScroll, CdkVirtualForOf, NgClass, NgTemplateOutlet, MatRipple],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListComponent implements AfterViewInit, OnDestroy {
-
   subscription: Subscription | undefined;
   selectedItem: any;
   focusableIndex = 0;
@@ -41,15 +33,18 @@ export class ListComponent implements AfterViewInit, OnDestroy {
   viewport = viewChild.required<CdkVirtualScrollViewport>('viewport');
 
   ngAfterViewInit() {
-    this.subscription = this.viewport().elementScrolled().pipe(
-      map(() => this.viewport().measureScrollOffset('bottom')),
-      pairwise(),
-      filter(([y1, y2]) => (y2 < y1 && y2 < this.itemHeight() * 2)),
-      // throttleTime causing scroll jams on fast scroll
-      auditTime(50),
-    ).subscribe(() => {
-      this.fetchMore.emit();
-    });
+    this.subscription = this.viewport()
+      .elementScrolled()
+      .pipe(
+        map(() => this.viewport().measureScrollOffset('bottom')),
+        pairwise(),
+        filter(([y1, y2]) => y2 < y1 && y2 < this.itemHeight() * 2),
+        // throttleTime causing scroll jams on fast scroll
+        auditTime(50)
+      )
+      .subscribe(() => {
+        this.fetchMore.emit();
+      });
   }
 
   selectItem(item: any) {

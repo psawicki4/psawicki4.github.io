@@ -22,6 +22,7 @@ An Angular-based personal website that serves as my portfolio and includes a set
 The live website is available at [psawicki.dev](https://psawicki.dev).
 
 ### Tech stack
+
 - **Framework**: Angular 21
 - **UI**: Angular Material, Tailwind CSS 4
 - **State**: NgRx Signals

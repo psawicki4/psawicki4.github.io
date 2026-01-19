@@ -1,6 +1,6 @@
 export type Country = {
   name: {
-    common: string
-  },
-  capital: string
-}
+    common: string;
+  };
+  capital: string;
+};

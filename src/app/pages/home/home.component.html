@@ -3,27 +3,43 @@
     <div class="flex flex-col md:flex-row h-full">
       <div class="max-md:max-w-xs md:flex-none">
         <h1 class="text-3xl mb-1">{{ t('hello') }}</h1>
-        <p class="text-base">{{ t('my-name-is') }}&ensp;<br class="md:hidden"><span
-            class="name">Piotr&nbsp;Sawicki</span></p>
+        <p class="text-base">
+          {{ t('my-name-is') }}&ensp;<br class="md:hidden" /><span class="name">Piotr&nbsp;Sawicki</span>
+        </p>
         <p class="mb-8">{{ t('my-webpage') }}</p>
-        <p class="mb-8"> {{ t('repository') }}&ensp;<a matButton class="link"
-            href="https://github.com/psawicki4/psawicki4.github.io" target="_blank">Link</a></p>
+        <p class="mb-8">
+          {{ t('repository') }}&ensp;<a
+            matButton
+            class="link"
+            href="https://github.com/psawicki4/psawicki4.github.io"
+            target="_blank"
+            >Link</a
+          >
+        </p>
 
         <p>{{ t('tools') }}</p>
         <ul class="ml-4 my-2 leading-8">
           <li><b>Framework:&ensp;</b>Angular 21 ({{ t('including') }})</li>
           <li><b>UI:&ensp;</b>Angular Material, Tailwind CSS 4</li>
-          <li><b>{{ t('state') }}:&ensp;</b>NgRx Signals</li>
+          <li>
+            <b>{{ t('state') }}:&ensp;</b>NgRx Signals
+          </li>
           <li><b>I18n:&ensp;</b>Transloco</li>
           <li><b>3D:&ensp;</b>three.js</li>
-          <li><b>{{ t('grid') }}:&ensp;</b>AG Grid</li>
-          <li><b>{{ t('date-time') }}:&ensp;</b>Day.js, Luxon (adapter Material)</li>
-          <li><b>{{ t('tests') }}:&ensp;</b>Cypress, Vitest</li>
+          <li>
+            <b>{{ t('grid') }}:&ensp;</b>AG Grid
+          </li>
+          <li>
+            <b>{{ t('date-time') }}:&ensp;</b>Day.js, Luxon (adapter Material)
+          </li>
+          <li>
+            <b>{{ t('tests') }}:&ensp;</b>Cypress, Vitest
+          </li>
         </ul>
       </div>
       <div class="min-h-[182px] md:flex-1">
         @defer {
-        <psa-home-three></psa-home-three>
+          <psa-home-three></psa-home-three>
         }
       </div>
     </div>

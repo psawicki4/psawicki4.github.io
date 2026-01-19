@@ -1,29 +1,31 @@
-import { afterNextRender, ChangeDetectionStrategy, Component, ElementRef, inject, OnDestroy, signal, viewChild } from '@angular/core';
+import {
+  afterNextRender,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  inject,
+  OnDestroy,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatSlideToggle, MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { MatSliderModule } from "@angular/material/slider";
+import { MatSliderModule } from '@angular/material/slider';
 import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
-import { CardComponent } from "../../components/card/card.component";
+import { CardComponent } from '../../components/card/card.component';
 
 @Component({
   selector: 'psa-model-3d',
-  imports: [
-    CardComponent,
-    TranslocoDirective,
-    MatButton,
-    MatSlideToggle,
-    MatSliderModule
-  ],
+  imports: [CardComponent, TranslocoDirective, MatButton, MatSlideToggle, MatSliderModule],
   templateUrl: './model-3d.component.html',
   styleUrl: './model-3d.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Model3DComponent implements OnDestroy {
-
   transloco = inject(TranslocoService);
   canvas = viewChild<ElementRef>('canvas');
 
@@ -37,7 +39,7 @@ export class Model3DComponent implements OnDestroy {
   modelScalars = new Map<string, number>([
     ['hover_bike', 0.0045],
     ['stylized_ww1_plane', 2],
-    ['sea_turtle', 1]
+    ['sea_turtle', 1],
   ]);
   mixer?: THREE.AnimationMixer;
   clock = new THREE.Clock();
@@ -52,7 +54,7 @@ export class Model3DComponent implements OnDestroy {
     afterNextRender(() => {
       this.threeRenderer = new THREE.WebGLRenderer({
         antialias: true,
-        alpha: true
+        alpha: true,
       });
       this.controls = new OrbitControls(this.camera, this.threeRenderer.domElement);
       this.initThree(this.canvas()?.nativeElement);

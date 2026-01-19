@@ -1,7 +1,7 @@
-const fs = require("node:fs");
+const fs = require('node:fs');
 
 function deepMerge(obj1, obj2) {
-  const mergedObj = {...obj1, ...obj2};
+  const mergedObj = { ...obj1, ...obj2 };
 
   for (const key of Object.keys(mergedObj)) {
     if (typeof mergedObj[key] === 'object' && mergedObj[key] !== null) {
@@ -11,8 +11,8 @@ function deepMerge(obj1, obj2) {
   return mergedObj;
 }
 
-const pl = JSON.parse(fs.readFileSync('src/assets/i18n/pl.json', "utf-8"));
-const en = JSON.parse(fs.readFileSync('src/assets/i18n/en.json', "utf-8"));
+const pl = JSON.parse(fs.readFileSync('src/assets/i18n/pl.json', 'utf-8'));
+const en = JSON.parse(fs.readFileSync('src/assets/i18n/en.json', 'utf-8'));
 
 const enNew = deepMerge(pl, en);
 

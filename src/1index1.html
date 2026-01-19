@@ -1,69 +1,87 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Personal website. Author: Piotr Sawicki" />
+    <title>Piotr Sawicki</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link
+      type="font/woff2"
+      rel="preload"
+      href="/assets/fonts/OoohBaby-Regular-subset.woff2"
+      as="font"
+      crossorigin="anonymous"
+    />
+    <link
+      type="font/woff2"
+      rel="preload"
+      href="/assets/fonts/OpenSans-subset.woff2"
+      as="font"
+      crossorigin="anonymous"
+    />
+    <link
+      type="font/woff2"
+      rel="preload"
+      href="/assets/fonts/OpenSans-Italic-subset.woff2"
+      as="font"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <style>
+      @font-face {
+        font-family: 'Oooh Baby';
+        src: url('/assets/fonts/OoohBaby-Regular-subset.woff2') format('woff2');
+        font-display: swap;
+        font-weight: normal;
+        font-style: normal;
+      }
 
-<head>
-  <meta charset="utf-8">
-  <meta name="description" content="Personal website. Author: Piotr Sawicki">
-  <title>Piotr Sawicki</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link type="font/woff2" rel="preload" href="/assets/fonts/OoohBaby-Regular-subset.woff2" as="font"
-    crossorigin="anonymous" />
-  <link type="font/woff2" rel="preload" href="/assets/fonts/OpenSans-subset.woff2" as="font" crossorigin="anonymous" />
-  <link type="font/woff2" rel="preload" href="/assets/fonts/OpenSans-Italic-subset.woff2" as="font"
-    crossorigin="anonymous" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" media="print"
-    onload="this.media='all'">
-  <style>
-    @font-face {
-      font-family: 'Oooh Baby';
-      src: url('/assets/fonts/OoohBaby-Regular-subset.woff2') format('woff2');
-      font-display: swap;
-      font-weight: normal;
-      font-style: normal;
-    }
+      @font-face {
+        font-family: 'Open Sans';
+        src: url('/assets/fonts/OpenSans-subset.woff2') format('woff2');
+        font-display: swap;
+        font-weight: 300 700;
+        font-style: normal;
+      }
 
-    @font-face {
-      font-family: 'Open Sans';
-      src: url('/assets/fonts/OpenSans-subset.woff2') format('woff2');
-      font-display: swap;
-      font-weight: 300 700;
-      font-style: normal;
-    }
+      @font-face {
+        font-family: 'Open Sans';
+        src: url('/assets/fonts/OpenSans-Italic-subset.woff2') format('woff2');
+        font-display: swap;
+        font-weight: 300 700;
+        font-style: italic;
+      }
 
-    @font-face {
-      font-family: 'Open Sans';
-      src: url('/assets/fonts/OpenSans-Italic-subset.woff2') format('woff2');
-      font-display: swap;
-      font-weight: 300 700;
-      font-style: italic;
-    }
+      @font-face {
+        font-family: 'Open Sans fallback';
+        src: local('Arial');
+        ascent-override: 106.8847656%;
+        descent-override: 29.296875%;
+        line-gap-override: 0%;
+      }
 
-    @font-face {
-      font-family: "Open Sans fallback";
-      src: local("Arial");
-      ascent-override: 106.8847656%;
-      descent-override: 29.296875%;
-      line-gap-override: 0%;
-    }
+      @font-face {
+        font-family: 'Oooh Baby fallback';
+        src: local('Arial Narrow');
+        ascent-override: 90%;
+        descent-override: 32.5%;
+        line-gap-override: 0%;
+      }
+    </style>
+  </head>
 
-    @font-face {
-      font-family: "Oooh Baby fallback";
-      src: local("Arial Narrow");
-      ascent-override: 90%;
-      descent-override: 32.5%;
-      line-gap-override: 0%;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="bg-fixed"></div>
-  <psa-root></psa-root>
-  <noscript> Your JavaScript is disabled</noscript>
-</body>
-
+  <body>
+    <div class="bg-fixed"></div>
+    <psa-root></psa-root>
+    <noscript> Your JavaScript is disabled</noscript>
+  </body>
 </html>

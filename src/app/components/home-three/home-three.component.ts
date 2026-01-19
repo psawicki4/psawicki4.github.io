@@ -9,17 +9,16 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
   imports: [],
   templateUrl: './home-three.component.html',
   styleUrl: './home-three.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeThreeComponent implements AfterViewInit, OnDestroy {
-
   canvas = viewChild<ElementRef>('canvas');
 
   scene = new THREE.Scene();
   camera = new THREE.PerspectiveCamera(50, 1, 0.1, 1000);
   threeRenderer = new THREE.WebGLRenderer({
     antialias: true,
-    alpha: true
+    alpha: true,
   });
   controls = new OrbitControls(this.camera, this.threeRenderer.domElement);
   model?: THREE.Group;
@@ -105,5 +104,4 @@ export class HomeThreeComponent implements AfterViewInit, OnDestroy {
 
     this.threeRenderer.render(this.scene, this.camera);
   }
-
 }
