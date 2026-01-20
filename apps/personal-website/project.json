@@ -1,0 +1,123 @@
+{
+  "name": "personal-website",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "generators": {
+    "@schematics/angular": {
+      "component": {
+        "changeDetection": "OnPush"
+      }
+    },
+    "@schematics/angular:component": {
+      "style": "scss",
+      "skipTests": true
+    },
+    "@schematics/angular:class": {
+      "skipTests": true
+    },
+    "@schematics/angular:directive": {
+      "skipTests": true
+    },
+    "@schematics/angular:guard": {
+      "skipTests": true
+    },
+    "@schematics/angular:interceptor": {
+      "skipTests": true
+    },
+    "@schematics/angular:pipe": {
+      "skipTests": true
+    },
+    "@schematics/angular:resolver": {
+      "skipTests": true
+    },
+    "@schematics/angular:service": {
+      "skipTests": true
+    }
+  },
+  "sourceRoot": "apps/personal-website/src",
+  "prefix": "psa",
+  "i18n": {
+    "sourceLocale": "pl"
+  },
+  "targets": {
+    "build": {
+      "executor": "@angular/build:application",
+      "options": {
+        "outputPath": "dist/apps/personal-website",
+        "index": "apps/personal-website/src/1index1.html",
+        "browser": "apps/personal-website/src/main.ts",
+        "polyfills": ["@angular/localize/init"],
+        "tsConfig": "apps/personal-website/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": ["apps/personal-website/src/favicon.ico", "apps/personal-website/src/assets"],
+        "styles": ["apps/personal-website/src/styles.scss"],
+        "stylePreprocessorOptions": {
+          "includePaths": ["apps/personal-website/src/styles"]
+        },
+        "scripts": [],
+        "allowedCommonJsDependencies": ["dayjs"],
+        "server": "apps/personal-website/src/main.server.ts",
+        "outputMode": "server",
+        "ssr": {
+          "entry": "apps/personal-website/src/server.ts"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/personal-website/src/environments/environment.ts",
+              "with": "apps/personal-website/src/environments/environment.development.ts"
+            }
+          ]
+        }
+      },
+      "defaultConfiguration": "production",
+      "outputs": ["{options.outputPath}"]
+    },
+    "serve": {
+      "executor": "@angular/build:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "personal-website:build:production"
+        },
+        "development": {
+          "buildTarget": "personal-website:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular/build:extract-i18n",
+      "options": {
+        "buildTarget": "personal-website:build"
+      }
+    },
+    "test": {
+      "executor": "@angular/build:unit-test",
+      "options": {
+        "tsConfig": "apps/personal-website/tsconfig.spec.json",
+        "runner": "vitest",
+        "buildTarget": "::development"
+      }
+    }
+  }
+}
