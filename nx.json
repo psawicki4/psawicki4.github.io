@@ -7,7 +7,10 @@
       "default",
       "!{projectRoot}/tsconfig.spec.json",
       "!{projectRoot}/**/*.spec.[jt]s",
-      "!{projectRoot}/karma.conf.js"
+      "!{projectRoot}/karma.conf.js",
+      "!{projectRoot}/cypress/**/*",
+      "!{projectRoot}/**/*.cy.[jt]s?(x)",
+      "!{projectRoot}/cypress.config.[jt]s"
     ]
   },
   "targetDefaults": {
@@ -20,5 +23,16 @@
       "inputs": ["default", "^production", "{workspaceRoot}/karma.conf.js"],
       "cache": true
     }
-  }
+  },
+  "plugins": [
+    {
+      "plugin": "@nx/cypress/plugin",
+      "options": {
+        "targetName": "e2e",
+        "openTargetName": "open-cypress",
+        "componentTestingTargetName": "component-test",
+        "ciTargetName": "e2e-ci"
+      }
+    }
+  ]
 }
