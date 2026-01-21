@@ -2,11 +2,6 @@
   "name": "personal-website",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "apps/personal-website/src",
-  "prefix": "psa",
-  "i18n": {
-    "sourceLocale": "pl"
-  },
   "generators": {
     "@schematics/angular": {
       "component": {
@@ -38,6 +33,11 @@
     "@schematics/angular:service": {
       "skipTests": true
     }
+  },
+  "sourceRoot": "apps/personal-website/src",
+  "prefix": "psa",
+  "i18n": {
+    "sourceLocale": "pl"
   },
   "targets": {
     "build": {
