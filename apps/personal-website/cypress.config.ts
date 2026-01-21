@@ -12,6 +12,5 @@ export default defineConfig({
         production: 'nx run personal-website:serve:production',
       },
     }),
-    video: false,
   },
 });
