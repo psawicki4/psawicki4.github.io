@@ -10,6 +10,7 @@
     "test": "nx test personal-website",
     "merge": "node src/app/services/merge-to-en.js",
     "cy:open": "nx open-cypress personal-website",
+    "e2e": "nx e2e personal-website",
     "server": "node dist/personal-website/server/server.mjs"
   },
   "private": true,
