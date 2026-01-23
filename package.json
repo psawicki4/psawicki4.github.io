@@ -9,7 +9,7 @@
     "watch": "nx build personal-website --watch --configuration development",
     "test": "nx test personal-website",
     "merge": "node src/app/services/merge-to-en.js",
-    "cy:open": "cypress open",
+    "cy:open": "nx open-cypress personal-website",
     "server": "node dist/personal-website/server/server.mjs"
   },
   "private": true,
