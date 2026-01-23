@@ -28,8 +28,8 @@ The live website is available at [psawicki.dev](https://psawicki.dev).
 - **UI**: Angular Material, Tailwind CSS 4
 - **State**: NgRx Signals
 - **I18n**: Transloco
+- **Monorepo**: Nx
+- **Tests**: Cypress, Vitest
 - **3D**: three.js
 - **Data grid**: AG Grid
 - **Date/Time**: Day.js, Luxon (Material adapter)
-- **Monorepo**: Nx
-- **Tests**: Cypress, Vitest
