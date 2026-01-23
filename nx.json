@@ -10,7 +10,9 @@
       "!{projectRoot}/karma.conf.js",
       "!{projectRoot}/cypress/**/*",
       "!{projectRoot}/**/*.cy.[jt]s?(x)",
-      "!{projectRoot}/cypress.config.[jt]s"
+      "!{projectRoot}/cypress.config.[jt]s",
+      "!{projectRoot}/.eslintrc.json",
+      "!{projectRoot}/eslint.config.mjs"
     ]
   },
   "targetDefaults": {
@@ -32,6 +34,12 @@
         "openTargetName": "open-cypress",
         "componentTestingTargetName": "component-test",
         "ciTargetName": "e2e-ci"
+      }
+    },
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
       }
     }
   ]
