@@ -10,7 +10,7 @@
   ],
   "functions": {
     "api/index.js": {
-      "includeFiles": "dist/personal-website/**"
+      "includeFiles": "dist/apps/personal-website/**"
     }
   }
 }
