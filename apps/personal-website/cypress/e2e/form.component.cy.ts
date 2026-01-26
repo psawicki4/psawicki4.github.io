@@ -1,6 +1,10 @@
 describe('Form Component', () => {
   beforeEach(() => {
-    cy.visit('/form');
+    cy.visit('/form', {
+      onBeforeLoad: (win) => {
+        win.localStorage.setItem('langCode', 'pl');
+      },
+    });
   });
 
   describe('Pet Type Selection', () => {
