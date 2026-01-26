@@ -16,7 +16,7 @@ export class OnlyDigitsDirective {
 
   @HostListener('paste', ['$event'])
   onPaste(event: ClipboardEvent) {
-    let clipboardData = event.clipboardData;
+    const clipboardData = event.clipboardData;
     if (clipboardData) {
       const pastedText = clipboardData.getData('text');
       const pattern = /^\d+$/g;

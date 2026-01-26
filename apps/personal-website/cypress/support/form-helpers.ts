@@ -57,7 +57,7 @@ export const formHelpers = {
     /**
      * Submits the form and checks for snackbar
      */
-    submitForm(expectSuccess: boolean = true) {
+    submitForm(expectSuccess = true) {
         cy.get('button[type="button"]').contains('Check').click();
 
         cy.get('mat-snack-bar-container').should('be.visible');

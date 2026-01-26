@@ -29,7 +29,9 @@ describe('ListPageComponent', () => {
         {
           provide: TranslocoService,
           useValue: {
-            setActiveLang: () => {},
+            setActiveLang: () => {
+              // This is a mock method
+            },
             getActiveLang: () => 'pl',
             translate: (key: any) => key,
             selectTranslate: (_k: any) => of((k: any) => k),

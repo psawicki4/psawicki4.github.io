@@ -36,16 +36,19 @@ describe('Form Component', () => {
     });
 
     it('should allow entering cat name', () => {
-      cy.get('input[formControlName="name"]').type('Whiskers').should('have.value', 'Whiskers');
+      cy.get('input[formControlName="name"]').type('Whiskers');
+      cy.get('input[formControlName="name"]').should('have.value', 'Whiskers');
     });
 
     it('should allow entering cat age', () => {
-      cy.get('input[formControlName="age"]').type('3').should('have.value', '3');
+      cy.get('input[formControlName="age"]').type('3');
+      cy.get('input[formControlName="age"]').should('have.value', '3');
     });
 
     it('should allow entering description', () => {
       const description = 'A very friendly and playful cat';
-      cy.get('textarea[formControlName="description"]').type(description).should('have.value', description);
+      cy.get('textarea[formControlName="description"]').type(description);
+      cy.get('textarea[formControlName="description"]').should('have.value', description);
     });
 
     it('should show character count for description', () => {
@@ -56,7 +59,8 @@ describe('Form Component', () => {
     });
 
     it('should toggle purebred checkbox', () => {
-      cy.get('mat-checkbox[formControlName="purebred"]').click().should('have.class', 'mat-mdc-checkbox-checked');
+      cy.get('mat-checkbox[formControlName="purebred"]').click();
+      cy.get('mat-checkbox[formControlName="purebred"]').should('have.class', 'mat-mdc-checkbox-checked');
     });
   });
 

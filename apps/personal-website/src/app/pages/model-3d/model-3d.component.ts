@@ -109,7 +109,7 @@ export class Model3DComponent implements OnDestroy {
     this.threeRenderer.setAnimationLoop(() => this.animate());
   }
 
-  loadModel(name: string = 'stylized_ww1_plane') {
+  loadModel(name = 'stylized_ww1_plane') {
     if (this.loading) {
       return;
     }
