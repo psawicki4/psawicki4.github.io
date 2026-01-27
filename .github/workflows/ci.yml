@@ -41,7 +41,14 @@ jobs:
       # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
       # - run: npx nx-cloud record -- echo Hello World
       # When you enable task distribution, run the e2e-ci task instead of e2e
-      - run: npx nx affected -t lint test build e2e
+      - run: npx nx affected -t lint test build
+      - name: E2E on Production Server
+        run: |
+          if [ -f "dist/apps/personal-website/server/server.mjs" ]; then
+            npx start-server-and-test 'PORT=4200 npm run server' http://localhost:4200 'npx cypress run --project apps/personal-website --config baseUrl=http://localhost:4200'
+          else
+            echo "Skipping E2E: App was not built (not affected)"
+          fi
       # Nx Cloud recommends fixes for failures to help you get CI green faster. Learn more: https://nx.dev/ci/features/self-healing-ci
       - run: npx nx fix-ci
         if: always()
