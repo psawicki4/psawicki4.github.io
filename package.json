@@ -11,7 +11,7 @@
     "merge": "node src/app/services/merge-to-en.js",
     "cy:open": "nx open-cypress personal-website",
     "server": "node dist/apps/personal-website/server/server.mjs",
-    "e2e:prod": "nx build personal-website && start-server-and-test server http://localhost:4000 \"npx cypress run --project apps/personal-website --config baseUrl=http://localhost:4000\""
+    "e2e:prod": "nx build personal-website && start-server-and-test server http://localhost:4200 \"npx cypress run --project apps/personal-website\""
   },
   "private": true,
   "dependencies": {

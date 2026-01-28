@@ -45,7 +45,7 @@ jobs:
       - name: E2E on Production Server
         run: |
           if [ -f "dist/apps/personal-website/server/server.mjs" ]; then
-            npx start-server-and-test 'PORT=4200 npm run server' http://localhost:4200 'npx cypress run --project apps/personal-website --config baseUrl=http://localhost:4200'
+            npx start-server-and-test server http://localhost:4200 'npx cypress run --project apps/personal-website'
           else
             echo "Skipping E2E: App was not built (not affected)"
           fi
