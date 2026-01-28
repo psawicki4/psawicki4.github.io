@@ -1,15 +1,16 @@
 {
   "contact": "Kontakt",
   "HOME": {
-    "hello": "Cześć,",
-    "my-name-is": "nazywam się",
-    "my-webpage": "a to jest moja strona w formie technologicznego demo.",
-    "repository": "Cały kod aplikacji jest dostępny pod adresem:",
-    "tools": "Do jej zbudowania wykorzystałem:",
+    "hello": "Cześć!",
+    "my-name-is": "Nazywam się",
+    "my-webpage": "Jestem programistą Angular, a to portfolio to poligon doświadczalny, na którym wdrażam najnowsze standardy webowe.",
+    "philosophy": "Tworzę skalowalne aplikacje Enterprise, dbając o czystą architekturę i maksymalną wydajność.",
+    "repository": "Kod źródłowy znajdziesz tutaj:",
+    "tools": "Stack technologiczny tej aplikacji:",
     "including": "w tym Signals, Standalone, SSR i Zone-less",
-    "grid": "Tabela",
-    "date-time": "Data/czas",
-    "state": "Stan",
+    "grid": "Analiza danych",
+    "date-time": "Obsługa czasu",
+    "state": "Zarządzanie stanem",
     "tests": "Testy"
   },
   "MENU": {

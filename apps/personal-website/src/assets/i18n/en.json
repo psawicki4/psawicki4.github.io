@@ -1,15 +1,16 @@
 {
   "contact": "Contact",
   "HOME": {
-    "hello": "Hello,",
-    "my-name-is": "my name is",
-    "my-webpage": "and this is my website in the form of a technology demo.",
-    "repository": "The full application code is available at:",
-    "tools": "To build this site, I used:",
+    "hello": "Hi there!",
+    "my-name-is": "I'm",
+    "my-webpage": "I'm an Angular Developer. This platform serves as a technical playground showcasing modern web engineering patterns.",
+    "philosophy": "I specialize in building scalable Enterprise applications with a focus on clean architecture and high performance.",
+    "repository": "Explore the codebase on GitHub:",
+    "tools": "The tech stack behind this project:",
     "including": "including Signals, Standalone, SSR and Zone-less",
-    "grid": "Grid",
-    "date-time": "Date/Time",
-    "state": "State",
+    "grid": "Data Processing",
+    "date-time": "Time Management",
+    "state": "State Management",
     "tests": "Tests"
   },
   "MENU": {
