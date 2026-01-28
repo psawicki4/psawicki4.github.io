@@ -112,7 +112,7 @@ describe('ListPageComponent', () => {
     (store as unknown as MockRoomsStore).selectedRoom.set(roomToUnbook);
     const initialRooms = { total: 9999, data: [{ ...roomToUnbook }] };
     (store as unknown as MockRoomsStore).rooms.set(initialRooms);
-    component.deleteReservation();
+    component.deleteReservation(roomToUnbook);
     const updatedRooms = { ...initialRooms };
     updatedRooms.data[0].booked = false;
     expect(store.setRooms).toHaveBeenCalledWith(updatedRooms);

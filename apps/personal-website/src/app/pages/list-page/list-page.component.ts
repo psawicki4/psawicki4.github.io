@@ -68,9 +68,9 @@ export class ListPageComponent implements OnInit {
     this.cancel();
   }
 
-  deleteReservation(selectedRoomNumber: number) {
+  deleteReservation(room: Room) {
     const updatedRooms = { ...this.store.rooms() };
-    const index = updatedRooms.data.findIndex((r) => r.roomNumber === selectedRoomNumber);
+    const index = updatedRooms.data.findIndex((r) => r.roomNumber === room.roomNumber);
     if (index !== -1) {
       updatedRooms.data[index].booked = false;
     }

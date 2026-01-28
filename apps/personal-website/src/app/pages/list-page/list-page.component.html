@@ -35,7 +35,7 @@
                   <button matButton (click)="book()">{{ t('reserve') }}</button>
                 } @else {
                   <button matButton (click)="cancel()">{{ t('cancel') }}</button>
-                  <button matButton (click)="deleteReservation(store.selectedRoom().roomNumber)">
+                  <button matButton (click)="deleteReservation(store.selectedRoom())">
                     {{ t('delete-reservation') }}
                   </button>
                 }
@@ -50,7 +50,7 @@
               @for (room of store.bookedRooms(); track room.roomNumber) {
                 <div class="flex flex-row items-center">
                   <p class="text-base w-28">{{ t('room-nr') }} {{ room.roomNumber }}</p>
-                  <button matIconButton aria-label="Delete reservation" (click)="deleteReservation(room.roomNumber)">
+                  <button matIconButton aria-label="Delete reservation" (click)="deleteReservation(room)">
                     <mat-icon class="pb-1">delete_outline</mat-icon>
                   </button>
                 </div>
