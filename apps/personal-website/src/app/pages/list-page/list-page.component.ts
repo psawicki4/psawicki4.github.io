@@ -1,16 +1,17 @@
 import { NgClass } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { TranslocoDirective } from '@jsverse/transloco';
 import { CardComponent } from '../../components/card/card.component';
 import { ListItemTemplateDirective } from '../../components/list/list-item-template.directive';
 import { ListComponent } from '../../components/list/list.component';
 import { Room } from './room.type';
 import { RoomsStore } from './rooms.store';
+import { MatIcon } from "@angular/material/icon";
 
 @Component({
   selector: 'psa-list-page',
-  imports: [CardComponent, ListComponent, ListItemTemplateDirective, TranslocoDirective, NgClass, MatButton],
+  imports: [CardComponent, ListComponent, ListItemTemplateDirective, TranslocoDirective, NgClass, MatButton, MatIconButton, MatIcon],
   providers: [RoomsStore],
   templateUrl: './list-page.component.html',
   styleUrl: './list-page.component.scss',
@@ -67,9 +68,9 @@ export class ListPageComponent implements OnInit {
     this.cancel();
   }
 
-  deleteReservation() {
+  deleteReservation(selectedRoomNumber: number) {
     const updatedRooms = { ...this.store.rooms() };
-    const index = updatedRooms.data.findIndex((r) => r.roomNumber === this.store.selectedRoom().roomNumber);
+    const index = updatedRooms.data.findIndex((r) => r.roomNumber === selectedRoomNumber);
     if (index !== -1) {
       updatedRooms.data[index].booked = false;
     }

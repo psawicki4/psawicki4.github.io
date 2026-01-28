@@ -24,7 +24,7 @@
             </ng-template>
           </psa-list>
         </div>
-        <div class="flex flex-col gap-8 w-72">
+        <div class="flex flex-col gap-4 w-72">
           <p>{{ t('selected-room') }}</p>
           @if (store.selectedRoom().roomNumber > 0) {
             <psa-card>
@@ -35,16 +35,27 @@
                   <button matButton (click)="book()">{{ t('reserve') }}</button>
                 } @else {
                   <button matButton (click)="cancel()">{{ t('cancel') }}</button>
-                  <button matButton (click)="deleteReservation()">{{ t('delete-reservation') }}</button>
+                  <button matButton (click)="deleteReservation(store.selectedRoom().roomNumber)">
+                    {{ t('delete-reservation') }}
+                  </button>
                 }
               </span>
             </psa-card>
           }
         </div>
-        <div class="w-72">
-          <p class="mb-4">{{ t('your-reservations') }}</p>
-          @for (room of store.bookedRooms(); track room.roomNumber) {
-            <p>{{ t('room-nr') }} {{ room.roomNumber }}</p>
+        <div class="flex flex-col gap-4 w-56">
+          <p>{{ t('your-reservations') }}</p>
+          @if (store.bookedRooms().length > 0) {
+            <psa-card>
+              @for (room of store.bookedRooms(); track room.roomNumber) {
+                <div class="flex flex-row items-center">
+                  <p class="text-base w-28">{{ t('room-nr') }} {{ room.roomNumber }}</p>
+                  <button matIconButton aria-label="Delete reservation" (click)="deleteReservation(room.roomNumber)">
+                    <mat-icon class="pb-1">delete_outline</mat-icon>
+                  </button>
+                </div>
+              }
+            </psa-card>
           }
         </div>
       </div>
