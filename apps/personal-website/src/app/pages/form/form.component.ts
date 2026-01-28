@@ -215,7 +215,9 @@ export class FormComponent {
       this.toys.update((toys) => [...toys, value]);
       this.cat?.get('toys')?.setValue(this.toys());
     }
-    event.chipInput!.clear();
+    if (event.chipInput) {
+      event.chipInput.clear();
+    }
   }
 
   reset() {

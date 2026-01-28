@@ -33,9 +33,9 @@ describe('ListPageComponent', () => {
               // This is a mock method
             },
             getActiveLang: () => 'pl',
-            translate: (key: any) => key,
-            selectTranslate: (_k: any) => of((k: any) => k),
-            selectTranslateObject: (_k: any) => of({}),
+            translate: (key: string) => key,
+            selectTranslate: () => of((k: string) => k),
+            selectTranslateObject: () => of({}),
           },
         },
       ],
@@ -67,14 +67,14 @@ describe('ListPageComponent', () => {
 
   it('should fetch more rooms', () => {
     component.skip = 0;
-    (store.rooms as any).set({ total: 9999, data: [] });
+    (store as unknown as MockRoomsStore).rooms.set({ total: 9999, data: [] });
     component.fetchMoreRooms();
     expect(component.skip).toBe(50);
     expect(store.patchRooms).toHaveBeenCalledWith(component.allRooms.slice(50, 100));
   });
 
   it('should not fetch more rooms if all are loaded', () => {
-    (store.rooms as any).set({ total: 9999, data: new Array(9999) });
+    (store as unknown as MockRoomsStore).rooms.set({ total: 9999, data: new Array(9999) });
     component.fetchMoreRooms();
     expect(store.patchRooms).not.toHaveBeenCalled();
   });
@@ -86,7 +86,7 @@ describe('ListPageComponent', () => {
   });
 
   it('should not select a room if room is not provided', () => {
-    component.selectRoom(null as any);
+    component.selectRoom(null as unknown as Room);
     expect(store.patchSelectedRoom).not.toHaveBeenCalled();
   });
 
@@ -97,9 +97,9 @@ describe('ListPageComponent', () => {
 
   it('should book a room', () => {
     const roomToBook: Room = { roomNumber: 1, booked: false };
-    (store.selectedRoom as any).set(roomToBook);
+    (store as unknown as MockRoomsStore).selectedRoom.set(roomToBook);
     const initialRooms = { total: 9999, data: [{ ...roomToBook }] };
-    (store.rooms as any).set(initialRooms);
+    (store as unknown as MockRoomsStore).rooms.set(initialRooms);
     component.book();
     const updatedRooms = { ...initialRooms };
     updatedRooms.data[0].booked = true;
@@ -109,9 +109,9 @@ describe('ListPageComponent', () => {
 
   it('should delete a reservation', () => {
     const roomToUnbook: Room = { roomNumber: 1, booked: true };
-    (store.selectedRoom as any).set(roomToUnbook);
+    (store as unknown as MockRoomsStore).selectedRoom.set(roomToUnbook);
     const initialRooms = { total: 9999, data: [{ ...roomToUnbook }] };
-    (store.rooms as any).set(initialRooms);
+    (store as unknown as MockRoomsStore).rooms.set(initialRooms);
     component.deleteReservation();
     const updatedRooms = { ...initialRooms };
     updatedRooms.data[0].booked = false;

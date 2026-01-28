@@ -21,15 +21,15 @@ import { ListItemTemplateDirective } from './list-item-template.directive';
   styleUrl: './list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ListComponent implements AfterViewInit, OnDestroy {
+export class ListComponent<T> implements AfterViewInit, OnDestroy {
   subscription: Subscription | undefined;
-  selectedItem: any;
+  selectedItem: T | undefined;
   focusableIndex = 0;
-  data = input<any[]>([]);
+  data = input<T[]>([]);
   itemHeight = input(0);
   fetchMore = output();
-  selected = output<any>();
-  listItemTemplateRef = contentChild(ListItemTemplateDirective);
+  selected = output<T>();
+  listItemTemplateRef = contentChild<ListItemTemplateDirective<T>>(ListItemTemplateDirective);
   viewport = viewChild.required<CdkVirtualScrollViewport>('viewport');
 
   ngAfterViewInit() {
@@ -47,7 +47,7 @@ export class ListComponent implements AfterViewInit, OnDestroy {
       });
   }
 
-  selectItem(item: any) {
+  selectItem(item: T) {
     this.selectedItem = item;
     this.selected.emit(item);
   }

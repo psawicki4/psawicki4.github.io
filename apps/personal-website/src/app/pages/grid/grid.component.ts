@@ -46,7 +46,7 @@ export class GridComponent {
   lang = inject(LangService);
   store = inject(CountriesStore);
   outletRef = viewChild('outlet', { read: ViewContainerRef });
-  contentRef = viewChild.required('content', { read: TemplateRef<any> });
+  contentRef = viewChild.required('content', { read: TemplateRef<unknown> });
   theme = themeQuartz.withParams({
     backgroundColor: '#242424',
     foregroundColor: '#e0e3e2',
