@@ -58,7 +58,7 @@
     "choose-cat__btn": "Well...",
     "valid-form": "Ready, {{value}} wants to play!",
     "ok": "ok",
-    "invalid-form": "Fill in the required fields"
+    "invalid-form": "The form contains errors. Please correct them to continue."
   },
   "LIST": {
     "header": "Infinite virtual list",

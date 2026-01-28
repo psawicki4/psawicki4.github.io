@@ -58,7 +58,7 @@
     "choose-cat__btn": "No dobrze...",
     "valid-form": "Gotowe, {{value}} chce się pobawić!",
     "ok": "ok",
-    "invalid-form": "Uzupełnij wymagane pola"
+    "invalid-form": "Formularz zawiera błędy. Popraw dane, aby kontynuować."
   },
   "LIST": {
     "header": "Nieskończona wirtualna lista",

@@ -121,7 +121,7 @@
               </div>
               <div class="flex flex-col gap-4 w-80">
                 <mat-label>{{ t('malice') }}</mat-label>
-                <mat-slider min="0" max="10" step="1" discrete>
+                <mat-slider min="0" max="10" step="1" discrete [displayWith]="formatSliderLabel">
                   <input matSliderThumb formControlName="malice" />
                 </mat-slider>
               </div>

@@ -220,6 +220,17 @@ export class FormComponent {
     }
   }
 
+  formatSliderLabel(value: number): string {
+    switch (value) {
+      case 0:
+        return '😇';
+      case 10:
+        return '😈';
+      default:
+        return `${value}`;
+    }
+  }
+
   reset() {
     this.removeCatForm();
     this.form.reset();
@@ -244,7 +255,7 @@ export class FormComponent {
       );
     } else {
       this.snackBar.open(
-        this.transloco.translate('FORM.invalid-form', { value: this.name?.value }),
+        this.transloco.translate('FORM.invalid-form'),
         this.transloco.translate('FORM.ok'),
         {
           duration: 5000,
